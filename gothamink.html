@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>GOTHAM INK • Typography as Art</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script>
+            tailwind.config = {
+                theme: {
+                    extend: {
+                        fontFamily: {
+                            'gotham': ['Gotham', 'sans-serif'],
+                        },
+                        colors: {
+                            'cold-paper': '#f8f9fb',
+                            'ice-white': '#fdfdfe',
+                            'frost': '#f0f2f5',
+                            'steel': '#e8eaed',
+                            'carbon': '#1a1d21',
+                            'charcoal': '#2d3135',
+                            'slate': '#6b7280',
+                        }
+                    }
+                }
+            }
+        </script>
+        <style>
+            @font-face {
+                font-family: 'Gotham';
+                src: url('Gotham/Gotham Ultra/Gotham Ultra.otf') format('opentype');
+                font-weight: 950;
+                font-style: normal;
+            }
+            @font-face {
+                font-family: 'Gotham';
+                src: url('Gotham/Gotham Black/Gotham Black.otf') format('opentype');
+                font-weight: 900;
+                font-style: normal;
+            }
+            @font-face {
+                font-family: 'Gotham';
+                src: url('Gotham/Gotham Bold/Gotham Bold.otf') format('opentype');
+                font-weight: 700;
+                font-style: normal;
+            }
+            @font-face {
+                font-family: 'Gotham';
+                src: url('Gotham/Gotham Medium/Gotham Medium.otf') format('opentype');
+                font-weight: 500;
+                font-style: normal;
+            }
+            @font-face {
+                font-family: 'Gotham';
+                src: url('Gotham/Gotham Regular/Gotham Regular.otf') format('opentype');
+                font-weight: 400;
+                font-style: normal;
+            }
+            @font-face {
+                font-family: 'Gotham';
+                src: url('Gotham/Gotham Book/Gotham Book.otf') format('opentype');
+                font-weight: 350;
+                font-style: normal;
+            }
+            @font-face {
+                font-family: 'Gotham';
+                src: url('Gotham/Gotham Light/Gotham Light.otf') format('opentype');
+                font-weight: 300;
+                font-style: normal;
+            }
+            @font-face {
+                font-family: 'Gotham';
+                src: url('Gotham/Gotham Extra Light/Gotham Extra Light.otf') format('opentype');
+                font-weight: 200;
+                font-style: normal;
+            }
+            @font-face {
+                font-family: 'Gotham';
+                src: url('Gotham/Gotham Thin/Gotham Thin.otf') format('opentype');
+                font-weight: 100;
+                font-style: normal;
+            }
+            
+            .ultra { font-weight: 950; }
+            .paper-texture {
+                background-image: 
+                    repeating-linear-gradient(45deg, transparent, transparent 3px, rgba(26,29,33,0.01) 3px, rgba(26,29,33,0.01) 6px),
+                    repeating-linear-gradient(-45deg, transparent, transparent 3px, rgba(45,49,53,0.005) 3px, rgba(45,49,53,0.005) 6px);
+            }
+            
+            .letterform-bg {
+                position: absolute;
+                font-size: 40rem;
+                font-weight: 950;
+                color: rgba(26,29,33,0.02);
+                z-index: -1;
+                pointer-events: none;
+            }
+            
+            .drop-cap {
+                font-size: 6rem;
+                line-height: 0.8;
+                float: left;
+                margin: 0.1em 0.1em 0 0;
+                font-weight: 950;
+            }
+            
+            .ascii-art {
+                font-family: 'Courier New', monospace;
+                line-height: 1;
+                white-space: pre;
+                font-size: 0.6rem;
+            }
+            
+            .weight-stack {
+                writing-mode: vertical-rl;
+                text-orientation: mixed;
+            }
+        </style>
+    </head>
+    <body class="bg-cold-paper min-h-screen font-gotham text-carbon paper-texture">
+        <!-- Large G Background -->
+        <div class="letterform-bg fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">G</div>
+        
+        <!-- Header -->
+        <header class="relative z-10 p-16 border-b border-steel">
+            <div class="max-w-7xl mx-auto">
+                <div class="grid grid-cols-12 gap-8 items-end">
+                    <div class="col-span-8">
+                        <h1 class="ultra text-9xl tracking-tighter leading-none">
+                            GOTHAM<br>
+                            <span class="font-thin text-8xl">INK</span>
+                        </h1>
+                        <p class="font-light text-xl mt-6 max-w-2xl">
+                            A typographer's meditation on letterforms, weights, and the 
+                            geometric poetry of America's most beloved typeface.
+                        </p>
+                    </div>
+                    <div class="col-span-4 text-right">
+                        <div class="ascii-art text-slate">
+██████   ██████  ████████ ██   ██  █████  ███    ███ 
+██       ██    ██    ██    ██   ██ ██   ██ ████  ████ 
+██   ███ ██    ██    ██    ███████ ███████ ██ ████ ██ 
+██    ██ ██    ██    ██    ██   ██ ██   ██ ██  ██  ██ 
+ ██████   ██████     ██    ██   ██ ██   ██ ██      ██ 
+                        </div>
+                        <div class="mt-4 font-light text-sm">
+                            Typography as Art<br>
+                            Issue 001 • Winter 2025
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div class="max-w-7xl mx-auto px-16 py-16 relative z-10">
+            <!-- Design Questions Section -->
+            <section class="mb-24">
+                <h2 class="text-6xl font-black mb-16 tracking-tight">DESIGN QUESTIONS</h2>
+                
+                <div class="grid grid-cols-12 gap-16">
+                    <div class="col-span-8">
+                        <div class="space-y-12">
+                            <div>
+                                <h3 class="text-3xl font-bold mb-6">What makes a letterform timeless?</h3>
+                                <div class="drop-cap text-carbon">G</div>
+                                <p class="font-light text-lg leading-relaxed">
+                                    otham's answer lies in its geometric foundation. Each character begins 
+                                    with pure mathematical forms: circles, squares, triangles. Yet within this 
+                                    rigid structure, subtle humanist touches emerge. The lowercase 'a' breathes. 
+                                    The capital 'R' has personality. Perfection tempered by warmth.
+                                </p>
+                            </div>
+                            
+                            <div>
+                                <h3 class="text-3xl font-bold mb-6">How many weights does meaning need?</h3>
+                                <div class="drop-cap text-carbon">N</div>
+                                <p class="font-light text-lg leading-relaxed">
+                                    ine weights from Thin to Ultra. Each serves a purpose. Thin whispers. 
+                                    Light suggests. Regular states. Medium emphasizes. Bold declares. 
+                                    Black shouts. Ultra commands. The designer chooses the volume of meaning.
+                                </p>
+                            </div>
+                            
+                            <div>
+                                <h3 class="text-3xl font-bold mb-6">Can geometry contain emotion?</h3>
+                                <div class="drop-cap text-carbon">A</div>
+                                <p class="font-light text-lg leading-relaxed">
+                                    bsolutely. Gotham proves that systematic design needn't be cold. 
+                                    Its proportions follow classical ratios. Its curves maintain consistent 
+                                    optical weight. Yet it pulses with American optimism, institutional 
+                                    authority, democratic accessibility.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-span-4">
+                        <div class="bg-ice-white border border-steel p-8 sticky top-8">
+                            <h4 class="font-bold text-lg mb-6">WEIGHT SPECTRUM</h4>
+                            <div class="space-y-3">
+                                <div class="text-4xl font-thin">Thin</div>
+                                <div class="text-4xl font-extralight">Extra Light</div>
+                                <div class="text-4xl font-light">Light</div>
+                                <div class="text-4xl font-normal">Book</div>
+                                <div class="text-4xl font-normal">Regular</div>
+                                <div class="text-4xl font-medium">Medium</div>
+                                <div class="text-4xl font-bold">Bold</div>
+                                <div class="text-4xl font-black">Black</div>
+                                <div class="text-4xl ultra">Ultra</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Experimental Typography -->
+            <section class="mb-24">
+                <div class="text-center mb-16">
+                    <div class="ultra text-8xl leading-none tracking-tighter">
+                        LETTER
+                    </div>
+                    <div class="font-thin text-8xl leading-none tracking-widest mt-4">
+                        FORMS
+                    </div>
+                </div>
+                
+                <div class="grid grid-cols-12 gap-8">
+                    <!-- Large A Study -->
+                    <div class="col-span-4">
+                        <div class="bg-frost p-12 text-center">
+                            <div class="ultra text-9xl text-carbon">A</div>
+                            <div class="font-light text-sm mt-4">
+                                Apex angle: 74°<br>
+                                Counter proportion: 1:1.618<br>
+                                Baseline to cap: 100 units
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Stacked Typography -->
+                    <div class="col-span-4">
+                        <div class="bg-charcoal text-ice-white p-12 text-center">
+                            <div class="weight-stack space-y-0">
+                                <div class="ultra text-4xl">G</div>
+                                <div class="font-black text-4xl">O</div>
+                                <div class="font-bold text-4xl">T</div>
+                                <div class="font-medium text-4xl">H</div>
+                                <div class="font-normal text-4xl">A</div>
+                                <div class="font-light text-4xl">M</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Typography as Pattern -->
+                    <div class="col-span-4">
+                        <div class="bg-steel p-12">
+                            <div class="grid grid-cols-3 gap-2 text-center">
+                                <div class="ultra text-2xl">G</div>
+                                <div class="font-thin text-2xl">G</div>
+                                <div class="font-bold text-2xl">G</div>
+                                <div class="font-light text-2xl">G</div>
+                                <div class="ultra text-2xl">G</div>
+                                <div class="font-medium text-2xl">G</div>
+                                <div class="font-black text-2xl">G</div>
+                                <div class="font-normal text-2xl">G</div>
+                                <div class="font-thin text-2xl">G</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Gotham History -->
+            <section class="mb-24">
+                <h2 class="text-6xl font-black mb-16 tracking-tight">ORIGIN STORY</h2>
+                
+                <div class="grid grid-cols-12 gap-16">
+                    <div class="col-span-8">
+                        <div class="space-y-8 font-light text-lg leading-relaxed">
+                            <p>
+                                <span class="ultra text-6xl float-left mr-4 leading-none">2000.</span>
+                                Tobias Frere-Jones begins sketching letterforms inspired by 
+                                architectural signage throughout New York City. The Port Authority 
+                                Bus Terminal. The Verrazano-Narrows Bridge. Hand-painted store signs 
+                                in the Bronx. Each source contributes to a growing alphabet of 
+                                geometric perfection.
+                            </p>
+                            <p>
+                                The typeface emerges from America's vernacular typography. Not from 
+                                European modernist theory, but from the practical needs of wayfinding, 
+                                commerce, and civic communication. Gotham is democracy in letterform.
+                            </p>
+                            <p>
+                                <span class="font-bold">2004:</span> Obama's campaign adopts Gotham. 
+                                "HOPE" and "CHANGE" become typographic icons. The typeface transcends 
+                                design circles and enters political discourse.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="col-span-4">
+                        <div class="ascii-art text-slate text-xs">
+    ╔══════════════════════════════════╗
+    ║                                  ║
+    ║    ████████  ██      ██   ██     ║
+    ║       ██     ██      ██   ██     ║
+    ║       ██     ██      ███████     ║
+    ║       ██     ██      ██   ██     ║
+    ║       ██     ███████ ██   ██     ║
+    ║                                  ║
+    ║         FRERE-JONES TYPE         ║
+    ║                                  ║
+    ║     ARCHITECTURAL LETTERING      ║
+    ║        NYC VERNACULAR            ║
+    ║       DEMOCRATIC DESIGN          ║
+    ║                                  ║
+    ╚══════════════════════════════════╝
+                        </div>
+                        
+                        <div class="mt-8 bg-ice-white border border-steel p-6">
+                            <h4 class="font-bold mb-4">DESIGN PHILOSOPHY</h4>
+                            <div class="space-y-2 font-light text-sm">
+                                <div>"Authoritative but not intimidating"</div>
+                                <div>"Confident but not arrogant"</div>
+                                <div>"Trustworthy and straightforward"</div>
+                                <div>"Accessible and democratic"</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Pure Typography Art -->
+            <section class="mb-24">
+                <div class="text-center space-y-16">
+                    <!-- Contrast Study -->
+                    <div>
+                        <div class="ultra text-9xl leading-none tracking-tighter">
+                            CONTRAST
+                        </div>
+                        <div class="font-thin text-4xl tracking-widest mt-4">
+                            IS EVERYTHING
+                        </div>
+                    </div>
+                    
+                    <!-- Size Relationships -->
+                    <div class="flex items-baseline justify-center space-x-8">
+                        <span class="ultra text-8xl">BIG</span>
+                        <span class="font-medium text-4xl">medium</span>
+                        <span class="font-light text-xl">small</span>
+                        <span class="font-thin text-sm">tiny</span>
+                    </div>
+                    
+                    <!-- Weight Progression -->
+                    <div class="space-y-2">
+                        <div class="font-thin text-5xl">Evolution</div>
+                        <div class="font-light text-5xl">Evolution</div>
+                        <div class="font-normal text-5xl">Evolution</div>
+                        <div class="font-medium text-5xl">Evolution</div>
+                        <div class="font-bold text-5xl">Evolution</div>
+                        <div class="font-black text-5xl">Evolution</div>
+                        <div class="ultra text-5xl">Evolution</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Final Questions -->
+            <section class="mb-24">
+                <h2 class="text-6xl font-black mb-16 tracking-tight">THE ETERNAL QUESTIONS</h2>
+                
+                <div class="grid grid-cols-12 gap-8">
+                    <div class="col-span-6">
+                        <div class="bg-charcoal text-ice-white p-12">
+                            <h3 class="ultra text-4xl mb-8">WHY DO WE READ?</h3>
+                            <p class="font-light text-lg leading-relaxed">
+                                To connect. To understand. To feel less alone in the cosmos of 
+                                information. Typography is the bridge between mind and meaning. 
+                                Gotham builds that bridge with democratic precision.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="col-span-6">
+                        <div class="bg-frost p-12">
+                            <h3 class="ultra text-4xl mb-8">WHAT IS BEAUTY?</h3>
+                            <p class="font-light text-lg leading-relaxed">
+                                Function perfected. Form serving content. The right word in the 
+                                right weight at the right size. Beauty is clarity achieved through 
+                                systematic thinking and intuitive refinement.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mt-16 text-center">
+                    <div class="ultra text-7xl leading-none tracking-tighter">
+                        LETTERS<br>
+                        <span class="font-thin">ARE</span><br>
+                        ALIVE
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Footer -->
+        <footer class="border-t border-steel p-16 bg-frost">
+            <div class="max-w-7xl mx-auto">
+                <div class="grid grid-cols-12 gap-8 items-center">
+                    <div class="col-span-8">
+                        <div class="ultra text-4xl">GOTHAM INK</div>
+                        <p class="font-light text-sm mt-2">
+                            Typography • Design • Philosophy • Cold Paper Edition
+                        </p>
+                    </div>
+                    <div class="col-span-4 text-right font-light text-sm">
+                        <div>Issue 001 • Winter 2025</div>
+                        <div>Designed with Love for Letters</div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </body>
+</html>

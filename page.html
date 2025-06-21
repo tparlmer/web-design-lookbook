@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>E-Ink Style Demo</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script>
+            tailwind.config = {
+                theme: {
+                    extend: {
+                        fontFamily: {
+                            'serif': ['Georgia', 'Times New Roman', 'serif'],
+                        },
+                        colors: {
+                            'eink-bg': '#faf9f7',
+                            'eink-paper': '#f8f6f0',
+                            'eink-text': '#2a2a2a',
+                            'eink-light': '#666666',
+                        }
+                    }
+                }
+            }
+        </script>
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap');
+            .eink-texture {
+                background-image: 
+                    radial-gradient(circle at 20% 80%, rgba(120,119,198,0.3) 0%, transparent 50%),
+                    radial-gradient(circle at 80% 20%, rgba(255,255,255,0.15) 0%, transparent 50%),
+                    radial-gradient(circle at 40% 40%, rgba(120,119,198,0.05) 0%, transparent 50%);
+            }
+        </style>
+    </head>
+    <body class="bg-eink-bg min-h-screen font-serif text-eink-text leading-relaxed">
+        <div class="eink-texture min-h-screen">
+            <div class="max-w-4xl mx-auto px-8 py-12">
+                <!-- Header -->
+                <header class="border-b-2 border-eink-text mb-12 pb-6">
+                    <h1 class="text-4xl font-semibold mb-4 font-['Crimson_Text'] tracking-wide">E-Ink Style Demo</h1>
+                    <p class="text-eink-light text-lg italic">A demonstration of classic e-reader aesthetics</p>
+                </header>
+
+                <!-- Main Content -->
+                <main class="space-y-8">
+                    <section>
+                        <h2 class="text-2xl font-semibold mb-4 font-['Crimson_Text']">About E-Ink Design</h2>
+                        <p class="text-lg mb-4 text-justify">
+                            The goal of this web page is to recreate the distinctive aesthetic of e-ink displays, 
+                            reminiscent of classic e-readers like the Kindle. This design philosophy emphasizes 
+                            readability, simplicity, and a paper-like quality that's easy on the eyes.
+                        </p>
+                    </section>
+
+                    <section>
+                        <h2 class="text-2xl font-semibold mb-4 font-['Crimson_Text']">Design Principles</h2>
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div class="bg-eink-paper p-6 border border-gray-300 shadow-sm">
+                                <h3 class="text-xl font-semibold mb-3">Typography</h3>
+                                <p class="mb-2">Serif fonts enhance readability and provide a classic book-like feel.</p>
+                                <p class="text-eink-light">Clean, well-spaced text reduces eye strain during long reading sessions.</p>
+                            </div>
+                            <div class="bg-eink-paper p-6 border border-gray-300 shadow-sm">
+                                <h3 class="text-xl font-semibold mb-3">Color Palette</h3>
+                                <p class="mb-2">High contrast black text on off-white backgrounds.</p>
+                                <p class="text-eink-light">Minimal use of color, focusing on grayscale tones.</p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section>
+                        <h2 class="text-2xl font-semibold mb-4 font-['Crimson_Text']">Sample Content</h2>
+                        <div class="space-y-4 text-justify">
+                            <p class="text-lg first-letter:text-5xl first-letter:font-semibold first-letter:mr-1 first-letter:float-left first-letter:leading-none">
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam voluptates 
+                                necessitatibus at corporis quos, expedita fugiat repellendus consectetur 
+                                adipisci nulla quasi accusantium distinctio eligendi ab.
+                            </p>
+                            <p class="text-lg">
+                                Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad 
+                                minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea 
+                                commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit 
+                                esse cillum dolore eu fugiat nulla pariatur.
+                            </p>
+                            <blockquote class="border-l-4 border-eink-text pl-6 italic text-eink-light text-lg my-6">
+                                "The best reading experience is one where the technology disappears, 
+                                leaving only you and the words on the page."
+                            </blockquote>
+                            <p class="text-lg">
+                                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia 
+                                deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste 
+                                natus error sit voluptatem accusantium doloremque laudantium.
+                            </p>
+                        </div>
+                    </section>
+
+                    <section>
+                        <h2 class="text-2xl font-semibold mb-4 font-['Crimson_Text']">Features</h2>
+                        <ul class="space-y-2 text-lg">
+                            <li class="flex items-start">
+                                <span class="mr-3 text-eink-text">•</span>
+                                Paper-like background texture
+                            </li>
+                            <li class="flex items-start">
+                                <span class="mr-3 text-eink-text">•</span>
+                                Optimized typography with Crimson Text font
+                            </li>
+                            <li class="flex items-start">
+                                <span class="mr-3 text-eink-text">•</span>
+                                High contrast for excellent readability
+                            </li>
+                            <li class="flex items-start">
+                                <span class="mr-3 text-eink-text">•</span>
+                                Responsive design that works on all devices
+                            </li>
+                            <li class="flex items-start">
+                                <span class="mr-3 text-eink-text">•</span>
+                                Minimal distractions for focused reading
+                            </li>
+                        </ul>
+                    </section>
+                </main>
+
+                <!-- Footer -->
+                <footer class="border-t-2 border-eink-text mt-16 pt-8 text-center">
+                    <p class="text-eink-light">
+                        Crafted with attention to readability and classic design principles
+                    </p>
+                    <p class="text-sm text-eink-light mt-2">
+                        Built with Tailwind CSS
+                    </p>
+                </footer>
+            </div>
+        </div>
+    </body>
+</html>

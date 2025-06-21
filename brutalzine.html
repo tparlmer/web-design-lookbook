@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>BRUTALZINE</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script>
+            tailwind.config = {
+                theme: {
+                    extend: {
+                        fontFamily: {
+                            'gotham': ['Gotham', 'sans-serif'],
+                        },
+                        colors: {
+                            'paper': '#fefefe',
+                            'ink': '#0a0a0a',
+                            'shadow': '#e8e8e8',
+                        }
+                    }
+                }
+            }
+        </script>
+        <style>
+            @font-face {
+                font-family: 'Gotham';
+                src: url('Gotham/Gotham Regular/Gotham Regular.otf') format('opentype');
+                font-weight: 400;
+                font-style: normal;
+            }
+            @font-face {
+                font-family: 'Gotham';
+                src: url('Gotham/Gotham Bold/Gotham Bold.otf') format('opentype');
+                font-weight: 700;
+                font-style: normal;
+            }
+            @font-face {
+                font-family: 'Gotham';
+                src: url('Gotham/Gotham Light/Gotham Light.otf') format('opentype');
+                font-weight: 300;
+                font-style: normal;
+            }
+            @font-face {
+                font-family: 'Gotham';
+                src: url('Gotham/Gotham Black/Gotham Black.otf') format('opentype');
+                font-weight: 900;
+                font-style: normal;
+            }
+            
+            .artwork-border {
+                border: 2px solid #0a0a0a;
+            }
+            
+            .shadow-brutal {
+                box-shadow: 8px 8px 0px #0a0a0a;
+            }
+        </style>
+    </head>
+    <body class="bg-paper min-h-screen font-gotham text-ink">
+        <!-- Header -->
+        <header class="border-b-4 border-ink py-8">
+            <div class="max-w-6xl mx-auto px-8">
+                <div class="flex justify-between items-baseline">
+                    <h1 class="text-6xl font-black tracking-tight">BRUTALZINE</h1>
+                    <div class="text-right font-light">
+                        <div class="text-lg">001</div>
+                        <div class="text-sm">DEC 2025</div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div class="max-w-6xl mx-auto px-8 py-16">
+            <!-- Featured Work -->
+            <section class="mb-32">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                    <div>
+                        <h2 class="text-7xl font-black leading-none mb-8">
+                            CONCRETE<br>
+                            GEOMETRY
+                        </h2>
+                        <p class="text-xl font-light leading-relaxed mb-12">
+                            Architectural forms rendered in ink. 
+                            Clean lines meeting brutal mass. 
+                            The intersection of precision and power.
+                        </p>
+                        <div class="border-l-4 border-ink pl-8">
+                            <p class="font-bold text-sm uppercase tracking-wide mb-2">Featured</p>
+                            <p class="font-light">University of Michigan Arcube</p>
+                            <p class="font-light text-sm">Ink on paper</p>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="artwork-border shadow-brutal bg-white p-8">
+                            <img src="./assets/MU-MIchiganArcube.jpg" 
+                                 alt="Michigan Arcube architectural drawing" 
+                                 class="w-full h-auto">
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Design Philosophy -->
+            <section class="mb-32">
+                <h2 class="text-5xl font-black mb-16">DESIGN DECISIONS</h2>
+                
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 mb-16">
+                    <div>
+                        <h3 class="text-3xl font-bold mb-8">TYPOGRAPHY</h3>
+                        <div class="space-y-6 font-light leading-relaxed">
+                            <p>
+                                <strong class="font-bold">Gotham</strong> was chosen for its institutional authority and geometric precision. 
+                                Originally designed for architectural signage, it embodies the same principles 
+                                as brutalist architecture: function over ornamentation.
+                            </p>
+                            <p>
+                                The weight hierarchy is deliberate: <strong class="font-black">Black</strong> for major statements, 
+                                <strong class="font-bold">Bold</strong> for structure, <strong class="font-light">Light</strong> for readable content. 
+                                No decorative typefaces. No serifs. Only what serves the message.
+                            </p>
+                            <div class="border-l-4 border-ink pl-6">
+                                <p class="font-bold text-sm mb-2">SCALE AS HIERARCHY</p>
+                                <p class="text-sm">7xl headlines command attention. 5xl for major sections. 
+                                2xl for subsections. Size determines importance, not color or decoration.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="text-3xl font-bold mb-8">COLOR THEORY</h3>
+                        <div class="space-y-6 font-light leading-relaxed">
+                            <p>
+                                <strong class="font-bold">Three colors only:</strong> Pure white (#fefefe), 
+                                deep black (#0a0a0a), and minimal gray (#e8e8e8) for shadows. 
+                                This mirrors the monochromatic nature of ink drawings.
+                            </p>
+                            <p>
+                                No accent colors. No brand colors. No emotional manipulation through hue. 
+                                Maximum contrast ensures accessibility while forcing focus on content hierarchy.
+                            </p>
+                            <div class="border-l-4 border-ink pl-6">
+                                <p class="font-bold text-sm mb-2">SHADOW STRATEGY</p>
+                                <p class="text-sm">8px offset shadows create depth without gradients. 
+                                Hard edges maintain the architectural aesthetic. Shadows serve function, not beauty.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+                    <div>
+                        <h3 class="text-3xl font-bold mb-8">LAYOUT PRINCIPLES</h3>
+                        <div class="space-y-6 font-light leading-relaxed">
+                            <p>
+                                <strong class="font-bold">Grid-based architecture</strong> reflects the geometric precision 
+                                of the featured drawings. No organic curves. No asymmetrical balance for its own sake.
+                            </p>
+                            <p>
+                                White space is generous but calculated. 32-unit spacing between major sections. 
+                                16-unit gaps in grids. Every measurement serves readability and visual breathing.
+                            </p>
+                            <div class="border-l-4 border-ink pl-6">
+                                <p class="font-bold text-sm mb-2">ARTWORK PRESENTATION</p>
+                                <p class="text-sm">Clean white backgrounds let ink drawings speak. 
+                                Minimal borders define space without competing. No decorative frames.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="text-3xl font-bold mb-8">WHAT WE REJECTED</h3>
+                        <div class="space-y-6 font-light leading-relaxed">
+                            <p>
+                                <strong class="font-bold">No comic elements:</strong> Speech bubbles, halftone patterns, 
+                                and cartoon typography were removed. The work is architectural documentation, not comics.
+                            </p>
+                            <p>
+                                <strong class="font-bold">No textural backgrounds:</strong> Paper textures and aged effects 
+                                were eliminated. The screen is not paper. Digital honesty over skeuomorphism.
+                            </p>
+                            <div class="border-l-4 border-ink pl-6">
+                                <p class="font-bold text-sm mb-2">BRUTALIST PHILOSOPHY</p>
+                                <p class="text-sm">"Truth to materials" — the interface reveals its digital nature. 
+                                No attempts to mimic print. Form follows function, always.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Gallery -->
+            <section class="mb-32">
+                <h2 class="text-5xl font-black mb-16">URBAN STUDIES</h2>
+                
+                <div class="space-y-24">
+                    <!-- Station -->
+                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 items-start">
+                        <div class="lg:col-span-2">
+                            <div class="artwork-border shadow-brutal bg-white p-6">
+                                <img src="./assets/MU-annarborstation1.jpg" 
+                                     alt="Ann Arbor Station sketch" 
+                                     class="w-full h-auto">
+                            </div>
+                        </div>
+                        <div class="space-y-6">
+                            <div>
+                                <h3 class="text-2xl font-bold mb-4">TRANSIT HUB</h3>
+                                <p class="font-light leading-relaxed">
+                                    The rhythm of departure and arrival. 
+                                    How transportation architecture 
+                                    shapes movement through space.
+                                </p>
+                            </div>
+                            <div class="border-l-4 border-ink pl-6">
+                                <p class="font-bold text-sm mb-1">Ann Arbor Station</p>
+                                <p class="font-light text-sm">Ink study</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Mindpods -->
+                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 items-start">
+                        <div class="space-y-6 lg:order-1">
+                            <div>
+                                <h3 class="text-2xl font-bold mb-4">LEARNING SPACE</h3>
+                                <p class="font-light leading-relaxed">
+                                    Future educational environments. 
+                                    Technology and human interaction 
+                                    creating new possibilities.
+                                </p>
+                            </div>
+                            <div class="border-l-4 border-ink pl-6">
+                                <p class="font-bold text-sm mb-1">Mindpods Concept</p>
+                                <p class="font-light text-sm">Ink study</p>
+                            </div>
+                        </div>
+                        <div class="lg:col-span-2 lg:order-2">
+                            <div class="artwork-border shadow-brutal bg-white p-6">
+                                <img src="./assets/MU-mindpodspresentation.jpg" 
+                                     alt="Mindpods presentation sketch" 
+                                     class="w-full h-auto">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Statement -->
+            <section class="mb-32">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+                    <div>
+                        <h2 class="text-4xl font-black mb-8">PROCESS</h2>
+                        <div class="space-y-6 font-light leading-relaxed">
+                            <p>
+                                Each drawing begins with direct observation. 
+                                Sketching on location, capturing not just the geometry 
+                                of space but the rhythm of people moving through it.
+                            </p>
+                            <p>
+                                The ink becomes a bridge between architectural 
+                                precision and human storytelling. Every line 
+                                carries intention. Every shadow tells a story.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="space-y-8">
+                        <div>
+                            <h3 class="text-lg font-bold mb-4">TECHNIQUE</h3>
+                            <div class="space-y-2 font-light">
+                                <p>Pilot G2 0.7mm pen</p>
+                                <p>Strathmore Bristol paper</p>
+                                <p>Single-point perspective</p>
+                                <p>Controlled line weight</p>
+                            </div>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-bold mb-4">INFLUENCES</h3>
+                            <div class="space-y-2 font-light">
+                                <p>Hergé — Clean line mastery</p>
+                                <p>Katsuhiro Otomo — Architectural detail</p>
+                                <p>François Schuiten — Urban dreamscapes</p>
+                                <p>Naoki Urasawa — Human observation</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Footer -->
+        <footer class="border-t-4 border-ink py-12">
+            <div class="max-w-6xl mx-auto px-8">
+                <div class="flex justify-between items-center">
+                    <div>
+                        <p class="text-2xl font-black">BRUTALZINE</p>
+                        <p class="font-light text-sm">Architecture • Comics • Urban Life</p>
+                    </div>
+                    <div class="text-right font-light text-sm">
+                        <p>Issue 001 • December 2025</p>
+                        <p>Next Issue: January 2025</p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </body>
+</html>

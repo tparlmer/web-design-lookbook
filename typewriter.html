@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Typewriter Typography Demo</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Courier Prime', monospace;
+            background: linear-gradient(135deg, #f5f3f0 0%, #e8e5e0 100%);
+            min-height: 100vh;
+            padding: 2rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .typewriter-page {
+            background: #fefefe;
+            width: 100%;
+            max-width: 650px;
+            padding: 4rem 3rem;
+            box-shadow: 
+                0 0 0 1px rgba(0,0,0,0.05),
+                0 8px 32px rgba(0,0,0,0.08),
+                0 24px 64px rgba(0,0,0,0.04);
+            position: relative;
+            transform: rotate(-0.5deg);
+        }
+        
+        .typewriter-page::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                repeating-linear-gradient(
+                    transparent,
+                    transparent 1.4rem,
+                    rgba(0,0,0,0.03) 1.4rem,
+                    rgba(0,0,0,0.03) 1.45rem
+                );
+            pointer-events: none;
+        }
+        
+        .letter-content {
+            line-height: 1.6;
+            color: #2c2c2c;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .letter-header {
+            text-align: right;
+            margin-bottom: 3rem;
+            font-size: 0.9rem;
+            color: #555;
+        }
+        
+        .letter-body {
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+        
+        .letter-body p {
+            margin-bottom: 1.7rem;
+            text-align: justify;
+        }
+        
+        .letter-body p:last-of-type {
+            margin-bottom: 2.5rem;
+        }
+        
+        .signature {
+            text-align: right;
+            font-style: italic;
+            margin-top: 1rem;
+        }
+        
+        .typewriter-imperfection {
+            position: relative;
+        }
+        
+        .typewriter-imperfection::after {
+            content: '';
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: rgba(0,0,0,0.6);
+            border-radius: 50%;
+            top: 50%;
+            right: -4px;
+        }
+        
+        .overtype {
+            background: rgba(0,0,0,0.1);
+            padding: 0 1px;
+        }
+        
+        .x-out {
+            text-decoration: line-through;
+            text-decoration-color: #000;
+            text-decoration-thickness: 2px;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 1rem;
+            }
+            
+            .typewriter-page {
+                padding: 2.5rem 2rem;
+                transform: none;
+            }
+            
+            .letter-body {
+                font-size: 0.95rem;
+            }
+        }
+        
+        .letter-fade {
+            opacity: 0;
+            animation: typeIn 0.1s ease-in-out forwards;
+        }
+        
+        @keyframes typeIn {
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="typewriter-page">
+        <div class="letter-content">
+            <div class="letter-header">
+                Tuesday, November 14th<br>
+                3:47 AM
+            </div>
+            
+            <div class="letter-body">
+                <p>Claire,</p>
+                
+                <p>I've been sitting here for an hour, watching the cursor blink on a blank screen, then remembering I'm using the old Royal Quiet De Luxe instead. Some habits die hard. The keys feel heavier tonight, each letter requiring intention in a way that typing never does.</p>
+                
+                <p>Your letter arrived Thursday. I've read it enough times that the creases are wearing thin where I fold it. You write about the gallery opening, the way the light caught that sculpture you've been working on for months. I can see it—the way your hands move when you're explaining something you care about, how you pause mid-sentence when you're searching for exactly the right word.</p>
+                
+                <p>Distance has a way of clarifying things, doesn't it? Not in the romantic comedy sense where everything becomes simple, but in the way that absence makes the small details impossibly vivid. I remember the sound your coffee cup makes against the saucer in the morning. I remember how you read with your index finger tracing the lines, unconsciously, like you're conducting the words.</p>
+                
+                <p>I'm not writing to say I miss you, though I do. I'm writing because I want you to know that loving someone doesn't always announce itself with <span class="x-out">grand gestures</span> <span class="overtype">certainty</span>. Sometimes it's quieter than that. Sometimes it's the realization that your thoughts have become conversations with someone who isn't there.</p>
+                
+                <p>The apartment feels different with your books gone from the shelf. Not empty, exactly, but <span class="typewriter-imperfection">reorganized</span> in a way that makes me notice what remains. Your copy of Neruda is still here—you left it deliberately, I think, marked at "Love Sonnet XVII." <em>I love you without knowing how, or when, or from where</em>. Subtle as a brick through a window, but I appreciate the sentiment.</p>
+                
+                <p>I don't know what happens next. Geography is <span class="x-out">a problem</span> complicated, and we're both stubborn enough to make this harder than it needs to be. But I wanted you to know that some Tuesday at 4 AM, someone was thinking about the way you laugh at your own jokes before you finish telling them, and the way you hold books like they might try to escape.</p>
+                
+                <p>Take care of yourself, Claire. Send more letters if you feel like it. I'll be here, making coffee for two out of habit and reading books you recommended.</p>
+            </div>
+            
+            <div class="signature">
+                — David
+            </div>
+        </div>
+    </div>
+</body>
+</html>

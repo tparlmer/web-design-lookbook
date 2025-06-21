@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About us | Economist.com</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Officina+Sans:wght@400;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Officina Sans', Arial, sans-serif;
+            background: #ffffff;
+            color: #000000;
+            line-height: 1.3;
+            font-size: 13px;
+        }
+        
+        .header-strip {
+            background: #dc241f;
+            height: 3px;
+        }
+        
+        .site-header {
+            background: #ffffff;
+            border-bottom: 1px solid #cccccc;
+            padding: 8px 0;
+        }
+        
+        .site-header .container {
+            max-width: 760px;
+            margin: 0 auto;
+            padding: 0 10px;
+        }
+        
+        .logo {
+            background: #dc241f;
+            color: white;
+            padding: 4px 8px;
+            font-size: 14px;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 8px;
+        }
+        
+        .navigation {
+            font-size: 11px;
+            color: #666666;
+        }
+        
+        .navigation a {
+            color: #0066cc;
+            text-decoration: none;
+            margin-right: 8px;
+        }
+        
+        .navigation a:hover {
+            text-decoration: underline;
+        }
+        
+        .container {
+            max-width: 760px;
+            margin: 0 auto;
+            padding: 0 10px;
+        }
+        
+        .breadcrumb {
+            font-size: 11px;
+            color: #666666;
+            margin: 10px 0;
+        }
+        
+        .breadcrumb a {
+            color: #0066cc;
+            text-decoration: none;
+        }
+        
+        .main-heading {
+            font-size: 24px;
+            font-weight: normal;
+            color: #dc241f;
+            margin: 20px 0 15px 0;
+            border-bottom: 1px solid #cccccc;
+            padding-bottom: 5px;
+        }
+        
+        .section-heading {
+            font-size: 16px;
+            font-weight: bold;
+            color: #000000;
+            margin: 20px 0 10px 0;
+        }
+        
+        .subsection-heading {
+            font-size: 13px;
+            font-weight: bold;
+            color: #000000;
+            margin: 15px 0 8px 0;
+        }
+        
+        .content-text {
+            font-size: 13px;
+            line-height: 1.4;
+            margin-bottom: 12px;
+            color: #000000;
+        }
+        
+        .content-text a {
+            color: #0066cc;
+            text-decoration: none;
+        }
+        
+        .content-text a:hover {
+            text-decoration: underline;
+        }
+        
+        .bullet-list {
+            margin: 10px 0 15px 20px;
+            font-size: 13px;
+            line-height: 1.4;
+        }
+        
+        .bullet-list li {
+            margin-bottom: 8px;
+        }
+        
+        .bullet-list a {
+            color: #0066cc;
+            text-decoration: none;
+        }
+        
+        .bullet-list a:hover {
+            text-decoration: underline;
+        }
+        
+        .info-box {
+            background: #f5f5f5;
+            border: 1px solid #cccccc;
+            padding: 10px;
+            margin: 15px 0;
+            font-size: 12px;
+        }
+        
+        .pullquote {
+            font-size: 1.4rem;
+            font-style: italic;
+            text-align: center;
+            margin: 2rem 0;
+            padding: 1rem;
+            border-top: 2px solid #dc241f;
+            border-bottom: 2px solid #dc241f;
+            color: #000;
+            line-height: 1.3;
+        }
+        
+        .chart-container {
+            background: #f5f5f5;
+            border: 1px solid #ddd;
+            padding: 1rem;
+            margin: 2rem 0;
+            text-align: center;
+        }
+        
+        .chart-title {
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        
+        .chart-subtitle {
+            font-size: 0.85rem;
+            color: #666;
+            margin-bottom: 1rem;
+        }
+        
+        .chart-placeholder {
+            height: 200px;
+            background: linear-gradient(45deg, #f0f0f0 25%, transparent 25%), 
+                        linear-gradient(-45deg, #f0f0f0 25%, transparent 25%), 
+                        linear-gradient(45deg, transparent 75%, #f0f0f0 75%), 
+                        linear-gradient(-45deg, transparent 75%, #f0f0f0 75%);
+            background-size: 20px 20px;
+            background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            font-style: italic;
+            border: 1px dashed #ccc;
+        }
+        
+        .economist-list {
+            list-style: none;
+            margin: 1rem 0;
+        }
+        
+        .economist-list li {
+            margin-bottom: 0.5rem;
+            padding-left: 1rem;
+            position: relative;
+        }
+        
+        .economist-list li:before {
+            content: "■";
+            color: #dc241f;
+            position: absolute;
+            left: 0;
+        }
+        
+        .style-guide-section {
+            background: #f9f9f9;
+            padding: 2rem;
+            margin: 3rem 0;
+            border-left: 4px solid #dc241f;
+        }
+        
+        .style-guide-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #dc241f;
+        }
+        
+        .typography-demo {
+            margin: 1rem 0;
+        }
+        
+        .color-palette {
+            display: flex;
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        
+        .color-swatch {
+            width: 80px;
+            height: 80px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 0.7rem;
+            font-weight: 700;
+        }
+        
+        .swatch-red { background: #dc241f; }
+        .swatch-black { background: #000000; }
+        .swatch-white { background: #ffffff; border: 1px solid #ddd; color: #000; }
+        .swatch-gray { background: #666666; }
+        
+        .layout-example {
+            border: 1px dashed #dc241f;
+            padding: 1rem;
+            margin: 1rem 0;
+            background: #fefefe;
+        }
+        
+        .footer {
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 2px solid #000;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #666;
+        }
+        .footer {
+            margin-top: 30px;
+            padding-top: 15px;
+            border-top: 1px solid #cccccc;
+            font-size: 11px;
+            color: #666666;
+        }
+        
+        .footer a {
+            color: #0066cc;
+            text-decoration: none;
+            margin-right: 15px;
+        }
+        
+        .footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="header-strip"></div>
+    
+    <div class="site-header">
+        <div class="container">
+            <div class="logo">Economist.com</div>
+            <div class="navigation">
+                <a href="#">Skip to main navigation</a> •
+                <a href="#">Skip to main content</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="breadcrumb">
+            <a href="#">Home</a> > <a href="#">Help</a> > About us
+        </div>
+        
+        <h1 class="main-heading">About us</h1>
+        
+        <p class="content-text">The Economist, Economist.com and CFO Europe are trading names of:</p>
+        
+                 <p class="content-text">The Economist Newspaper Limited<br>
+         Registered in England and Wales. No.236383<br>
+         VAT no: GB 340 436 876<br>
+         Registered office: 25 St James's Street, London, SW1A 1HG</p>
+
+        <h2 class="section-heading">About Economist.com</h2>
+        
+        <h3 class="subsection-heading">• Our visual design</h3>
+        
+        <p class="content-text">Economist.com is the premier online source for the analysis of world business and current affairs, providing authoritative insight and opinion through carefully considered visual design principles that have remained consistent since 1843.</p>
+        
+        <p class="content-text">The visual language of <em>The Economist</em> is not mere tradition but a deliberate strategy to convey authority, clarity and analytical rigor through typography, layout and color. This page demonstrates these principles in action:</p>
+        
+        <ul class="bullet-list">
+            <li><strong>Typography hierarchy</strong> — Clean sans-serif fonts (Officina) with precise sizing for headlines, body text, and navigation</li>
+            <li><strong>Color restraint</strong> — The iconic Economist red (#DC241F) used sparingly for maximum impact</li>
+            <li><strong>Information density</strong> — Efficient use of space with compact line spacing and justified text</li>
+            <li><strong>Consistent navigation</strong> — Predictable layout patterns that never distract from content</li>
+            <li><strong>Minimal decoration</strong> — Visual elements serve function, not ornamentation</li>
+        </ul>
+        
+        <div class="info-box">
+            <strong>Design Philosophy:</strong> This very page exemplifies Economist.com's 2009 design approach—compact 13px text, 760px maximum width, subtle borders, and that distinctive red accent color used only for the masthead and key headings.
+        </div>
+
+        <h3 class="subsection-heading">• Typography as analytical tool</h3>
+        
+        <p class="content-text">The choice of Officina Sans reflects <em>The Economist's</em> analytical character. Clean, geometric letterforms convey precision and objectivity—essential qualities for economic analysis. Weight variations create hierarchy without visual chaos:</p>
+        
+        <ul class="bullet-list">
+            <li><strong>Headlines (16px, bold)</strong> — Direct impact for section navigation</li>
+            <li><strong>Body text (13px, regular)</strong> — Optimized for dense analytical content</li>
+            <li><strong>Navigation (11px)</strong> — Subtle supporting information that doesn't compete</li>
+            <li><strong>Links (#0066CC)</strong> — Traditional web blue for maximum recognition</li>
+        </ul>
+        
+        <h3 class="subsection-heading">• Information architecture</h3>
+        
+        <p class="content-text">Unlike publications that rely on imagery for engagement, <em>The Economist</em> achieves visual interest through typographic hierarchy and careful information layering. This creates what designers call "visual authority"—readers learn to trust the presentation format, allowing complex ideas to take precedence over decorative elements.</p>
+        
+        <div class="info-box">
+            <strong>Layout Strategy:</strong> The 760px maximum width optimizes for both readability and information density. Compact line spacing (1.3) allows more content per screen while maintaining legibility. Every pixel serves the goal of efficient information transmission.
+        </div>
+
+        <h3 class="subsection-heading">• Digital adaptation principles</h3>
+        
+        <p class="content-text">The transition to digital platforms has preserved <em>The Economist's</em> core design principles while adapting to screen reading requirements. This approach has influenced business publications worldwide, establishing the template for serious analytical journalism in the digital age.</p>
+        
+        <ul class="bullet-list">
+            <li><strong>Consistent branding</strong> — The red masthead creates immediate recognition across all digital platforms</li>
+            <li><strong>Scannable hierarchy</strong> — Bullet points and numbered lists break up dense analytical content</li>
+            <li><strong>Functional navigation</strong> — Breadcrumbs and consistent link styling guide readers efficiently</li>
+            <li><strong>Minimal cognitive load</strong> — Visual consistency reduces mental effort required to process information</li>
+        </ul>
+        
+        <div class="info-box">
+            <strong>Meta-Commentary:</strong> This page demonstrates these principles in real-time. Notice how the restrained color palette, consistent typography, and structured layout allow you to focus on the content rather than the design mechanics.
+        </div>
+
+        <h2 class="section-heading">About <em>The Economist</em></h2>
+        
+        <h3 class="subsection-heading">• About our history</h3>
+        
+        <p class="content-text">It is not only <em>The Economist's</em> name that people find baffling. First, why does it call itself a newspaper? Even when <em>The Economist</em> incorporated the <em>Bankers' Gazette</em> and <em>Railway Monitor</em> from 1845 to 1932, it also described itself as "a political, literary and general newspaper".</p>
+        
+        <p class="content-text">It still does so because, in addition to offering analysis and opinion, it tries in each issue to cover the main events—business and political—of the week. The visual consistency that supports this editorial mission has remained remarkably stable since 1843.</p>
+        
+        <h3 class="subsection-heading">• About our logo</h3>
+        
+        <p class="content-text">The corporate logotype of <em>The Economist</em> has evolved from the gothic lettering used on the cover of the first issue, published in 1843, to the box device designed in 1959 by Reynolds Stone, a British engraver and typographer. It now incorporates a font from <em>The Economist</em> Typefamily, a typeface created specifically for our use.</p>
+        
+        <h3 class="subsection-heading">• More details on the Economist typeface</h3>
+        
+        <p class="content-text"><em>The Economist</em> has used a specially designed family of typefaces since May 1991. In our recent re-design a new typeface, Officina, was introduced for cover headlines and all navigational information. Ecotype, <em>The Economist's</em> main typeface, was also redrawn to make it easier to read.</p>
+        
+        <div class="footer">
+            <a href="#">About Economist.com</a>
+            <a href="#">About <em>The Economist</em></a>
+            <a href="#">Media directory</a>
+            <a href="#">Career opportunities</a>
+            <a href="#">Contact us</a>
+            <a href="#">Subscribe</a>
+            <br><br>
+            Copyright © The Economist Newspaper Limited 2009. All rights reserved.
+            <br>
+            <a href="#">Advertising info</a>
+            <a href="#">Legal disclaimer</a>
+            <a href="#">Privacy policy</a>
+            <a href="#">Terms & Conditions</a>
+        </div>
+    </div>
+</body>
+</html>

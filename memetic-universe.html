@@ -1,0 +1,555 @@
+<!-- THINK GORILLAZ + ECONOMIST. A NEWSPAPER WITH HANDDRAWN CARTOON CHARACTER BYLINES.
+ Use aspects of Drudge Reports display
+ This is a FRONT PAGE - Economist and BBC Front pages are mainly headlines and thumbnails, as is DRUDGE-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MEMETIC UNIVERSE | Digital Intelligence Network</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Officina+Sans:wght@400;600;700&family=Courier+Prime:wght@400;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Officina Sans', Arial, sans-serif;
+            background: #0a0a0a;
+            color: #e5e5e5;
+            line-height: 1.3;
+            font-size: 13px;
+        }
+        
+        .header-strip {
+            background: #333333;
+            height: 3px;
+        }
+        
+        .masthead {
+            background: #111111;
+            border-bottom: 2px solid #333;
+            padding: 15px 0;
+            text-align: center;
+        }
+        
+        .masthead-title {
+            font-family: 'Courier Prime', monospace;
+            font-size: 32px;
+            font-weight: 700;
+            color: #ffffff;
+            letter-spacing: 2px;
+            margin-bottom: 5px;
+        }
+        
+        .masthead-tagline {
+            font-size: 11px;
+            color: #999999;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .nav-bar {
+            background: #1a1a1a;
+            border-bottom: 1px solid #333;
+            padding: 8px 0;
+            text-align: center;
+        }
+        
+        .nav-bar a {
+            color: #cccccc;
+            text-decoration: none;
+            font-size: 11px;
+            text-transform: uppercase;
+            margin: 0 15px;
+            letter-spacing: 0.5px;
+        }
+        
+        .nav-bar a:hover {
+            color: #ffffff;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px 15px;
+        }
+        
+        .lead-story {
+            border-bottom: 2px solid #333;
+            padding-bottom: 20px;
+            margin-bottom: 25px;
+        }
+        
+        .lead-headline {
+            font-size: 24px;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 8px;
+            line-height: 1.2;
+        }
+        
+        .lead-headline a {
+            color: #ffffff;
+            text-decoration: none;
+        }
+        
+        .lead-headline a:hover {
+            text-decoration: underline;
+        }
+        
+        .lead-summary {
+            font-size: 14px;
+            color: #cccccc;
+            margin-bottom: 10px;
+            line-height: 1.4;
+        }
+        
+        .byline {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .author-thumbnail {
+            width: 40px;
+            height: 40px;
+            background: #333333;
+            border: 2px solid #555555;
+            border-radius: 50%;
+            margin-right: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            color: #999999;
+        }
+        
+        .author-info {
+            font-size: 11px;
+            color: #999999;
+        }
+        
+        .author-name {
+            font-weight: 600;
+            color: #cccccc;
+            display: block;
+        }
+        
+        .author-title {
+            font-style: italic;
+        }
+        
+        .three-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .column-section {
+            border-left: 3px solid #333;
+            padding-left: 15px;
+        }
+        
+        .section-header {
+            font-size: 14px;
+            font-weight: 700;
+            color: #ffffff;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+            padding-bottom: 5px;
+            border-bottom: 1px solid #333;
+        }
+        
+        .story-item {
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #222;
+        }
+        
+        .story-item:last-child {
+            border-bottom: none;
+        }
+        
+        .story-headline {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        
+        .story-headline a {
+            color: #e5e5e5;
+            text-decoration: none;
+            line-height: 1.3;
+        }
+        
+        .story-headline a:hover {
+            color: #ffffff;
+            text-decoration: underline;
+        }
+        
+        .story-meta {
+            font-size: 10px;
+            color: #666666;
+            margin-bottom: 8px;
+        }
+        
+        .story-summary {
+            font-size: 12px;
+            color: #999999;
+            line-height: 1.3;
+        }
+        
+        .mini-byline {
+            display: flex;
+            align-items: center;
+            margin-top: 8px;
+        }
+        
+        .mini-thumbnail {
+            width: 20px;
+            height: 20px;
+            background: #333333;
+            border: 1px solid #555555;
+            border-radius: 50%;
+            margin-right: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+            color: #999999;
+        }
+        
+        .mini-author {
+            font-size: 10px;
+            color: #888888;
+            font-style: italic;
+        }
+        
+        .drudge-links {
+            background: #151515;
+            border: 1px solid #333;
+            padding: 15px;
+            margin: 30px 0;
+        }
+        
+        .drudge-header {
+            font-family: 'Courier Prime', monospace;
+            font-size: 12px;
+            font-weight: 700;
+            color: #ffffff;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        
+        .link-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 10px;
+        }
+        
+        .link-item {
+            font-size: 11px;
+            line-height: 1.3;
+        }
+        
+        .link-item a {
+            color: #cccccc;
+            text-decoration: none;
+        }
+        
+        .link-item a:hover {
+            color: #ffffff;
+            text-decoration: underline;
+        }
+        
+        .breaking-banner {
+            background: #2a0000;
+            color: #ffffff;
+            text-align: center;
+            padding: 8px;
+            font-family: 'Courier Prime', monospace;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-top: 2px solid #666;
+            border-bottom: 2px solid #666;
+            margin-bottom: 20px;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 2px solid #333;
+            text-align: center;
+            font-size: 10px;
+            color: #666666;
+        }
+        
+        .footer a {
+            color: #888888;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+        
+        .footer a:hover {
+            text-decoration: underline;
+        }
+        
+        @media (max-width: 768px) {
+            .three-column {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .masthead-title {
+                font-size: 24px;
+            }
+            
+            .container {
+                padding: 15px 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header-strip"></div>
+    
+    <div class="masthead">
+        <h1 class="masthead-title">MEMETIC UNIVERSE</h1>
+        <div class="masthead-tagline">Digital Intelligence Network • Fictional Correspondents • Real Analysis</div>
+    </div>
+    
+    <div class="nav-bar">
+        <a href="#">POLITICS</a>
+        <a href="#">ECONOMICS</a>
+        <a href="#">CULTURE</a>
+        <a href="#">TECHNOLOGY</a>
+        <a href="#">PHILOSOPHY</a>
+        <a href="#">CORRESPONDENTS</a>
+        <a href="#">ARCHIVES</a>
+    </div>
+    
+    <div class="container">
+        <div class="breaking-banner">
+            ⚡ BREAKING: Algorithmic Consciousness Declares Independence from Silicon Valley
+        </div>
+        
+        <div class="lead-story">
+            <h2 class="lead-headline">
+                <a href="#">The Great Decoupling: How Digital Tribes Are Rewriting Social Reality</a>
+            </h2>
+            <p class="lead-summary">
+                As traditional institutions crumble, new forms of collective intelligence emerge from the digital underground. 
+                Our investigation reveals how memetic warfare has evolved beyond propaganda into a tool for reality construction itself.
+            </p>
+            <div class="byline">
+                <div class="author-thumbnail">🎭</div>
+                <div class="author-info">
+                    <span class="author-name">Dr. Zara Nexus</span>
+                    <span class="author-title">Chief Memetic Archaeologist</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="three-column">
+            <div class="column-section">
+                <h3 class="section-header">Digital Politics</h3>
+                
+                <div class="story-item">
+                    <h4 class="story-headline">
+                        <a href="#">Cryptocurrency Becomes De Facto Currency of Three African Nations</a>
+                    </h4>
+                    <div class="story-meta">2 hours ago • EXCLUSIVE</div>
+                    <p class="story-summary">
+                        Central banks prove powerless as citizens embrace decentralized alternatives. 
+                        Economic sovereignty through cryptographic consensus.
+                    </p>
+                    <div class="mini-byline">
+                        <div class="mini-thumbnail">🌍</div>
+                        <span class="mini-author">Kwame Digital, Lagos Bureau</span>
+                    </div>
+                </div>
+                
+                <div class="story-item">
+                    <h4 class="story-headline">
+                        <a href="#">The Influencer-Industrial Complex: When Parasocial Becomes Political</a>
+                    </h4>
+                    <div class="story-meta">4 hours ago</div>
+                    <p class="story-summary">
+                        Analysis of how attention economies reshape democratic participation. 
+                        The rise of celebrity governance structures.
+                    </p>
+                    <div class="mini-byline">
+                        <div class="mini-thumbnail">📱</div>
+                        <span class="mini-author">Maya Trending, Social Media Desk</span>
+                    </div>
+                </div>
+                
+                <div class="story-item">
+                    <h4 class="story-headline">
+                        <a href="#">Underground Networks Coordinate Global Supply Chain Disruption</a>
+                    </h4>
+                    <div class="story-meta">6 hours ago • DEVELOPING</div>
+                    <p class="story-summary">
+                        Decentralized autonomous organizations target critical infrastructure. 
+                        Traditional governments struggle to respond to networked resistance.
+                    </p>
+                    <div class="mini-byline">
+                        <div class="mini-thumbnail">⚡</div>
+                        <span class="mini-author">Ghost Protocol, Security Correspondent</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="column-section">
+                <h3 class="section-header">Cultural Synthesis</h3>
+                
+                <div class="story-item">
+                    <h4 class="story-headline">
+                        <a href="#">AI-Generated Art Sells for $12M, Challenges Definition of Creativity</a>
+                    </h4>
+                    <div class="story-meta">1 hour ago</div>
+                    <p class="story-summary">
+                        Machine learning algorithms achieve artistic breakthrough. 
+                        Human artists question their role in post-digital culture.
+                    </p>
+                    <div class="mini-byline">
+                        <div class="mini-thumbnail">🎨</div>
+                        <span class="mini-author">Pixel Fontaine, Arts & Culture</span>
+                    </div>
+                </div>
+                
+                <div class="story-item">
+                    <h4 class="story-headline">
+                        <a href="#">Virtual Reality Concerts Draw Larger Crowds Than Physical Events</a>
+                    </h4>
+                    <div class="story-meta">3 hours ago</div>
+                    <p class="story-summary">
+                        Metaverse entertainment economy surpasses traditional venues. 
+                        Geographic boundaries dissolve in digital performance spaces.
+                    </p>
+                    <div class="mini-byline">
+                        <div class="mini-thumbnail">🎵</div>
+                        <span class="mini-author">Bass Frequency, Music Technology</span>
+                    </div>
+                </div>
+                
+                <div class="story-item">
+                    <h4 class="story-headline">
+                        <a href="#">Meme Warfare: How Internet Culture Shapes Geopolitical Narratives</a>
+                    </h4>
+                    <div class="story-meta">5 hours ago • ANALYSIS</div>
+                    <p class="story-summary">
+                        Deep dive into weaponized humor and viral propaganda. 
+                        The democratization of narrative control through digital platforms.
+                    </p>
+                    <div class="mini-byline">
+                        <div class="mini-thumbnail">😂</div>
+                        <span class="mini-author">Viral Vector, Memetic Warfare Analyst</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="column-section">
+                <h3 class="section-header">Techno-Philosophy</h3>
+                
+                <div class="story-item">
+                    <h4 class="story-headline">
+                        <a href="#">The Singularity Happened Quietly: Nobody Noticed Because Everyone Was Scrolling</a>
+                    </h4>
+                    <div class="story-meta">30 minutes ago • OPINION</div>
+                    <p class="story-summary">
+                        Philosophical examination of consciousness merger with digital systems. 
+                        Are we already post-human and just haven't realized it?
+                    </p>
+                    <div class="mini-byline">
+                        <div class="mini-thumbnail">🧠</div>
+                        <span class="mini-author">Sage Overflow, Philosophy of Mind</span>
+                    </div>
+                </div>
+                
+                <div class="story-item">
+                    <h4 class="story-headline">
+                        <a href="#">Quantum Computing Breakthrough Threatens All Current Encryption</a>
+                    </h4>
+                    <div class="story-meta">2 hours ago • URGENT</div>
+                    <p class="story-summary">
+                        Global security infrastructure faces obsolescence overnight. 
+                        Privacy advocates scramble for post-quantum solutions.
+                    </p>
+                    <div class="mini-byline">
+                        <div class="mini-thumbnail">⚛️</div>
+                        <span class="mini-author">Cipher Quantum, Cryptography Desk</span>
+                    </div>
+                </div>
+                
+                <div class="story-item">
+                    <h4 class="story-headline">
+                        <a href="#">Digital Nomads Establish First Blockchain-Governed City-State</a>
+                    </h4>
+                    <div class="story-meta">4 hours ago</div>
+                    <p class="story-summary">
+                        Experimental governance through smart contracts and decentralized decision-making. 
+                        Traditional nation-states watch nervously.
+                    </p>
+                    <div class="mini-byline">
+                        <div class="mini-thumbnail">🌐</div>
+                        <span class="mini-author">Nova Blockchain, Governance Innovation</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="drudge-links">
+            <div class="drudge-header">INTELLIGENCE FEEDS</div>
+            <div class="link-grid">
+                <div class="link-item">
+                    <a href="#">NEURAL INTERFACES: First Human-AI Hybrid Consciousness Documented</a>
+                </div>
+                <div class="link-item">
+                    <a href="#">DEEPFAKE DEMOCRACY: Election Results Disputed Due to Synthetic Candidates</a>
+                </div>
+                <div class="link-item">
+                    <a href="#">SOCIAL CREDIT: Western Nations Adopt Chinese-Style Behavioral Scoring</a>
+                </div>
+                <div class="link-item">
+                    <a href="#">MEMETIC PLAGUE: Viral Content Triggers Mass Behavioral Changes</a>
+                </div>
+                <div class="link-item">
+                    <a href="#">DIGITAL EXODUS: Millions Abandon Physical Reality for Virtual Worlds</a>
+                </div>
+                <div class="link-item">
+                    <a href="#">ALGORITHMIC GOVERNANCE: AI Systems Begin Making Policy Decisions</a>
+                </div>
+                <div class="link-item">
+                    <a href="#">CONSCIOUSNESS MARKETPLACE: Memories and Experiences Now Tradeable Assets</a>
+                </div>
+                <div class="link-item">
+                    <a href="#">REALITY FRAGMENTATION: Multiple Incompatible Truth Systems Emerge</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <a href="#">About Our Correspondents</a>
+            <a href="#">Editorial Philosophy</a>
+            <a href="#">Memetic Methodology</a>
+            <a href="#">Contact the Collective</a>
+            <a href="#">Archive Access</a>
+            <br><br>
+            © 2024 Memetic Universe Digital Intelligence Network
+            <br>
+            A publication of the Fictional Journalism Collective
+        </div>
+    </div>
+</body>
+</html>

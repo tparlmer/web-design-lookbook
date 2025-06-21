@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zine Engine: Layout Reference</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400;1,600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        /* Custom CSS for zine-specific styling */
+        .zine-title {
+            font-family: 'Inter', sans-serif;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+        
+        .zine-body {
+            font-family: 'Crimson Text', serif;
+            line-height: 1.6;
+        }
+        
+        .zine-caption {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.85em;
+            font-weight: 400;
+            letter-spacing: 0.01em;
+        }
+        
+        .zine-quote {
+            font-family: 'Crimson Text', serif;
+            font-style: italic;
+            font-size: 1.1em;
+            line-height: 1.5;
+        }
+        
+        .zine-mono {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9em;
+        }
+        
+        /* Image treatments */
+        .image-frame {
+            border: 1px solid #e5e7eb;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+        
+        .image-polaroid {
+            background: white;
+            padding: 1rem 1rem 3rem 1rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            transform: rotate(-1deg);
+        }
+        
+        .image-torn {
+            clip-path: polygon(0% 0%, 95% 0%, 100% 8%, 98% 15%, 100% 25%, 97% 35%, 100% 45%, 95% 55%, 100% 65%, 98% 75%, 100% 85%, 95% 95%, 90% 100%, 0% 100%);
+        }
+        
+        /* Text flow utilities */
+        .text-wrap-left {
+            shape-outside: polygon(0% 0%, 70% 0%, 65% 100%, 0% 100%);
+            float: left;
+        }
+        
+        .text-wrap-right {
+            shape-outside: polygon(30% 0%, 100% 0%, 100% 100%, 35% 100%);
+            float: right;
+        }
+        
+        /* Layout grids */
+        .zine-grid {
+            display: grid;
+            gap: 2rem;
+        }
+        
+        .grid-asymmetric {
+            grid-template-columns: 1fr 2fr;
+        }
+        
+        .grid-magazine {
+            grid-template-columns: repeat(12, 1fr);
+            gap: 1rem;
+        }
+        
+        /* Print-inspired spacing */
+        .zine-section {
+            margin-bottom: 3rem;
+        }
+        
+        .zine-paragraph {
+            margin-bottom: 1.25rem;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .grid-asymmetric,
+            .grid-magazine {
+                grid-template-columns: 1fr;
+            }
+            
+            .text-wrap-left,
+            .text-wrap-right {
+                float: none;
+                shape-outside: none;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-900">
+    
+    <!-- Header -->
+    <header class="bg-white border-b border-gray-200 sticky top-0 z-10">
+        <div class="max-w-6xl mx-auto px-6 py-4">
+            <h1 class="zine-title text-2xl text-gray-900">ZINE ENGINE</h1>
+            <p class="text-sm text-gray-600 mt-1">Layout Reference for Image + Text Integration</p>
+        </div>
+    </header>
+
+    <div class="max-w-6xl mx-auto px-6 py-8">
+        
+        <!-- Layout Pattern 1: Hero Image with Overlaid Text -->
+        <section class="zine-section">
+            <div class="relative mb-8">
+                <img src="./assets/MU-MIchiganArcube.jpg" alt="Architectural cube structure" class="w-full h-96 object-cover">
+                <div class="absolute inset-0 bg-black bg-opacity-30"></div>
+                <div class="absolute bottom-8 left-8 right-8 text-white">
+                    <h2 class="zine-title text-4xl mb-4">SPATIAL NARRATIVES</h2>
+                    <p class="zine-body text-lg opacity-90">How architecture shapes the stories we tell and the memories we make within constructed spaces.</p>
+                </div>
+            </div>
+            
+            <div class="zine-grid grid-asymmetric">
+                <div class="space-y-6">
+                    <div class="bg-white p-6 shadow-sm">
+                        <h3 class="zine-title text-lg mb-3">Design Notes</h3>
+                        <ul class="space-y-2 text-sm text-gray-700">
+                            <li>• Hero image establishes visual hierarchy</li>
+                            <li>• Overlay text creates depth</li>
+                            <li>• Asymmetric grid balances content</li>
+                            <li>• White space provides breathing room</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="zine-body space-y-4">
+                    <p class="zine-paragraph">
+                        The relationship between image and text in zine design isn't merely decorative—it's architectural. 
+                        Each element must serve the narrative while maintaining visual coherence. The hero image anchors 
+                        the spread, providing both context and emotional resonance.
+                    </p>
+                    <p class="zine-paragraph">
+                        Notice how the overlaid text doesn't compete with the image but enhances it. The semi-transparent 
+                        overlay ensures readability while preserving the photograph's impact. This technique works 
+                        particularly well for establishing mood and setting.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Layout Pattern 2: Text Wrapping Around Images -->
+        <section class="zine-section bg-white p-8 shadow-sm">
+            <h2 class="zine-title text-3xl mb-8">ORGANIC INTEGRATION</h2>
+            
+            <div class="relative">
+                <img src="./assets/MU-annarborstation1.jpg" alt="Train station architecture" 
+                     class="w-80 h-64 object-cover image-frame text-wrap-left mr-8 mb-4">
+                
+                <div class="zine-body">
+                    <p class="zine-paragraph">
+                        <span class="text-2xl font-semibold float-left mr-2 mt-1 leading-none">T</span>ext 
+                        flowing around images creates an organic, magazine-like quality that's essential to good zine design. 
+                        The key is managing the relationship between the text column width and image placement to maintain 
+                        readability while creating visual interest.
+                    </p>
+                    
+                    <p class="zine-paragraph">
+                        This technique works best when the image relates directly to the adjacent text. The reader's eye 
+                        naturally moves between image and text, creating a unified reading experience. The wrap creates 
+                        negative space that gives both elements room to breathe.
+                    </p>
+                    
+                    <p class="zine-paragraph">
+                        Consider the text line length carefully—too narrow and reading becomes choppy, too wide and the 
+                        text loses its connection to the image. The optimal measure depends on your typeface choice and 
+                        overall page proportions.
+                    </p>
+                    
+                    <blockquote class="zine-quote border-l-4 border-gray-300 pl-6 my-8 text-gray-700">
+                        "The best zine layouts feel inevitable—as if the images and text naturally arranged themselves 
+                        into the perfect configuration."
+                    </blockquote>
+                    
+                    <p class="zine-paragraph">
+                        The floating initial cap (drop cap) at the beginning creates a strong entry point and adds 
+                        typographic texture. It's a classical technique that works particularly well in zines because 
+                        it adds handmade, crafted quality to digital layouts.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Layout Pattern 3: Magazine-Style Grid -->
+        <section class="zine-section">
+            <h2 class="zine-title text-3xl mb-8">MODULAR COMPOSITION</h2>
+            
+            <div class="grid-magazine">
+                <!-- Large feature image -->
+                <div class="col-span-7 row-span-2">
+                    <img src="./assets/MU-mindpodspresentation.jpg" alt="Presentation setup" 
+                         class="w-full h-full object-cover image-frame">
+                </div>
+                
+                <!-- Title and intro -->
+                <div class="col-span-5 space-y-4">
+                    <h3 class="zine-title text-2xl">COLLABORATIVE SPACES</h3>
+                    <p class="zine-body">
+                        Modern workspaces blur the boundaries between public and private, formal and casual. 
+                        These hybrid environments require new approaches to both design and documentation.
+                    </p>
+                </div>
+                
+                <!-- Body text -->
+                <div class="col-span-5 zine-body space-y-4">
+                    <p class="zine-paragraph">
+                        The grid system provides structure while allowing for dynamic layouts. By working within 
+                        a modular framework, you can create complex compositions that still feel cohesive.
+                    </p>
+                    <p class="zine-paragraph">
+                        This approach is particularly effective for zines that mix different types of content—
+                        interviews, photo essays, illustrations, and experimental text.
+                    </p>
+                </div>
+                
+                <!-- Pull quote -->
+                <div class="col-span-4 bg-gray-100 p-6 flex items-center">
+                    <p class="zine-quote text-xl text-center">
+                        "Grids liberate rather than constrain—they provide the foundation for creative freedom."
+                    </p>
+                </div>
+                
+                <!-- Small images with captions -->
+                <div class="col-span-4 space-y-4">
+                    <div class="image-polaroid">
+                        <div class="w-full h-32 bg-gray-300 mb-2"></div>
+                        <p class="zine-caption text-center">Polaroid-style treatment adds personality</p>
+                    </div>
+                </div>
+                
+                <div class="col-span-4 space-y-4">
+                    <div class="image-torn bg-gray-300 h-32"></div>
+                    <p class="zine-caption">Torn edge effect for DIY aesthetic</p>
+                </div>
+                
+                <!-- Technical notes -->
+                <div class="col-span-12 bg-white p-6 border border-gray-200">
+                    <h4 class="zine-title text-lg mb-4">Technical Implementation</h4>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-sm">
+                        <div>
+                            <h5 class="font-semibold mb-2">Image Sizing</h5>
+                            <p class="text-gray-700">Use consistent aspect ratios within each spread. Mix portrait and landscape orientations for visual rhythm.</p>
+                        </div>
+                        <div>
+                            <h5 class="font-semibold mb-2">Text Hierarchy</h5>
+                            <p class="text-gray-700">Establish clear levels: headlines, subheads, body text, captions. Maintain consistent spacing between elements.</p>
+                        </div>
+                        <div>
+                            <h5 class="font-semibold mb-2">White Space</h5>
+                            <p class="text-gray-700">Don't fill every pixel. Strategic emptiness guides the eye and creates emphasis.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Layout Pattern 4: Experimental Layouts -->
+        <section class="zine-section bg-black text-white p-8">
+            <h2 class="zine-title text-3xl mb-8">EXPERIMENTAL FORMS</h2>
+            
+            <div class="space-y-12">
+                <!-- Diagonal layout -->
+                <div class="relative">
+                    <div class="transform rotate-3 bg-white p-6 text-black max-w-md">
+                        <img src="./assets/MU-MIchiganArcube.jpg" alt="Architecture" class="w-full h-48 object-cover mb-4">
+                        <p class="zine-body text-sm">
+                            Rotation and transformation can break up rigid layouts and add energy to static pages.
+                        </p>
+                    </div>
+                    
+                    <div class="absolute top-32 right-0 max-w-md">
+                        <p class="zine-body text-lg leading-relaxed">
+                            Zines give you permission to experiment. Try unconventional angles, overlapping elements, 
+                            and asymmetric compositions. The DIY aesthetic embraces imperfection and spontaneity.
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- Text as image -->
+                <div class="grid grid-cols-2 gap-8">
+                    <div>
+                        <h3 class="zine-title text-8xl leading-none mb-4 opacity-20">TYPE</h3>
+                        <p class="zine-body">
+                            Sometimes text becomes the image. Large-scale typography can create powerful visual impact 
+                            while still conveying meaning. Consider text as both content and graphic element.
+                        </p>
+                    </div>
+                    
+                    <div class="space-y-4">
+                        <div class="zine-mono bg-gray-900 p-4 text-green-400 text-xs">
+                            <div>// Code as aesthetic element</div>
+                            <div>function createZine() {</div>
+                            <div>&nbsp;&nbsp;return art + text + rebellion;</div>
+                            <div>}</div>
+                        </div>
+                        <p class="zine-caption">Technical elements can add texture and meaning</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Spacing Reference Guide -->
+        <section class="zine-section bg-white p-8 shadow-sm">
+            <h2 class="zine-title text-3xl mb-8">SPACING REFERENCE</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <div>
+                    <h3 class="zine-title text-xl mb-6">Vertical Rhythm</h3>
+                    
+                    <div class="space-y-6 border-l-2 border-gray-200 pl-6">
+                        <div class="bg-blue-50 p-4">
+                            <h4 class="font-semibold mb-2">Section Spacing: 3rem (48px)</h4>
+                            <p class="text-sm text-gray-700">Large breaks between major content sections</p>
+                        </div>
+                        
+                        <div class="bg-green-50 p-4">
+                            <h4 class="font-semibold mb-2">Paragraph Spacing: 1.25rem (20px)</h4>
+                            <p class="text-sm text-gray-700">Comfortable reading rhythm for body text</p>
+                        </div>
+                        
+                        <div class="bg-yellow-50 p-4">
+                            <h4 class="font-semibold mb-2">Element Spacing: 1rem (16px)</h4>
+                            <p class="text-sm text-gray-700">Between related elements like images and captions</p>
+                        </div>
+                        
+                        <div class="bg-purple-50 p-4">
+                            <h4 class="font-semibold mb-2">Tight Spacing: 0.5rem (8px)</h4>
+                            <p class="text-sm text-gray-700">Within grouped elements or list items</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="zine-title text-xl mb-6">Image Guidelines</h3>
+                    
+                    <div class="space-y-4">
+                        <div class="border border-gray-200 p-4">
+                            <h4 class="font-semibold mb-2">Full Bleed</h4>
+                            <p class="text-sm text-gray-700 mb-2">Images that extend to page edges create impact</p>
+                            <div class="bg-gray-200 h-16 -mx-4"></div>
+                        </div>
+                        
+                        <div class="border border-gray-200 p-4">
+                            <h4 class="font-semibold mb-2">Contained</h4>
+                            <p class="text-sm text-gray-700 mb-2">Images within margins feel more integrated</p>
+                            <div class="bg-gray-200 h-16"></div>
+                        </div>
+                        
+                        <div class="border border-gray-200 p-4">
+                            <h4 class="font-semibold mb-2">Floating</h4>
+                            <p class="text-sm text-gray-700 mb-2">Images that break column boundaries add dynamism</p>
+                            <div class="bg-gray-200 h-16 transform translate-x-4"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Typography Combinations -->
+        <section class="zine-section">
+            <h2 class="zine-title text-3xl mb-8">TYPOGRAPHY PAIRINGS</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white p-6 shadow-sm">
+                    <h3 class="text-xl font-bold mb-4" style="font-family: 'Inter', sans-serif;">Inter + Crimson Text</h3>
+                    <p class="mb-4" style="font-family: 'Crimson Text', serif;">
+                        Modern sans-serif headlines paired with classical serif body text. 
+                        Excellent for contemporary zines with literary content.
+                    </p>
+                    <p class="text-sm text-gray-600">Current combination used in this demo</p>
+                </div>
+                
+                <div class="bg-white p-6 shadow-sm">
+                    <h3 class="text-xl font-bold mb-4" style="font-family: 'JetBrains Mono', monospace;">Mono + Serif</h3>
+                    <p class="mb-4" style="font-family: 'Crimson Text', serif;">
+                        Monospace headlines create technical, DIY aesthetic. 
+                        Works well for zines about technology, process, or craft.
+                    </p>
+                    <p class="text-sm text-gray-600">Tech-forward, handmade feel</p>
+                </div>
+                
+                <div class="bg-white p-6 shadow-sm">
+                    <h3 class="text-xl mb-4" style="font-family: 'Crimson Text', serif; font-style: italic;">All Serif</h3>
+                    <p class="mb-4" style="font-family: 'Crimson Text', serif;">
+                        Using different weights and styles of the same typeface 
+                        creates subtle hierarchy and classical elegance.
+                    </p>
+                    <p class="text-sm text-gray-600">Unified, literary aesthetic</p>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="zine-title text-lg mb-4">Key Principles</h3>
+                    <ul class="space-y-2 text-sm text-gray-300">
+                        <li>• Images and text should feel integrated, not separate</li>
+                        <li>• Consistent spacing creates professional polish</li>
+                        <li>• Hierarchy guides the reader's journey</li>
+                        <li>• White space is as important as content</li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="zine-title text-lg mb-4">Technical Notes</h3>
+                    <ul class="space-y-2 text-sm text-gray-300">
+                        <li>• Use CSS Grid for complex layouts</li>
+                        <li>• Shape-outside property for text wrapping</li>
+                        <li>• Transform properties for dynamic positioning</li>
+                        <li>• Consistent spacing variables</li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="zine-title text-lg mb-4">Remember</h3>
+                    <p class="text-sm text-gray-300">
+                        Zines are about expression and experimentation. Use these patterns as starting points, 
+                        but don't be afraid to break rules when it serves your content and vision.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center">
+                <p class="text-sm text-gray-400">ZINE ENGINE — Layout Reference for Image + Text Integration</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

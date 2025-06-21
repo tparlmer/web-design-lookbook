@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DARK DRUDGE REPORT</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Times:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Times', serif;
+            background-color: #0a0a0a;
+            color: #e5e5e5;
+        }
+        
+        .drudge-link {
+            color: #ff6b6b;
+            text-decoration: none;
+            font-size: 13px;
+            line-height: 1.4;
+        }
+        
+        .drudge-link:hover {
+            color: #ff8787;
+            text-decoration: underline;
+        }
+        
+        .drudge-link:visited {
+            color: #c44569;
+        }
+        
+        .headline-major {
+            color: #ff4757;
+            font-size: 18px;
+            font-weight: bold;
+            text-decoration: none;
+            line-height: 1.3;
+        }
+        
+        .headline-major:hover {
+            color: #ff6b7a;
+            text-decoration: underline;
+        }
+        
+        .headline-breaking {
+            color: #feca57;
+            font-size: 16px;
+            font-weight: bold;
+            text-decoration: none;
+            line-height: 1.3;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+        
+        .headline-breaking:hover {
+            color: #ff9f43;
+            text-decoration: underline;
+        }
+        
+        .drudge-header {
+            font-size: 24px;
+            font-weight: bold;
+            color: #ff4757;
+            text-align: center;
+            letter-spacing: 2px;
+        }
+        
+        .section-divider {
+            border-top: 1px solid #333;
+            margin: 20px 0;
+        }
+        
+        .ad-space {
+            background-color: #1a1a1a;
+            border: 1px solid #333;
+            text-align: center;
+            padding: 20px;
+            color: #666;
+            font-size: 12px;
+        }
+        
+        .sidebar-link {
+            color: #48cae4;
+            font-size: 12px;
+            text-decoration: none;
+            line-height: 1.5;
+        }
+        
+        .sidebar-link:hover {
+            color: #90e0ef;
+            text-decoration: underline;
+        }
+        
+        .weather-box {
+            background-color: #1a1a1a;
+            border: 1px solid #333;
+            padding: 10px;
+            text-align: center;
+            color: #ccc;
+            font-size: 12px;
+        }
+        
+        .flash {
+            background-color: #ff4757;
+            color: white;
+            padding: 5px 10px;
+            font-weight: bold;
+            font-size: 14px;
+            margin: 10px 0;
+            text-align: center;
+        }
+        
+        .timestamp {
+            color: #666;
+            font-size: 11px;
+            font-style: italic;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        td {
+            vertical-align: top;
+            padding: 5px;
+        }
+        
+        .main-column {
+            width: 60%;
+        }
+        
+        .sidebar-column {
+            width: 20%;
+            border-left: 1px solid #333;
+            padding-left: 15px;
+        }
+        
+        .right-column {
+            width: 20%;
+            border-left: 1px solid #333;
+            padding-left: 15px;
+        }
+        
+        .category-header {
+            color: #feca57;
+            font-weight: bold;
+            font-size: 14px;
+            margin: 15px 0 5px 0;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .poll-box {
+            background-color: #1a1a1a;
+            border: 2px solid #ff4757;
+            padding: 15px;
+            margin: 15px 0;
+        }
+        
+        .poll-question {
+            color: #ff4757;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .poll-option {
+            color: #ccc;
+            font-size: 12px;
+            margin: 5px 0;
+        }
+        
+        .siren {
+            color: #ff4757;
+            font-size: 20px;
+            animation: flash 1s infinite;
+        }
+        
+        @keyframes flash {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
+    </style>
+</head>
+<body class="bg-black text-gray-200">
+    
+    <div class="max-w-6xl mx-auto p-4">
+        
+        <!-- Header -->
+        <div class="text-center mb-8">
+            <div class="drudge-header mb-2">DARK DRUDGE REPORT</div>
+            <div class="timestamp">Last Updated: Mon Dec 18 2024 11:47:23 PM EST</div>
+            <div class="flash">🚨 BREAKING NEWS UPDATES 🚨</div>
+        </div>
+        
+        <!-- Main Layout Table -->
+        <table>
+            <tr>
+                <!-- Left Sidebar -->
+                <td class="sidebar-column">
+                    <div class="weather-box mb-4">
+                        <div class="font-bold text-red-400">WEATHER</div>
+                        <div>DC: 34°F</div>
+                        <div>NYC: 28°F</div>
+                        <div>LA: 72°F</div>
+                        <div>CHI: 22°F</div>
+                    </div>
+                    
+                    <div class="category-header">WORLD</div>
+                    <div class="mb-2"><a href="#" class="sidebar-link">Ukraine conflict enters new phase...</a></div>
+                    <div class="mb-2"><a href="#" class="sidebar-link">China economic data mixed...</a></div>
+                    <div class="mb-2"><a href="#" class="sidebar-link">Middle East tensions rise...</a></div>
+                    <div class="mb-2"><a href="#" class="sidebar-link">European energy crisis deepens...</a></div>
+                    
+                    <div class="category-header">TECH</div>
+                    <div class="mb-2"><a href="#" class="sidebar-link">AI regulation debate heats up...</a></div>
+                    <div class="mb-2"><a href="#" class="sidebar-link">Crypto market volatility continues...</a></div>
+                    <div class="mb-2"><a href="#" class="sidebar-link">Big Tech layoffs accelerate...</a></div>
+                    
+                    <div class="category-header">MEDIA</div>
+                    <div class="mb-2"><a href="#" class="sidebar-link">Cable news ratings plummet...</a></div>
+                    <div class="mb-2"><a href="#" class="sidebar-link">Social media censorship debate...</a></div>
+                    <div class="mb-2"><a href="#" class="sidebar-link">Newspaper industry struggles...</a></div>
+                    
+                    <div class="ad-space mt-4">
+                        <div>ADVERTISEMENT</div>
+                        <div class="mt-2">Your Ad Here</div>
+                    </div>
+                </td>
+                
+                <!-- Main Content Column -->
+                <td class="main-column px-6">
+                    
+                    <!-- Breaking News -->
+                    <div class="text-center mb-6">
+                        <div class="siren">🚨</div>
+                        <a href="#" class="headline-breaking block my-2">SUPREME COURT DECISION ROCKS WASHINGTON</a>
+                        <div class="siren">🚨</div>
+                    </div>
+                    
+                    <!-- Major Headlines -->
+                    <div class="space-y-4 mb-6">
+                        <div><a href="#" class="headline-major">CONGRESS PASSES SPENDING BILL IN LATE-NIGHT SESSION</a></div>
+                        <div><a href="#" class="headline-major">FEDERAL RESERVE SIGNALS RATE CUTS AHEAD</a></div>
+                        <div><a href="#" class="headline-major">WINTER STORM PARALYZES NORTHEAST</a></div>
+                    </div>
+                    
+                    <div class="section-divider"></div>
+                    
+                    <!-- Politics Section -->
+                    <div class="category-header">POLITICS</div>
+                    <div class="space-y-2 mb-4">
+                        <div><a href="#" class="drudge-link">White House scrambles on immigration policy...</a></div>
+                        <div><a href="#" class="drudge-link">Senate Republicans block spending measure...</a></div>
+                        <div><a href="#" class="drudge-link">Governor faces impeachment calls...</a></div>
+                        <div><a href="#" class="drudge-link">Primary elections heat up in key states...</a></div>
+                        <div><a href="#" class="drudge-link">Lobbying disclosure reveals massive spending...</a></div>
+                        <div><a href="#" class="drudge-link">Ethics committee launches investigation...</a></div>
+                    </div>
+                    
+                    <div class="section-divider"></div>
+                    
+                    <!-- Economy Section -->
+                    <div class="category-header">ECONOMY</div>
+                    <div class="space-y-2 mb-4">
+                        <div><a href="#" class="drudge-link">Stock market closes at record high...</a></div>
+                        <div><a href="#" class="drudge-link">Inflation data shows mixed signals...</a></div>
+                        <div><a href="#" class="drudge-link">Housing market shows signs of cooling...</a></div>
+                        <div><a href="#" class="drudge-link">Labor shortage affects key industries...</a></div>
+                        <div><a href="#" class="drudge-link">Gas prices continue volatile pattern...</a></div>
+                        <div><a href="#" class="drudge-link">Small business confidence wavers...</a></div>
+                    </div>
+                    
+                    <div class="section-divider"></div>
+                    
+                    <!-- Crime Section -->
+                    <div class="category-header">CRIME</div>
+                    <div class="space-y-2 mb-4">
+                        <div><a href="#" class="drudge-link">Major drug bust in border city...</a></div>
+                        <div><a href="#" class="drudge-link">Serial killer captured after manhunt...</a></div>
+                        <div><a href="#" class="drudge-link">Corporate fraud scheme exposed...</a></div>
+                        <div><a href="#" class="drudge-link">Cybercrime ring dismantled by FBI...</a></div>
+                        <div><a href="#" class="drudge-link">Violence surges in major metropolitan area...</a></div>
+                    </div>
+                    
+                    <div class="section-divider"></div>
+                    
+                    <!-- Strange/Weird News -->
+                    <div class="category-header">STRANGE</div>
+                    <div class="space-y-2 mb-4">
+                        <div><a href="#" class="drudge-link">Florida man arrested for unusual crime...</a></div>
+                        <div><a href="#" class="drudge-link">UFO sightings increase across midwest...</a></div>
+                        <div><a href="#" class="drudge-link">Lottery winner disappears mysteriously...</a></div>
+                        <div><a href="#" class="drudge-link">Ancient artifact discovered in backyard...</a></div>
+                        <div><a href="#" class="drudge-link">Viral video sparks conspiracy theories...</a></div>
+                    </div>
+                    
+                    <div class="poll-box">
+                        <div class="poll-question">DRUDGE POLL:</div>
+                        <div class="poll-question">Should Congress pass the spending bill?</div>
+                        <div class="poll-option">• YES - 34%</div>
+                        <div class="poll-option">• NO - 52%</div>
+                        <div class="poll-option">• UNSURE - 14%</div>
+                        <div class="text-xs text-gray-500 mt-2">Total Votes: 47,832</div>
+                    </div>
+                    
+                </td>
+                
+                <!-- Right Sidebar -->
+                <td class="right-column">
+                    
+                    <div class="category-header">HEALTH</div>
+                    <div class="mb-2"><a href="#" class="sidebar-link">New COVID variant detected...</a></div>
+                    <div class="mb-2"><a href="#" class="sidebar-link">Cancer breakthrough announced...</a></div>
+                    <div class="mb-2"><a href="#" class="sidebar-link">Mental health crisis deepens...</a></div>
+                    <div class="mb-2"><a href="#" class="sidebar-link">Drug prices continue to rise...</a></div>
+                    
+                    <div class="category-header">SPORTS</div>
+                    <div class="mb-2"><a href="#" class="sidebar-link">NFL playoff picture clarifies...</a></div>
+                    <div class="mb-2"><a href="#" class="sidebar-link">NBA trade deadline approaches...</a></div>
+                    <div class="mb-2"><a href="#" class="sidebar-link">College football rankings shake-up...</a></div>
+                    <div class="mb-2"><a href="#" class="sidebar-link">Olympics preparation begins...</a></div>
+                    
+                    <div class="category-header">ENTERTAINMENT</div>
+                    <div class="mb-2"><a href="#" class="sidebar-link">Hollywood strike ends...</a></div>
+                    <div class="mb-2"><a href="#" class="sidebar-link">Celebrity scandal breaks...</a></div>
+                    <div class="mb-2"><a href="#" class="sidebar-link">Box office numbers disappoint...</a></div>
+                    <div class="mb-2"><a href="#" class="sidebar-link">Streaming wars intensify...</a></div>
+                    
+                    <div class="category-header">WEATHER</div>
+                    <div class="mb-2"><a href="#" class="sidebar-link">Blizzard warning issued...</a></div>
+                    <div class="mb-2"><a href="#" class="sidebar-link">California drought persists...</a></div>
+                    <div class="mb-2"><a href="#" class="sidebar-link">Hurricane season review...</a></div>
+                    <div class="mb-2"><a href="#" class="sidebar-link">Climate data shows warming trend...</a></div>
+                    
+                    <div class="ad-space mt-4">
+                        <div>ADVERTISEMENT</div>
+                        <div class="mt-2">Banner Ad Space</div>
+                        <div class="mt-2 text-xs">300x250</div>
+                    </div>
+                    
+                    <div class="category-header">ARCHIVES</div>
+                    <div class="mb-1"><a href="#" class="sidebar-link text-xs">December 17, 2024</a></div>
+                    <div class="mb-1"><a href="#" class="sidebar-link text-xs">December 16, 2024</a></div>
+                    <div class="mb-1"><a href="#" class="sidebar-link text-xs">December 15, 2024</a></div>
+                    <div class="mb-1"><a href="#" class="sidebar-link text-xs">December 14, 2024</a></div>
+                    <div class="mb-1"><a href="#" class="sidebar-link text-xs">December 13, 2024</a></div>
+                    
+                </td>
+            </tr>
+        </table>
+        
+        <!-- Footer -->
+        <div class="section-divider mt-8"></div>
+        <div class="text-center text-xs text-gray-500 py-4">
+            <div>The Dark Drudge Report does not own, operate or maintain DarkDrudge.com and is not responsible for it in any way.</div>
+            <div class="mt-2">
+                <a href="#" class="text-red-400 hover:text-red-300">ABOUT</a> | 
+                <a href="#" class="text-red-400 hover:text-red-300">CONTACT</a> | 
+                <a href="#" class="text-red-400 hover:text-red-300">RSS</a> | 
+                <a href="#" class="text-red-400 hover:text-red-300">MOBILE</a>
+            </div>
+            <div class="mt-2">Copyright 2024 DarkDrudge.com</div>
+        </div>
+        
+    </div>
+    
+</body>
+</html>

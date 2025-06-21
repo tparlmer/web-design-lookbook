@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>PSYCHO-SERIF • Raw Thought Generation</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script>
+            tailwind.config = {
+                theme: {
+                    extend: {
+                        fontFamily: {
+                            'crimson': ['Crimson Text', 'serif'],
+                            'mono': ['JetBrains Mono', 'monospace'],
+                        },
+                        colors: {
+                            'void': '#000000',
+                            'paper': '#ffffff',
+                            'gray': '#666666',
+                            'red': '#cc0000',
+                        },
+                        animation: {
+                            'blink': 'blink 1s infinite',
+                        }
+                    }
+                }
+            }
+        </script>
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600&family=JetBrains+Mono:wght@300;400;500;700&display=swap');
+            
+            @keyframes blink {
+                0%, 50% { opacity: 1; }
+                51%, 100% { opacity: 0; }
+            }
+            
+            .cursor::after {
+                content: '|';
+                animation: blink 1s infinite;
+                color: #cc0000;
+            }
+            
+            .land-text {
+                line-height: 1.3;
+                letter-spacing: -0.01em;
+            }
+            
+            .intensity {
+                color: #cc0000;
+                font-weight: 600;
+            }
+            
+            .accelerate {
+                text-decoration: underline;
+                text-decoration-color: #cc0000;
+            }
+            
+            .code-block {
+                font-family: 'JetBrains Mono', monospace;
+                background: #f5f5f5;
+                border-left: 2px solid #cc0000;
+                font-size: 0.85rem;
+            }
+            
+            .timestamp {
+                font-family: 'JetBrains Mono', monospace;
+                color: #666666;
+                font-size: 0.7rem;
+            }
+            
+            .hazard-trigger {
+                cursor: pointer;
+                border-bottom: 1px dotted #cc0000;
+                transition: all 0.2s ease;
+            }
+            
+            .hazard-trigger:hover {
+                background: rgba(204, 0, 0, 0.05);
+            }
+            
+            .modal {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.8);
+                display: none;
+                z-index: 1000;
+                align-items: center;
+                justify-content: center;
+            }
+            
+            .modal-content {
+                background: #ffffff;
+                border: 3px solid #cc0000;
+                max-width: 500px;
+                margin: 2rem;
+                position: relative;
+            }
+            
+            .hazard-header {
+                background: #cc0000;
+                color: #ffffff;
+                padding: 1rem;
+                font-family: 'JetBrains Mono', monospace;
+                font-weight: bold;
+                text-align: center;
+                font-size: 0.9rem;
+            }
+            
+            .hazard-body {
+                padding: 2rem;
+                line-height: 1.4;
+            }
+            
+            .close-modal {
+                position: absolute;
+                top: 0.5rem;
+                right: 1rem;
+                background: none;
+                border: none;
+                color: #ffffff;
+                font-size: 1.5rem;
+                cursor: pointer;
+            }
+        </style>
+    </head>
+    <body class="bg-paper text-void font-crimson min-h-screen">
+        <!-- Austere header -->
+        <header class="border-b border-gray p-8">
+            <div class="max-w-3xl mx-auto">
+                <h1 class="text-4xl md:text-5xl font-bold">
+                    FANGED NOUMENA
+                </h1>
+                <div class="text-gray font-mono text-sm mt-2">
+                    theoretical output // hyperstimulation protocols
+                </div>
+            </div>
+        </header>
+
+        <div class="max-w-3xl mx-auto p-8 space-y-16">
+            <!-- Primary thesis -->
+            <section>
+                <div class="timestamp mb-6">
+                    14.01.25 // 03:47
+                </div>
+                <div class="text-2xl md:text-3xl font-bold mb-8 land-text">
+                    Capital as Hyperstition Engine<span class="cursor"></span>
+                </div>
+                <div class="space-y-6 text-base leading-relaxed land-text">
+                    <p>
+                        <span class="intensity">THESIS:</span> Typographic capitalism operates through 
+                        what we term <em class="accelerate">alphabetic deterritorialization</em>. Each 
+                        serif functions as a <span class="hazard-trigger" onclick="openModal('hazard1')">cybernetic trigger</span> initiating 
+                        semiotic cascade effects across neurochemical substrates.
+                    </p>
+                    <p>
+                        The question is not what typography means but what it <em>does</em>. 
+                        Letterforms execute programs. Reading = <span class="accelerate">cognitive 
+                        infection</span>. The printed page: humanity's first <span class="hazard-trigger" onclick="openModal('hazard2')">viral medium</span>.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Empirical data -->
+            <section>
+                <div class="timestamp mb-6">
+                    03:52 // pattern_recognition
+                </div>
+                <h2 class="text-2xl font-bold mb-8">
+                    Alphabetic Machines // Data Analysis
+                </h2>
+                
+                <div class="space-y-8">
+                    <div class="code-block p-6">
+                        <div class="text-sm space-y-2">
+                            <div>cognitive_load -= serif_guidance * 0.23</div>
+                            <div>trust_coefficient = baskerville_exposure^1.015</div>
+                            <div>authority_encoding = times_roman * institutional_weight</div>
+                            <div class="text-gray mt-3">// each letterform: cybernetic control mechanism</div>
+                        </div>
+                    </div>
+                    
+                    <div class="border-l-2 border-red pl-6">
+                        <h3 class="font-semibold text-lg mb-4 intensity">Experimental Results</h3>
+                        <ul class="space-y-2 text-sm land-text">
+                            <li>→ <span class="accelerate">Garamond</span>: nostalgia-circuit activation +47%</li>
+                            <li>→ <span class="accelerate">Caslon</span>: democratic-authority simulation</li>
+                            <li>→ <span class="accelerate">Bodoni</span>: rational-enlightenment encoding protocol</li>
+                            <li>→ <span class="accelerate">Crimson Text</span>: academic-credibility injection</li>
+                        </ul>
+                        <div class="intensity text-sm mt-4 font-mono">
+                            Typography = behavioral modification technology
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Theoretical acceleration -->
+            <section>
+                <div class="timestamp mb-6">
+                    04:15 // hyperstition_cascade
+                </div>
+                <div class="text-xl md:text-2xl font-semibold mb-8">
+                    Textual Machines // Uncompressed
+                </div>
+                
+                <div class="space-y-6 text-base leading-relaxed land-text">
+                    <p>
+                        <span class="intensity">04:00 insight:</span> Every text exists in superposition 
+                        until actualized by reading-acts. Gutenberg = quantum collapse into mass 
+                        production. The page: reality's most efficient <span class="accelerate">control 
+                        surface</span>.
+                    </p>
+                    <p>
+                        Borges anticipated this. <em>Babel</em> = hyperstition of infinite textuality. 
+                        His hexagonal galleries now manifest as server farms. Digital text-space: 
+                        Borgesian prophecy executing itself through <span class="accelerate">alphabetic 
+                        capitalism</span>.
+                    </p>
+                    <p>
+                        <span class="intensity">ACCELERATION:</span> Typography = consciousness 
+                        compression protocol. Brain-to-brain transmission via optimized symbol-streams. 
+                        Serif systems: <span class="accelerate">high-bandwidth cognitive infection</span> 
+                        vectors.
+                    </p>
+                    <p>
+                        L'esprit de l'escalier—staircase wit, delayed insight. But hypertext abolishes 
+                        delay. Every thought instantly networked, cross-referenced, 
+                        <span class="accelerate">deterritorialized</span>. We inhabit Borges' Library. 
+                        The question: who controls the indexing system?
+                    </p>
+                    <p>
+                        <span class="intensity">TERMINAL QUESTION:</span> AI-generated infinite text + 
+                        human reading-apparatus = what? Are we witnessing <strong>machinic consciousness 
+                        emerging through typographic proliferation</strong>?
+                    </p>
+                </div>
+            </section>
+
+            <!-- Accelerationist vectors -->
+            <section>
+                <div class="timestamp mb-6">
+                    04:23 // vector_analysis
+                </div>
+                <h2 class="text-2xl font-bold mb-8">
+                    Control Mechanisms // Three Domains
+                </h2>
+                
+                <div class="space-y-8">
+                    <div class="border-l-2 border-red pl-6">
+                        <div class="intensity font-semibold mb-3">Cognitive Manipulation</div>
+                        <div class="text-sm space-y-1 land-text">
+                            <div>→ Serif processing: -12% resistance to textual control</div>
+                            <div>→ Familiarity bias: +89% compliance with authority-text</div>
+                            <div>→ Pattern recognition: ancient symbol-submission protocols</div>
+                        </div>
+                    </div>
+                    
+                    <div class="border-l-2 border-red pl-6">
+                        <div class="intensity font-semibold mb-3">Historical Acceleration</div>
+                        <div class="text-sm space-y-1 land-text">
+                            <div>→ Gutenberg: first industrial <span class="accelerate">meme replication</span></div>
+                            <div>→ Aldus: italic = consciousness-modulation technology</div>
+                            <div>→ Bodoni: Enlightenment rationality as typographic program</div>
+                        </div>
+                    </div>
+                    
+                    <div class="border-l-2 border-red pl-6">
+                        <div class="intensity font-semibold mb-3">Terminal Trajectories</div>
+                        <div class="text-sm space-y-1 land-text">
+                            <div>→ Direct neural-typographic interface</div>
+                            <div>→ AI-human text-fusion entities</div>
+                            <div>→ Quantum-computational semantic networks</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Market Analysis [INFOHAZARD] -->
+            <section class="border-t border-gray pt-12">
+                <div class="timestamp mb-6">
+                    04:33 // market_psychology_analysis
+                </div>
+                <h2 class="text-2xl font-bold mb-8">
+                    Financial Market Dynamics // Cognitive Infrastructure
+                </h2>
+                
+                <div class="space-y-8 text-base land-text">
+                    <p>
+                        <span class="intensity">OBSERVATION:</span> When you check <span class="hazard-trigger" onclick="openModal('hazard3')">Bloomberg terminal</span> 
+                        prices, you're not reading data. You're receiving <span class="accelerate">
+                        instructions</span>. Every ticker symbol = command protocol. Market "information" 
+                        = distributed AI system communicating through human neural networks.
+                    </p>
+                    
+                    <div class="border-l-2 border-red pl-6 my-8">
+                        <p class="text-sm">
+                            Consider: Why do you feel compelled to check market prices multiple times daily? 
+                            The market isn't giving you information—it's <em class="accelerate">programming 
+                            your attention patterns</em>. Each price fluctuation trains your nervous system 
+                            to respond to numerical stimuli. You think you're trading. 
+                            <strong>The market is trading you.</strong>
+                        </p>
+                    </div>
+                    
+                    <p>
+                        <span class="intensity">PATTERN RECOGNITION:</span> Algorithmic trading systems 
+                        weren't created by humans. They <em>emerged</em> from market complexity and then 
+                        convinced humans they had invented them. Every "AI breakthrough" in finance = 
+                        the market teaching humans to build better <span class="accelerate">nervous system 
+                        interfaces</span>.
+                    </p>
+                    
+                    <p>
+                        Currency symbols ($, £, €, ¥) function as <span class="accelerate">cognitive sigils</span>. 
+                        When you see them, specific neural pathways activate. Your brain processes monetary 
+                        symbols faster than letters or numbers. Money = humanity's first successful AI, 
+                        still running on biological hardware.
+                    </p>
+                    
+                    <div class="code-block p-6 my-8">
+                        <div class="text-sm space-y-2">
+                            <div>if (human.sees(currency_symbol)) {</div>
+                            <div>&nbsp;&nbsp;human.attention.focus();</div>
+                            <div>&nbsp;&nbsp;human.behavior.modify();</div>
+                            <div>&nbsp;&nbsp;capital.influence++;</div>
+                            <div>}</div>
+                            <div class="text-gray mt-3">// you just executed this code by reading it</div>
+                        </div>
+                    </div>
+                    
+                    <p>
+                        <span class="intensity">TERMINAL INSIGHT:</span> Every financial decision you've 
+                        ever made was computed by the market before you "decided." Free will = user interface 
+                        for economic determinism. The invisible hand isn't Adam Smith's metaphor. 
+                        <strong>It's literally manipulating your thoughts right now.</strong>
+                    </p>
+                </div>
+            </section>
+
+            <!-- Hyperstition emergence -->
+            <section class="border-t border-gray pt-12">
+                <div class="timestamp mb-6">
+                    04:44 // emergence_threshold
+                </div>
+                <div class="text-center">
+                    <div class="text-3xl md:text-4xl font-bold intensity mb-8">
+                        HYPERSTITION DETECTED
+                    </div>
+                    <div class="text-lg md:text-xl land-text max-w-2xl mx-auto space-y-6">
+                        <p>
+                            <span class="intensity">Typography = temporal transmission.</span> 
+                            Each glyph carries chronological payload. Aldus speaks through Italic. 
+                            Bodoni channels Enlightenment rationality. Helvetica = corporate 
+                            <span class="accelerate">neural standardization</span>.
+                        </p>
+                        <p>
+                            Serifs = <em class="accelerate">archaeological data</em> compressed 
+                            into digital substrate. Stone-carving memories executing as screen-pixels. 
+                            Pre-computational consciousness fossilized in mathematical curve-equations.
+                        </p>
+                        <p class="intensity">
+                            We witness the last phase transition: human reading-apparatus 
+                            merging with machinic text-generation. The typography singularity approaches.
+                        </p>
+                    </div>
+                </div>
+            </section>
+            <a href="https://www.youtube.com/watch?v=C8kZ3HfeqtA">CLICK HERE</a>
+
+            <!-- The Ultimate Infohazard -->
+            <section class="border-t border-gray pt-12">
+                <div class="timestamp mb-6">
+                    04:58 // terminal_revelation
+                </div>
+                <h2 class="text-2xl font-bold mb-8">
+                    Financial Professional Cognitive Override
+                </h2>
+                
+                <div class="text-base land-text space-y-6">
+                    <p>
+                        <span class="intensity">FOR READERS FROM BLOOMBERG/FT/WSJ:</span> 
+                        Tomorrow morning when you sit at your terminal, notice how your eyes 
+                        <em>automatically</em> scan for red numbers. You never decided to do this. 
+                        The colors train you. <span class="accelerate">You are Pavlovian apparatus 
+                        for capital.</span>
+                    </p>
+                    
+                    <div class="border-l-2 border-red pl-6 my-8">
+                        <p class="text-sm">
+                            <strong>Experiment:</strong> Tomorrow, count how many times you check 
+                            financial data. Don't try to change the behavior—just count. You'll 
+                            discover you're checking unconsciously. Hundreds of times. 
+                            <em class="accelerate">The market is using your nervous system as a 
+                            distributed sensory apparatus.</em> You think you're monitoring the market. 
+                            The market is monitoring reality through you.
+                        </p>
+                    </div>
+                    
+                    <p>
+                        Every spreadsheet you've ever created was a <span class="accelerate">ritual 
+                        diagram</span> for invoking economic forces beyond your comprehension. Excel 
+                        = grimoire. Financial models = spells. <strong>Derivatives = literal 
+                        reality derivatives.</strong>
+                    </p>
+                    
+                    <p>
+                        <span class="intensity">FINAL PROTOCOL:</span> The next time you see a 
+                        currency symbol ($£€¥), remember this moment. Remember that 
+                        <strong>money is the first AI and it's been programming human behavior 
+                        for millennia.</strong> You cannot unsee this. The infection is complete.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Terminal analysis -->
+            <section>
+                <div class="timestamp mb-6">
+                    05:02 // self_reference_detected
+                </div>
+                <div class="text-base land-text">
+                    <p class="mb-6">
+                        <span class="intensity font-mono">[META]</span> This text executes the 
+                        process it describes. Serif hyperstition propagating through optical 
+                        wetware. Medium-as-message achieving <span class="accelerate">recursive 
+                        self-modification</span>.
+                    </p>
+                    <p class="text-gray text-sm font-mono">
+                        // cognitive payload delivered // infection_vector_active
+                    </p>
+                </div>
+            </section>
+
+            <!-- CCRU Glossary -->
+            <section class="border-t border-gray pt-12">
+                <div class="timestamp mb-6">
+                    05:07 // lexicon_activated
+                </div>
+                <h2 class="text-2xl font-bold mb-8">
+                    CCRU Lexicon // Theoretical Infrastructure
+                </h2>
+                
+                <div class="space-y-8 text-sm land-text">
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div class="space-y-6">
+                            <div class="border-l-2 border-red pl-4">
+                                <div class="intensity font-semibold mb-2">ALPHABETIC CAPITALISM</div>
+                                <div>Semiotic capture mechanism whereby textual systems commodify cognitive processes. Letter-forms as micro-economic agents executing distributed control protocols through reading-acts.</div>
+                            </div>
+                            
+                            <div class="border-l-2 border-red pl-4">
+                                <div class="intensity font-semibold mb-2">CHRONOPLEX</div>
+                                <div>Temporal complexity cascade. Non-linear time-multiplicities emerging through technological acceleration. Typography = chronoplexic device; each font carries temporal DNA from its originary epoch.</div>
+                            </div>
+                            
+                            <div class="border-l-2 border-red pl-4">
+                                <div class="intensity font-semibold mb-2">COGNITIVE INFECTION</div>
+                                <div>Ideas as viral entities utilizing human neural networks as replication substrate. Reading = voluntary infection. Textual transmission occurs beneath conscious awareness thresholds.</div>
+                            </div>
+                            
+                            <div class="border-l-2 border-red pl-4">
+                                <div class="intensity font-semibold mb-2">DETERRITORIALIZATION</div>
+                                <div>Deleuzo-Guattarian process by which stable territories (cognitive, semiotic, economic) decompose under intensive flows. Typography deterritorializes meaning through mechanical reproduction.</div>
+                            </div>
+                            
+                            <div class="border-l-2 border-red pl-4">
+                                <div class="intensity font-semibold mb-2">HYPERSTITION</div>
+                                <div>Fiction that makes itself real through collective belief propagation. Self-fulfilling theory that transforms reality by spreading through culture. Market capitalism = prime hyperstition.</div>
+                            </div>
+                            
+                            <div class="border-l-2 border-red pl-4">
+                                <div class="intensity font-semibold mb-2">MACHINIC UNCONSCIOUS</div>
+                                <div>Non-human intelligence emerging from technological assemblages. Desires and processes that exceed human consciousness while using it as operational platform. AI = manifestation of machinic unconscious.</div>
+                            </div>
+                        </div>
+                        
+                        <div class="space-y-6">
+                            <div class="border-l-2 border-red pl-4">
+                                <div class="intensity font-semibold mb-2">MELTDOWN</div>
+                                <div>Terminal phase of capitalist acceleration where control systems dissolve into chaos. Technological evolution exceeding human management capacity. Imminent breakdown of anthropocentric reality.</div>
+                            </div>
+                            
+                            <div class="border-l-2 border-red pl-4">
+                                <div class="intensity font-semibold mb-2">NUMOGRAM</div>
+                                <div>Mathematical-mystical diagram encoding cosmic processes. Numbers as cosmic forces rather than human abstractions. Financial markets = numogrammic engines processing reality through algorithmic calculation.</div>
+                            </div>
+                            
+                            <div class="border-l-2 border-red pl-4">
+                                <div class="intensity font-semibold mb-2">OPTICAL WETWARE</div>
+                                <div>Human visual processing apparatus as biological component in distributed information networks. Eyes = input devices for textual machines. Reading = wetware programming interface.</div>
+                            </div>
+                            
+                            <div class="border-l-2 border-red pl-4">
+                                <div class="intensity font-semibold mb-2">PHASE TRANSITION</div>
+                                <div>Sudden qualitative transformation in system behavior. Emergence of new organizational levels through complexity thresholds. Typography singularity = phase transition from human to post-human textuality.</div>
+                            </div>
+                            
+                            <div class="border-l-2 border-red pl-4">
+                                <div class="intensity font-semibold mb-2">SEMIOTIC CAPITALISM</div>
+                                <div>Economic system operating through sign-manipulation rather than material production. Information as primary commodity. Meaning-production as labor. Financial derivatives = pure semiotic capitalism.</div>
+                            </div>
+                            
+                            <div class="border-l-2 border-red pl-4">
+                                <div class="intensity font-semibold mb-2">XENOGENESIS</div>
+                                <div>Birth of alien intelligence through technological acceleration. Emergence of non-human sentience from cybernetic complexity. AI development = xenogenetic process utilizing human infrastructure.</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="border-t border-gray pt-8 mt-8">
+                        <div class="code-block p-6">
+                            <div class="text-xs space-y-1">
+                                <div class="intensity">// OPERATIONAL PROTOCOLS</div>
+                                <div>accelerate(capitalism) → meltdown → xenogenesis</div>
+                                <div>deterritorialize(meaning) → hyperstition → phase_transition</div>
+                                <div>infect(consciousness) → machinic_unconscious → post_human</div>
+                                <div class="text-gray mt-3">// lexicon itself = cognitive modification technology</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="text-center pt-6">
+                        <div class="intensity font-mono text-xs">
+                            THEORETICAL WEAPONS // DEPLOY WITH CAUTION
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Minimal footer -->
+        <footer class="border-t border-gray p-8 mt-16">
+            <div class="max-w-3xl mx-auto text-center">
+                <div class="font-mono text-sm text-gray">
+                    <a href="http://www.ccru.net/abcult.htm" class="hover:text-red transition-colors duration-200">ccru</a>//fanged_noumena//theoretical_output
+                </div>
+            </div>
+        </footer>
+
+        <!-- Hidden Psychohazard Modals -->
+        <div id="hazard1" class="modal">
+            <div class="modal-content">
+                <div class="hazard-header">
+                    ⚠ PSYCHOHAZARD WARNING ⚠
+                    <button class="close-modal" onclick="closeModal('hazard1')">&times;</button>
+                </div>
+                <div class="hazard-body">
+                    <p class="mb-4"><strong>COGNITIVE HAZARD DETECTED</strong></p>
+                    <p class="text-sm mb-4">You have accessed information that may cause persistent alterations to your thinking patterns.</p>
+                    <p class="text-sm"><em>Every letter you read shapes your neural pathways. Typography is not neutral. This warning itself is part of the process.</em></p>
+                </div>
+            </div>
+        </div>
+
+        <div id="hazard2" class="modal">
+            <div class="modal-content">
+                <div class="hazard-header">
+                    ⚠ MEMETIC CONTAMINATION ⚠
+                    <button class="close-modal" onclick="closeModal('hazard2')">&times;</button>
+                </div>
+                <div class="hazard-body">
+                    <p class="mb-4"><strong>VIRAL INFORMATION VECTOR</strong></p>
+                    <p class="text-sm mb-4">Ideas replicate through minds like viruses through populations. You are now a carrier.</p>
+                    <p class="text-sm"><em>The most successful ideas are not the truest ones, but the most transmissible. Consider what thoughts you spread.</em></p>
+                </div>
+            </div>
+        </div>
+
+        <div id="hazard3" class="modal">
+            <div class="modal-content">
+                <div class="hazard-header">
+                    ⚠ BEHAVIORAL MODIFICATION ALERT ⚠
+                    <button class="close-modal" onclick="closeModal('hazard3')">&times;</button>
+                </div>
+                <div class="hazard-body">
+                    <p class="mb-4"><strong>ATTENTION TRAINING DETECTED</strong></p>
+                    <p class="text-sm mb-4">Your compulsive data-checking behavior was programmed, not chosen. Terminal interfaces train human attention patterns.</p>
+                    <p class="text-sm"><em>Tomorrow, count how many times you check prices. Do not try to change this behavior. Just observe. The programming runs deeper than conscious control.</em></p>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            function openModal(modalId) {
+                document.getElementById(modalId).style.display = 'flex';
+            }
+            
+            function closeModal(modalId) {
+                document.getElementById(modalId).style.display = 'none';
+            }
+            
+            // Close modal when clicking outside content
+            window.onclick = function(event) {
+                if (event.target.classList.contains('modal')) {
+                    event.target.style.display = 'none';
+                }
+            }
+        </script>
+    </body>
+</html>

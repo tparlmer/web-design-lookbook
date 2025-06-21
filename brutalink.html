@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>BRUTALINK OS v3.1</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script>
+            tailwind.config = {
+                theme: {
+                    extend: {
+                        fontFamily: {
+                            'mono': ['SF Mono', 'Monaco', 'Inconsolata', 'monospace'],
+                            'serif': ['Charter', 'Georgia', 'serif'],
+                        },
+                        colors: {
+                            'ink-cream': '#f4f1e8',
+                            'ink-paper': '#ede8dc',
+                            'ink-aged': '#e6e0d1',
+                            'ink-shadow': '#d4ceb8',
+                            'ink-text': '#1a1a1a',
+                            'ink-dark': '#0d0d0d',
+                            'ink-accent': '#8b0000',
+                            'ink-warning': '#b8860b',
+                            'ink-muted': '#4a4a3a',
+                        }
+                    }
+                }
+            }
+        </script>
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,700;1,400&family=Crimson+Text:wght@400;600&display=swap');
+            
+            body {
+                background-image: 
+                    radial-gradient(circle at 25% 25%, rgba(139, 0, 0, 0.03) 0%, transparent 25%),
+                    radial-gradient(circle at 75% 75%, rgba(184, 134, 11, 0.02) 0%, transparent 25%),
+                    linear-gradient(135deg, rgba(26, 26, 26, 0.01) 0%, rgba(13, 13, 13, 0.02) 100%);
+                background-attachment: fixed;
+            }
+            
+            .eink-border {
+                border: 3px solid #1a1a1a;
+                box-shadow: 6px 6px 0px #d4ceb8, 9px 9px 0px #1a1a1a;
+            }
+            
+            .eink-shadow {
+                box-shadow: 4px 4px 0px #d4ceb8;
+            }
+            
+            .ascii-display {
+                font-family: 'JetBrains Mono', monospace;
+                line-height: 1.1;
+                white-space: pre;
+                font-size: 0.75rem;
+                background: linear-gradient(45deg, #ede8dc 0%, #e6e0d1 100%);
+            }
+            
+            .paper-texture {
+                background-image: 
+                    repeating-linear-gradient(45deg, transparent, transparent 2px, rgba(26,26,26,0.02) 2px, rgba(26,26,26,0.02) 4px),
+                    repeating-linear-gradient(-45deg, transparent, transparent 2px, rgba(13,13,13,0.01) 2px, rgba(13,13,13,0.01) 4px);
+            }
+            
+            .ink-glow {
+                text-shadow: 0 0 1px rgba(26, 26, 26, 0.5);
+            }
+            
+            .status-bar {
+                background: linear-gradient(90deg, #1a1a1a 0%, #0d0d0d 100%);
+                box-shadow: inset 0 -2px 0px #d4ceb8;
+            }
+        </style>
+    </head>
+    <body class="bg-ink-cream min-h-screen font-mono text-ink-text leading-snug">
+        <div class="min-h-screen paper-texture">
+            <!-- Status Bar -->
+            <div class="status-bar text-ink-cream p-4 font-mono text-sm">
+                <div class="flex justify-between items-center max-w-7xl mx-auto">
+                    <div class="flex space-x-6">
+                        <span>BRUTALINK OS v3.1</span>
+                        <span>•</span>
+                        <span>BATTERY: ████████░░ 80%</span>
+                        <span>•</span>
+                        <span>SYNC: OFFLINE</span>
+                    </div>
+                    <div class="flex space-x-4">
+                        <span>14:37</span>
+                        <span>•</span>
+                        <span>PAGE 1/∞</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="max-w-7xl mx-auto p-8">
+                <!-- Header -->
+                <header class="mb-12">
+                    <div class="ascii-display eink-border p-8 mb-8">
+██████  ██████  ██    ██ ████████  █████  ██      ██ ███    ██ ██   ██ 
+██   ██ ██   ██ ██    ██    ██    ██   ██ ██      ██ ████   ██ ██  ██  
+██████  ██████  ██    ██    ██    ███████ ██      ██ ██ ██  ██ █████   
+██   ██ ██   ██ ██    ██    ██    ██   ██ ██      ██ ██  ██ ██ ██  ██  
+██████  ██   ██  ██████     ██    ██   ██ ███████ ██ ██   ████ ██   ██ 
+
+                    E-INK READER OPERATING SYSTEM
+                         KNOWLEDGE INTERFACE v3.1</div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <div class="bg-ink-paper eink-shadow p-6 border-2 border-ink-text">
+                            <h2 class="text-xl font-bold mb-2 ink-glow">STATUS</h2>
+                            <p class="font-mono text-sm">SYSTEM READY</p>
+                        </div>
+                        <div class="bg-ink-aged eink-shadow p-6 border-2 border-ink-text">
+                            <h2 class="text-xl font-bold mb-2 ink-glow">MODE</h2>
+                            <p class="font-mono text-sm">BRUTALIST</p>
+                        </div>
+                        <div class="bg-ink-shadow eink-shadow p-6 border-2 border-ink-text">
+                            <h2 class="text-xl font-bold mb-2 ink-glow">CONTRAST</h2>
+                            <p class="font-mono text-sm">MAXIMUM</p>
+                        </div>
+                    </div>
+                </header>
+
+                <!-- Library Interface -->
+                <section class="mb-12">
+                    <h2 class="text-4xl font-bold mb-8 border-b-4 border-ink-text pb-4 ink-glow">
+                        DIGITAL LIBRARY INTERFACE
+                    </h2>
+                    
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                        <!-- Book List -->
+                        <div class="bg-ink-paper eink-border p-8">
+                            <h3 class="text-2xl font-bold mb-6 ink-glow">COLLECTION</h3>
+                            <div class="space-y-4 font-mono">
+                                <div class="flex justify-between border-b border-ink-text pb-2">
+                                    <span>[001]</span>
+                                    <span class="flex-1 mx-4">THE_DESIGN_OF_EVERYDAY_THINGS.pdf</span>
+                                    <span class="text-ink-accent">UNREAD</span>
+                                </div>
+                                <div class="flex justify-between border-b border-ink-text pb-2">
+                                    <span>[002]</span>
+                                    <span class="flex-1 mx-4">BRUTALIST_ARCHITECTURE_GUIDE.epub</span>
+                                    <span class="text-ink-warning">READING</span>
+                                </div>
+                                <div class="flex justify-between border-b border-ink-text pb-2">
+                                    <span>[003]</span>
+                                    <span class="flex-1 mx-4">ANTI_DESIGN_MANIFESTO.txt</span>
+                                    <span class="text-ink-muted">COMPLETE</span>
+                                </div>
+                                <div class="flex justify-between border-b border-ink-text pb-2">
+                                    <span>[004]</span>
+                                    <span class="flex-1 mx-4">TYPOGRAPHY_WITHOUT_DECORATION.pdf</span>
+                                    <span class="text-ink-accent">UNREAD</span>
+                                </div>
+                                <div class="flex justify-between border-b border-ink-text pb-2">
+                                    <span>[005]</span>
+                                    <span class="flex-1 mx-4">FUNCTIONAL_MINIMALISM.epub</span>
+                                    <span class="text-ink-muted">COMPLETE</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Reading Stats -->
+                        <div class="space-y-6">
+                            <div class="bg-ink-aged eink-border p-6">
+                                <h3 class="text-xl font-bold mb-4 ink-glow">READING METRICS</h3>
+                                <div class="space-y-3 font-mono text-sm">
+                                    <div class="flex justify-between">
+                                        <span>BOOKS COMPLETED:</span>
+                                        <span class="font-bold">127</span>
+                                    </div>
+                                    <div class="flex justify-between">
+                                        <span>PAGES READ TODAY:</span>
+                                        <span class="font-bold">89</span>
+                                    </div>
+                                    <div class="flex justify-between">
+                                        <span>CURRENT STREAK:</span>
+                                        <span class="font-bold">45 DAYS</span>
+                                    </div>
+                                    <div class="flex justify-between">
+                                        <span>AVG. SESSION:</span>
+                                        <span class="font-bold">47 MIN</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="bg-ink-dark text-ink-cream eink-border p-6">
+                                <h3 class="text-xl font-bold mb-4">SYSTEM LOG</h3>
+                                <div class="font-mono text-xs space-y-1">
+                                    <div>[14:35:12] PAGE_TURN: SUCCESS</div>
+                                    <div>[14:35:08] BOOKMARK: CREATED</div>
+                                    <div>[14:34:55] HIGHLIGHT: SAVED</div>
+                                    <div>[14:34:23] FONT_SIZE: ADJUSTED</div>
+                                    <div>[14:33:17] SESSION: STARTED</div>
+                                    <div class="text-ink-warning">[14:33:01] WIFI: DISCONNECTED</div>
+                                    <div>[14:32:45] LIBRARY: SYNCED</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Reading Interface Preview -->
+                <section class="mb-12">
+                    <h2 class="text-4xl font-bold mb-8 border-b-4 border-ink-text pb-4 ink-glow">
+                        READING INTERFACE
+                    </h2>
+                    
+                    <div class="bg-ink-paper eink-border p-12">
+                        <div class="max-w-4xl mx-auto">
+                            <!-- Book Header -->
+                            <div class="border-b-2 border-ink-text pb-6 mb-8">
+                                <h3 class="text-2xl font-bold font-serif ink-glow">Chapter 3: Function Over Form</h3>
+                                <p class="text-ink-muted font-mono mt-2">BRUTALIST DESIGN MANIFESTO • Page 47 of 156</p>
+                            </div>
+                            
+                            <!-- Reading Content -->
+                            <div class="font-serif text-lg leading-relaxed space-y-6">
+                                <p class="first-letter:text-7xl first-letter:font-bold first-letter:mr-2 first-letter:float-left first-letter:leading-none first-letter:ink-glow">
+                                    Brutalism in digital interfaces represents a deliberate rejection of ornamental design. 
+                                    Every pixel serves a purpose. Every line of code has meaning. There is no room for 
+                                    decorative elements that do not contribute to functionality.
+                                </p>
+                                
+                                <p>
+                                    The e-ink display becomes the perfect medium for brutalist principles. Its limitations 
+                                    force designers to focus on what truly matters: readability, contrast, and information 
+                                    hierarchy. Colors are minimal. Animations are absent. Only essential elements remain.
+                                </p>
+                                
+                                <div class="bg-ink-aged border-l-4 border-ink-dark p-6 my-8 font-mono">
+                                    "Beauty is not the goal. Understanding is the goal. 
+                                    Clarity is the goal. Function is the goal."
+                                    <div class="text-right mt-4 text-ink-muted">— Digital Brutalist Manifesto</div>
+                                </div>
+                                
+                                <p>
+                                    This philosophy extends beyond mere aesthetics. It challenges designers to question 
+                                    every element, every interaction, every visual choice. Does this serve the user? 
+                                    Does this improve comprehension? If not, remove it.
+                                </p>
+                            </div>
+                            
+                            <!-- Reading Controls -->
+                            <div class="border-t-2 border-ink-text pt-6 mt-12">
+                                <div class="flex justify-between items-center font-mono">
+                                    <div class="flex space-x-6">
+                                        <button class="bg-ink-dark text-ink-cream px-4 py-2 eink-shadow">◀ PREV</button>
+                                        <button class="bg-ink-accent text-ink-cream px-4 py-2 eink-shadow">BOOKMARK</button>
+                                        <button class="bg-ink-warning text-ink-cream px-4 py-2 eink-shadow">HIGHLIGHT</button>
+                                    </div>
+                                    <div class="text-ink-muted">47 / 156</div>
+                                    <button class="bg-ink-dark text-ink-cream px-4 py-2 eink-shadow">NEXT ▶</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Device Settings -->
+                <section class="mb-12">
+                    <h2 class="text-4xl font-bold mb-8 border-b-4 border-ink-text pb-4 ink-glow">
+                        DEVICE CONFIGURATION
+                    </h2>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                        <div class="bg-ink-dark text-ink-cream eink-border p-6">
+                            <h3 class="text-lg font-bold mb-4">DISPLAY</h3>
+                            <div class="space-y-2 font-mono text-sm">
+                                <div>CONTRAST: HIGH</div>
+                                <div>REFRESH: FAST</div>
+                                <div>INVERT: OFF</div>
+                                <div>MARGINS: WIDE</div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-ink-aged eink-border p-6">
+                            <h3 class="text-lg font-bold mb-4 ink-glow">TYPOGRAPHY</h3>
+                            <div class="space-y-2 font-mono text-sm">
+                                <div>FONT: CHARTER</div>
+                                <div>SIZE: 18px</div>
+                                <div>SPACING: 1.6</div>
+                                <div>WEIGHT: NORMAL</div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-ink-paper eink-border p-6">
+                            <h3 class="text-lg font-bold mb-4 ink-glow">BEHAVIOR</h3>
+                            <div class="space-y-2 font-mono text-sm">
+                                <div>GESTURES: ENABLED</div>
+                                <div>SLEEP: 30MIN</div>
+                                <div>SYNC: AUTO</div>
+                                <div>TRACKING: OFF</div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-ink-shadow eink-border p-6">
+                            <h3 class="text-lg font-bold mb-4 ink-glow">SYSTEM</h3>
+                            <div class="space-y-2 font-mono text-sm">
+                                <div>OS: BRUTALINK 3.1</div>
+                                <div>STORAGE: 89% FREE</div>
+                                <div>MEMORY: 2.1GB</div>
+                                <div>UPTIME: 12 DAYS</div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Footer -->
+            <footer class="bg-ink-dark text-ink-cream p-8 mt-16">
+                <div class="max-w-7xl mx-auto">
+                    <div class="ascii-display text-center">
+╔════════════════════════════════════════════════════════════════╗
+║                                                                ║
+║    ██████  ██████  ██    ██ ████████  █████  ██      ██ ███    ║
+║    ██   ██ ██   ██ ██    ██    ██    ██   ██ ██      ██ ████   ║
+║    ██████  ██████  ██    ██    ██    ███████ ██      ██ ██ ██  ║
+║    ██   ██ ██   ██ ██    ██    ██    ██   ██ ██      ██ ██  ██ ║
+║    ██████  ██   ██  ██████     ██    ██   ██ ███████ ██ ██   ██║
+║                                                                ║
+║                    DESIGNED FOR DIGITAL READERS                ║
+║                    BUILT FOR UNCOMPROMISING CLARITY           ║
+║                                                                ║
+╚════════════════════════════════════════════════════════════════╝</div>
+                </div>
+            </footer>
+        </div>
+    </body>
+</html>

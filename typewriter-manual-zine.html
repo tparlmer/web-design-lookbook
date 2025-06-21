@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SYSTEMS FAILURE SURVIVAL MANUAL</title>
+    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Courier Prime', monospace;
+            background: #f8f6f0;
+            line-height: 1.6;
+            color: #2c2c2c;
+        }
+        
+        .manual-container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: #fefefe;
+            min-height: 100vh;
+            position: relative;
+        }
+        
+        /* Paper effect with holes */
+        .manual-container::before {
+            content: '';
+            position: absolute;
+            left: 40px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: #ff6b6b;
+            z-index: 1;
+        }
+        
+        .paper-holes {
+            position: absolute;
+            left: 20px;
+            top: 60px;
+            bottom: 60px;
+            width: 40px;
+            background: 
+                radial-gradient(circle at 20px 50px, transparent 8px, #fefefe 8px),
+                radial-gradient(circle at 20px 150px, transparent 8px, #fefefe 8px),
+                radial-gradient(circle at 20px 250px, transparent 8px, #fefefe 8px),
+                radial-gradient(circle at 20px 350px, transparent 8px, #fefefe 8px),
+                radial-gradient(circle at 20px 450px, transparent 8px, #fefefe 8px),
+                radial-gradient(circle at 20px 550px, transparent 8px, #fefefe 8px);
+            background-size: 40px 100px;
+        }
+        
+        .content {
+            padding: 3rem 3rem 3rem 5rem;
+            position: relative;
+            z-index: 2;
+        }
+        
+        /* Typography hierarchy */
+        .manual-title {
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 700;
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.1em;
+            border: 3px solid #2c2c2c;
+            padding: 1rem;
+            background: #2c2c2c;
+            color: #fefefe;
+        }
+        
+        .manual-subtitle {
+            text-align: center;
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+        
+        .section-header {
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 700;
+            font-size: 1.4rem;
+            margin: 3rem 0 1rem 0;
+            padding: 0.5rem 1rem;
+            background: #2c2c2c;
+            color: #fefefe;
+            display: inline-block;
+            transform: skew(-5deg);
+        }
+        
+        .subsection {
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin: 2rem 0 1rem 0;
+            text-decoration: underline;
+        }
+        
+        .field-note {
+            background: #fff9c4;
+            border-left: 4px solid #f7b731;
+            padding: 1rem;
+            margin: 1.5rem 0;
+            font-style: italic;
+        }
+        
+        .warning-box {
+            background: #ffe6e6;
+            border: 2px dashed #ff6b6b;
+            padding: 1rem;
+            margin: 1.5rem 0;
+            text-align: center;
+            font-weight: 700;
+        }
+        
+        .checklist {
+            background: #f0f9ff;
+            border-left: 4px solid #3b82f6;
+            padding: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .checklist ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .checklist li {
+            margin: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+        
+        .checklist li::before {
+            content: '☐';
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+        
+        /* Image placeholders */
+        .illustration-space {
+            width: 100%;
+            height: 200px;
+            background: #f8f9fa;
+            border: 2px dashed #6c757d;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 2rem 0;
+            font-style: italic;
+            color: #6c757d;
+        }
+        
+        .waifu-corner {
+            width: 150px;
+            height: 200px;
+            background: #ffe4e6;
+            border: 2px dashed #ff6b6b;
+            float: right;
+            margin: 0 0 1rem 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            text-align: center;
+            color: #d63384;
+            font-style: italic;
+        }
+        
+        .diagram-space {
+            width: 100%;
+            height: 150px;
+            background: #e6f3ff;
+            border: 1px solid #0066cc;
+            margin: 1rem 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-style: italic;
+            color: #0066cc;
+        }
+        
+        /* Technical formatting */
+        .code-block {
+            font-family: 'JetBrains Mono', monospace;
+            background: #2c2c2c;
+            color: #00ff00;
+            padding: 1rem;
+            margin: 1rem 0;
+            font-size: 0.9rem;
+            overflow-x: auto;
+        }
+        
+        .step-number {
+            display: inline-block;
+            background: #2c2c2c;
+            color: #fefefe;
+            width: 2rem;
+            height: 2rem;
+            text-align: center;
+            line-height: 2rem;
+            font-weight: bold;
+            margin-right: 0.5rem;
+        }
+        
+        .equipment-list {
+            columns: 2;
+            column-gap: 2rem;
+            margin: 1rem 0;
+        }
+        
+        .equipment-list li {
+            break-inside: avoid;
+            margin-bottom: 0.5rem;
+        }
+        
+        /* Page break simulation */
+        .page-break {
+            border-top: 2px dashed #ccc;
+            margin: 4rem 0 2rem 0;
+            padding-top: 2rem;
+            position: relative;
+        }
+        
+        .page-break::before {
+            content: '--- PAGE ' counter(page) ' ---';
+            counter-increment: page;
+            position: absolute;
+            top: -1rem;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #fefefe;
+            padding: 0 1rem;
+            font-size: 0.8rem;
+            color: #666;
+        }
+        
+        /* Counter initialization */
+        body {
+            counter-reset: page 1;
+        }
+        
+        @media (max-width: 768px) {
+            .content {
+                padding: 2rem 1rem 2rem 3rem;
+            }
+            
+            .manual-title {
+                font-size: 1.8rem;
+            }
+            
+            .equipment-list {
+                columns: 1;
+            }
+            
+            .waifu-corner {
+                float: none;
+                margin: 1rem auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="manual-container">
+        <div class="paper-holes"></div>
+        
+        <div class="content">
+            <!-- Title Page -->
+            <div class="manual-title">SYSTEMS FAILURE<br>SURVIVAL MANUAL</div>
+            <div class="manual-subtitle">
+                A Cheerful Guide to Thriving When Everything Goes Wrong<br>
+                <strong>Version 2.1 - Field Edition</strong>
+            </div>
+            
+            <div class="illustration-space">
+                [COVER ILLUSTRATION: Anime Prepper Waifu with oversized tactical helmet giving thumbs up while surrounded by various system failure icons - power outages, broken credit cards, etc.]
+            </div>
+            
+            <div class="field-note">
+                <strong>IMPORTANT:</strong> Remember, the key to surviving any systems failure is maintaining a positive attitude and having the right knowledge. This manual combines both! Don't panic - we've got you covered.
+            </div>
+            
+            <!-- Introduction -->
+            <div class="section-header">INTRODUCTION: DON'T PANIC</div>
+            
+            <div class="waifu-corner">
+                Tactical Waifu Says:<br>
+                "Systems fail,<br>
+                but you won't!"<br>
+                ٩(◕‿◕)۶
+            </div>
+            
+            <p>Congratulations! You've just acquired the most important manual you'll ever own. In a world where systems are interconnected and fragile, this guide will help you navigate breakdowns with confidence, competence, and surprisingly good cheer.</p>
+            
+            <p>Modern civilization runs on approximately 47 critical systems (give or take a few, depending on your local bureaucracy). When these systems fail - and they will - most people panic. You, however, will be prepared.</p>
+            
+            <div class="warning-box">
+                CORE PRINCIPLE: Every system failure is just an opportunity to prove how awesome you are at problem-solving!
+            </div>
+            
+            <!-- Electrical System -->
+            <div class="page-break"></div>
+            <div class="section-header">ELECTRICAL SYSTEM FAILURES</div>
+            
+            <div class="subsection">Understanding the Grid (Before It Goes Dark)</div>
+            
+            <div class="waifu-corner">
+                "Electricity is like<br>
+                friendship - taken<br>
+                for granted until<br>
+                it's gone!"<br>
+                (｡◕‿◕｡)
+            </div>
+            
+            <p>The electrical grid is a magnificent, sprawling network of generators, transformers, and wires that somehow manages to keep your coffee maker working. It's also about as robust as a house of cards in a hurricane.</p>
+            
+            <div class="diagram-space">
+                [DIAGRAM: Simple electrical grid showing power plant → transmission lines → your toaster, with various failure points marked with cute skull icons]
+            </div>
+            
+            <div class="subsection">Power Outage Response Protocol</div>
+            
+            <div class="checklist">
+                <strong>IMMEDIATE ACTIONS (First 30 Minutes):</strong>
+                <ul>
+                    <li>Check if neighbors have power (peek outside - are their houses dark too?)</li>
+                    <li>Locate flashlights and/or headlamps (not your phone's flashlight - save that battery!)</li>
+                    <li>Check main breaker panel (maybe it's just your house being dramatic)</li>
+                    <li>Send obligatory "power's out" text to friends (everyone loves those)</li>
+                    <li>Secure any perishable foods in freezer/fridge (duct tape works great)</li>
+                </ul>
+            </div>
+            
+            <div class="field-note">
+                <strong>PRO TIP:</strong> The first rule of power outages is that everyone suddenly becomes an expert on power grid management. Nod politely when your neighbor explains how "this wouldn't happen in [insert random country here]."
+            </div>
+            
+            <div class="subsection">Essential Equipment Checklist</div>
+            
+            <div class="equipment-list">
+                <ul>
+                    <li><span class="step-number">1</span>Battery-powered/hand-crank radio</li>
+                    <li><span class="step-number">2</span>LED flashlights (minimum 3)</li>
+                    <li><span class="step-number">3</span>Rechargeable battery bank (20,000mAh+)</li>
+                    <li><span class="step-number">4</span>Solar charger panel</li>
+                    <li><span class="step-number">5</span>Portable generator (if budget allows)</li>
+                    <li><span class="step-number">6</span>Extension cords (outdoor rated)</li>
+                    <li><span class="step-number">7</span>Battery stockpile (AA, AAA, D)</li>
+                    <li><span class="step-number">8</span>Gas for generator (stabilized)</li>
+                </ul>
+            </div>
+            
+            <!-- Financial System -->
+            <div class="page-break"></div>
+            <div class="section-header">FINANCIAL SYSTEM BREAKDOWNS</div>
+            
+            <div class="subsection">When ATMs Become Expensive Paperweights</div>
+            
+            <div class="illustration-space">
+                [ILLUSTRATION: Waifu looking confused at broken ATM while holding a hammer, with "ERROR 404: MONEY NOT FOUND" on screen]
+            </div>
+            
+            <p>The modern financial system is held together by computer code, trust, and what economists call "the collective delusion that numbers on screens represent actual value." When this delicate balance breaks, things get interesting fast.</p>
+            
+            <div class="warning-box">
+                REALITY CHECK: Cash is king during financial system failures. Digital money is just pixels when the servers are down.
+            </div>
+            
+            <div class="subsection">Financial Preparedness Strategy</div>
+            
+            <div class="waifu-corner">
+                "Diversification<br>
+                isn't just for<br>
+                investment<br>
+                portfolios!"<br>
+                ლ(╹◡╹ლ)
+            </div>
+            
+            <div class="checklist">
+                <strong>FINANCIAL RESILIENCE TOOLKIT:</strong>
+                <ul>
+                    <li>Physical cash reserve (small bills preferred)</li>
+                    <li>Precious metals (silver coins are practical)</li>
+                    <li>Barter goods inventory (alcohol, cigarettes, coffee)</li>
+                    <li>Local community connections</li>
+                    <li>Useful skills that others need</li>
+                    <li>Emergency fund in credit union (not big bank)</li>
+                </ul>
+            </div>
+            
+            <div class="code-block">
+                CASH CALCULATION FORMULA:
+                Monthly_expenses × 3 = Minimum_cash_reserve
+                
+                EXAMPLE:
+                $2000/month × 3 = $6000 cash minimum
+                
+                (Store in fireproof safe, not under mattress)
+            </div>
+            
+            <!-- Communications System -->
+            <div class="page-break"></div>
+            <div class="section-header">COMMUNICATIONS BLACKOUTS</div>
+            
+            <div class="subsection">When Your Phone Becomes a Paperweight</div>
+            
+            <div class="waifu-corner">
+                "No WiFi?<br>
+                No problem!<br>
+                Talk to actual<br>
+                humans!"<br>
+                ＼(^○^)／
+            </div>
+            
+            <p>Modern humans check their phones approximately 2,617 times per day (scientific estimate). When cellular networks fail, the withdrawal symptoms are real. But humans communicated for thousands of years without smartphones - you can too!</p>
+            
+            <div class="subsection">Alternative Communication Methods</div>
+            
+            <div class="diagram-space">
+                [DIAGRAM: Communication hierarchy - Ham radio → Two-way radios → Smoke signals → Interpretive dance]
+            </div>
+            
+            <div class="checklist">
+                <strong>COMMUNICATION BACKUP SYSTEMS:</strong>
+                <ul>
+                    <li>Ham radio license and equipment</li>
+                    <li>Two-way radios (FRS/GMRS)</li>
+                    <li>Satellite communicator (expensive but reliable)</li>
+                    <li>Signal mirror for daylight messaging</li>
+                    <li>Whistle (three blasts = emergency signal)</li>
+                    <li>Good old-fashioned bulletin board</li>
+                </ul>
+            </div>
+            
+            <div class="field-note">
+                <strong>FASCINATING FACT:</strong> During Hurricane Katrina, amateur radio operators handled emergency traffic when all other communications failed. HAM radio: proving nerds are heroes since 1901.
+            </div>
+            
+            <!-- Transportation System -->
+            <div class="page-break"></div>
+            <div class="section-header">TRANSPORTATION DISRUPTIONS</div>
+            
+            <div class="subsection">Getting Around When Nothing Moves</div>
+            
+            <div class="illustration-space">
+                [ILLUSTRATION: Waifu riding a bicycle with tactical gear, passing stuck cars on highway, looking extremely pleased with herself]
+            </div>
+            
+            <p>Transportation systems are marvels of logistics that work perfectly until they don't. Gas shortages, infrastructure damage, or computer failures can grind everything to a halt faster than you can say "supply chain disruption."</p>
+            
+            <div class="subsection">Multi-Modal Mobility Planning</div>
+            
+            <div class="equipment-list">
+                <ul>
+                    <li><span class="step-number">1</span>Reliable bicycle + repair kit</li>
+                    <li><span class="step-number">2</span>Comfortable walking shoes</li>
+                    <li><span class="step-number">3</span>Local area maps (paper!)</li>
+                    <li><span class="step-number">4</span>Fuel stabilizer + gas cans</li>
+                    <li><span class="step-number">5</span>Jump starter battery pack</li>
+                    <li><span class="step-number">6</span>Emergency car kit</li>
+                    <li><span class="step-number">7</span>Public transit alternatives</li>
+                    <li><span class="step-number">8</span>Network of helpful friends</li>
+                </ul>
+            </div>
+            
+            <div class="warning-box">
+                REMEMBER: The best transportation is the one that works when you need it. Maintain multiple options!
+            </div>
+            
+            <!-- Legal System -->
+            <div class="page-break"></div>
+            <div class="section-header">LEGAL SYSTEM CHAOS</div>
+            
+            <div class="subsection">When Law and Order Takes a Coffee Break</div>
+            
+            <div class="waifu-corner">
+                "Documentation<br>
+                is your best<br>
+                defense!"<br>
+                📋 (◡‿◡✿)
+            </div>
+            
+            <p>Legal systems depend on functioning infrastructure, competent staff, and everyone agreeing to follow the same rules. During disasters, normal legal processes can break down spectacularly.</p>
+            
+            <div class="subsection">Legal Preparedness Documentation</div>
+            
+            <div class="checklist">
+                <strong>ESSENTIAL DOCUMENTS (Multiple copies):</strong>
+                <ul>
+                    <li>Government-issued photo ID</li>
+                    <li>Birth certificates for all family members</li>
+                    <li>Marriage certificate / divorce decree</li>
+                    <li>Property deeds and titles</li>
+                    <li>Insurance policies (all types)</li>
+                    <li>Medical records and prescriptions</li>
+                    <li>Financial account information</li>
+                    <li>Emergency contact lists</li>
+                </ul>
+            </div>
+            
+            <div class="field-note">
+                <strong>STORAGE TIP:</strong> Keep one set at home (fireproof safe), one with trusted friend/family, one in bank safety deposit box. Digital copies on encrypted USB drive.
+            </div>
+            
+            <!-- Conclusion -->
+            <div class="page-break"></div>
+            <div class="section-header">FINAL THOUGHTS: STAY CHEERFUL</div>
+            
+            <div class="illustration-space">
+                [FINAL ILLUSTRATION: Waifu giving peace sign while surrounded by all the prep gear, with sunset/sunrise in background suggesting hope]
+            </div>
+            
+            <p>Systems will fail. It's not a matter of if, but when. The difference between those who thrive and those who merely survive is preparation, attitude, and the wisdom to find humor in chaos.</p>
+            
+            <div class="warning-box">
+                ULTIMATE TRUTH: The most important prep is mental resilience. Everything else is just stuff.
+            </div>
+            
+            <p>Remember: you're not preparing for the end of the world - you're preparing for Tuesday with complications. Stay positive, stay prepared, and stay awesome.</p>
+            
+            <div class="field-note">
+                <strong>VERSION NOTES:</strong> This manual will be updated as new system failures are discovered and new solutions are developed. Send feedback to your local amateur radio operator or carrier pigeon.
+            </div>
+            
+            <div style="text-align: center; margin-top: 3rem; font-weight: bold;">
+                END OF MANUAL<br>
+                ★ ★ ★<br>
+                STAY PREPARED, STAY CHEERFUL
+            </div>
+        </div>
+    </div>
+</body>
+</html>

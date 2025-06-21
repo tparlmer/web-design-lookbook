@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>GOTHAM INK • Mobile Typography</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script>
+            tailwind.config = {
+                theme: {
+                    extend: {
+                        fontFamily: {
+                            'gotham': ['Gotham', 'sans-serif'],
+                        },
+                        colors: {
+                            'cold-paper': '#f8f9fb',
+                            'ice-white': '#fdfdfe',
+                            'frost': '#f0f2f5',
+                            'steel': '#e8eaed',
+                            'carbon': '#1a1d21',
+                            'charcoal': '#2d3135',
+                            'slate': '#6b7280',
+                        }
+                    }
+                }
+            }
+        </script>
+        <style>
+            @font-face {
+                font-family: 'Gotham';
+                src: url('Gotham/Gotham Ultra/Gotham Ultra.otf') format('opentype');
+                font-weight: 950;
+                font-style: normal;
+            }
+            @font-face {
+                font-family: 'Gotham';
+                src: url('Gotham/Gotham Black/Gotham Black.otf') format('opentype');
+                font-weight: 900;
+                font-style: normal;
+            }
+            @font-face {
+                font-family: 'Gotham';
+                src: url('Gotham/Gotham Bold/Gotham Bold.otf') format('opentype');
+                font-weight: 700;
+                font-style: normal;
+            }
+            @font-face {
+                font-family: 'Gotham';
+                src: url('Gotham/Gotham Medium/Gotham Medium.otf') format('opentype');
+                font-weight: 500;
+                font-style: normal;
+            }
+            @font-face {
+                font-family: 'Gotham';
+                src: url('Gotham/Gotham Regular/Gotham Regular.otf') format('opentype');
+                font-weight: 400;
+                font-style: normal;
+            }
+            @font-face {
+                font-family: 'Gotham';
+                src: url('Gotham/Gotham Book/Gotham Book.otf') format('opentype');
+                font-weight: 350;
+                font-style: normal;
+            }
+            @font-face {
+                font-family: 'Gotham';
+                src: url('Gotham/Gotham Light/Gotham Light.otf') format('opentype');
+                font-weight: 300;
+                font-style: normal;
+            }
+            @font-face {
+                font-family: 'Gotham';
+                src: url('Gotham/Gotham Extra Light/Gotham Extra Light.otf') format('opentype');
+                font-weight: 200;
+                font-style: normal;
+            }
+            @font-face {
+                font-family: 'Gotham';
+                src: url('Gotham/Gotham Thin/Gotham Thin.otf') format('opentype');
+                font-weight: 100;
+                font-style: normal;
+            }
+            
+            .ultra { font-weight: 950; }
+            .paper-texture {
+                background-image: 
+                    repeating-linear-gradient(45deg, transparent, transparent 2px, rgba(26,29,33,0.01) 2px, rgba(26,29,33,0.01) 4px),
+                    repeating-linear-gradient(-45deg, transparent, transparent 2px, rgba(45,49,53,0.005) 2px, rgba(45,49,53,0.005) 4px);
+            }
+            
+            .letterform-bg {
+                position: fixed;
+                font-size: 20rem;
+                font-weight: 950;
+                color: rgba(26,29,33,0.02);
+                z-index: -1;
+                pointer-events: none;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+            
+            .drop-cap-mobile {
+                font-size: 4rem;
+                line-height: 0.8;
+                float: left;
+                margin: 0.1em 0.2em 0 0;
+                font-weight: 950;
+            }
+            
+            .mobile-weight-demo {
+                touch-action: manipulation;
+                transition: transform 0.2s ease;
+            }
+            
+            .mobile-weight-demo:active {
+                transform: scale(0.95);
+            }
+            
+            .mobile-ascii {
+                font-family: 'Courier New', monospace;
+                line-height: 1.2;
+                white-space: pre;
+                font-size: 0.4rem;
+                overflow-x: auto;
+            }
+            
+            .touch-typography {
+                padding: 1rem;
+                margin: 0.5rem 0;
+                border-radius: 0.5rem;
+                transition: all 0.2s ease;
+            }
+            
+            .touch-typography:active {
+                transform: translateY(1px);
+            }
+            
+            @media (max-width: 640px) {
+                .letterform-bg {
+                    font-size: 15rem;
+                }
+            }
+        </style>
+    </head>
+    <body class="bg-cold-paper min-h-screen font-gotham text-carbon paper-texture">
+        <!-- Mobile Letterform Background -->
+        <div class="letterform-bg">G</div>
+        
+        <!-- Mobile Header -->
+        <header class="relative z-10 p-6 border-b border-steel">
+            <div class="text-center">
+                <h1 class="ultra text-6xl sm:text-7xl tracking-tighter leading-none mb-4">
+                    GOTHAM
+                </h1>
+                <div class="font-thin text-4xl sm:text-5xl tracking-widest mb-6">
+                    INK
+                </div>
+                <p class="font-light text-base sm:text-lg max-w-lg mx-auto leading-relaxed">
+                    A typographer's meditation on letterforms, weights, and the 
+                    geometric poetry of America's most beloved typeface.
+                </p>
+                <div class="mt-6 pt-6 border-t border-steel">
+                    <div class="font-light text-sm text-slate">
+                        Typography as Art • Mobile Edition<br>
+                        Issue 001 • Winter 2025
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div class="px-6 py-8 relative z-10">
+            <!-- Mobile Weight Showcase -->
+            <section class="mb-16">
+                <h2 class="ultra text-4xl sm:text-5xl mb-8 text-center tracking-tight">WEIGHT SPECTRUM</h2>
+                
+                <div class="space-y-4">
+                    <div class="mobile-weight-demo touch-typography bg-ice-white">
+                        <div class="text-3xl font-thin text-center">Thin</div>
+                        <div class="text-xs font-light text-center text-slate mt-1">100 weight</div>
+                    </div>
+                    <div class="mobile-weight-demo touch-typography bg-frost">
+                        <div class="text-3xl font-extralight text-center">Extra Light</div>
+                        <div class="text-xs font-light text-center text-slate mt-1">200 weight</div>
+                    </div>
+                    <div class="mobile-weight-demo touch-typography bg-ice-white">
+                        <div class="text-3xl font-light text-center">Light</div>
+                        <div class="text-xs font-light text-center text-slate mt-1">300 weight</div>
+                    </div>
+                    <div class="mobile-weight-demo touch-typography bg-frost">
+                        <div class="text-3xl font-normal text-center">Book</div>
+                        <div class="text-xs font-light text-center text-slate mt-1">350 weight</div>
+                    </div>
+                    <div class="mobile-weight-demo touch-typography bg-ice-white">
+                        <div class="text-3xl font-normal text-center">Regular</div>
+                        <div class="text-xs font-light text-center text-slate mt-1">400 weight</div>
+                    </div>
+                    <div class="mobile-weight-demo touch-typography bg-frost">
+                        <div class="text-3xl font-medium text-center">Medium</div>
+                        <div class="text-xs font-light text-center text-slate mt-1">500 weight</div>
+                    </div>
+                    <div class="mobile-weight-demo touch-typography bg-ice-white">
+                        <div class="text-3xl font-bold text-center">Bold</div>
+                        <div class="text-xs font-light text-center text-slate mt-1">700 weight</div>
+                    </div>
+                    <div class="mobile-weight-demo touch-typography bg-charcoal text-ice-white">
+                        <div class="text-3xl font-black text-center">Black</div>
+                        <div class="text-xs font-light text-center text-slate mt-1">900 weight</div>
+                    </div>
+                    <div class="mobile-weight-demo touch-typography bg-carbon text-ice-white">
+                        <div class="text-3xl ultra text-center">Ultra</div>
+                        <div class="text-xs font-light text-center text-slate mt-1">950 weight</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Mobile Design Questions -->
+            <section class="mb-16">
+                <h2 class="ultra text-4xl sm:text-5xl mb-8 text-center tracking-tight">DESIGN QUESTIONS</h2>
+                
+                <div class="space-y-12">
+                    <div class="touch-typography">
+                        <h3 class="text-2xl font-bold mb-4">What makes a letterform timeless?</h3>
+                        <div class="drop-cap-mobile text-carbon">G</div>
+                        <p class="font-light text-base leading-relaxed">
+                            otham's answer lies in its geometric foundation. Each character begins 
+                            with pure mathematical forms: circles, squares, triangles. Yet within this 
+                            rigid structure, subtle humanist touches emerge. The lowercase 'a' breathes. 
+                            The capital 'R' has personality. Perfection tempered by warmth.
+                        </p>
+                    </div>
+                    
+                    <div class="touch-typography">
+                        <h3 class="text-2xl font-bold mb-4">How many weights does meaning need?</h3>
+                        <div class="drop-cap-mobile text-carbon">N</div>
+                        <p class="font-light text-base leading-relaxed">
+                            ine weights from Thin to Ultra. Each serves a purpose. Thin whispers. 
+                            Light suggests. Regular states. Medium emphasizes. Bold declares. 
+                            Black shouts. Ultra commands. The designer chooses the volume of meaning.
+                        </p>
+                    </div>
+                    
+                    <div class="touch-typography">
+                        <h3 class="text-2xl font-bold mb-4">Can geometry contain emotion?</h3>
+                        <div class="drop-cap-mobile text-carbon">A</div>
+                        <p class="font-light text-base leading-relaxed">
+                            bsolutely. Gotham proves that systematic design needn't be cold. 
+                            Its proportions follow classical ratios. Its curves maintain consistent 
+                            optical weight. Yet it pulses with American optimism, institutional 
+                            authority, democratic accessibility.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Mobile Experimental Typography -->
+            <section class="mb-16">
+                <div class="text-center mb-12">
+                    <div class="ultra text-5xl sm:text-6xl leading-none tracking-tighter">
+                        LETTER
+                    </div>
+                    <div class="font-thin text-5xl sm:text-6xl leading-none tracking-widest mt-2">
+                        FORMS
+                    </div>
+                </div>
+                
+                <div class="space-y-6">
+                    <!-- Large A Study -->
+                    <div class="bg-frost p-8 text-center touch-typography">
+                        <div class="ultra text-8xl text-carbon mb-4">A</div>
+                        <div class="font-light text-sm">
+                            Apex angle: 74°<br>
+                            Counter proportion: 1:1.618<br>
+                            Baseline to cap: 100 units
+                        </div>
+                    </div>
+                    
+                    <!-- Stacked Typography for Mobile -->
+                    <div class="bg-charcoal text-ice-white p-8 text-center touch-typography">
+                        <div class="text-4xl space-y-1">
+                            <div class="ultra">G</div>
+                            <div class="font-black">O</div>
+                            <div class="font-bold">T</div>
+                            <div class="font-medium">H</div>
+                            <div class="font-normal">A</div>
+                            <div class="font-light">M</div>
+                        </div>
+                        <div class="font-light text-sm mt-4 text-slate">Vertical Weight Study</div>
+                    </div>
+                    
+                    <!-- Typography Pattern Grid -->
+                    <div class="bg-steel p-8 touch-typography">
+                        <div class="grid grid-cols-3 gap-4 text-center">
+                            <div class="ultra text-2xl">G</div>
+                            <div class="font-thin text-2xl">G</div>
+                            <div class="font-bold text-2xl">G</div>
+                            <div class="font-light text-2xl">G</div>
+                            <div class="ultra text-2xl">G</div>
+                            <div class="font-medium text-2xl">G</div>
+                            <div class="font-black text-2xl">G</div>
+                            <div class="font-normal text-2xl">G</div>
+                            <div class="font-thin text-2xl">G</div>
+                        </div>
+                        <div class="font-light text-sm text-center mt-4">Pattern Study</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Mobile Origin Story -->
+            <section class="mb-16">
+                <h2 class="ultra text-4xl sm:text-5xl mb-8 text-center tracking-tight">ORIGIN STORY</h2>
+                
+                <div class="space-y-8">
+                    <div class="touch-typography">
+                        <div class="ultra text-4xl float-left mr-3 leading-none">2000.</div>
+                        <p class="font-light text-base leading-relaxed">
+                            Tobias Frere-Jones begins sketching letterforms inspired by 
+                            architectural signage throughout New York City. The Port Authority 
+                            Bus Terminal. The Verrazano-Narrows Bridge. Hand-painted store signs 
+                            in the Bronx. Each source contributes to a growing alphabet of 
+                            geometric perfection.
+                        </p>
+                    </div>
+                    
+                    <div class="bg-ice-white border border-steel p-6 touch-typography">
+                        <p class="font-light text-base leading-relaxed">
+                            The typeface emerges from America's vernacular typography. Not from 
+                            European modernist theory, but from the practical needs of wayfinding, 
+                            commerce, and civic communication. Gotham is democracy in letterform.
+                        </p>
+                    </div>
+                    
+                    <div class="bg-frost p-6 touch-typography">
+                        <p class="font-light text-base leading-relaxed">
+                            <span class="font-bold">2004:</span> Obama's campaign adopts Gotham. 
+                            "HOPE" and "CHANGE" become typographic icons. The typeface transcends 
+                            design circles and enters political discourse.
+                        </p>
+                    </div>
+                    
+                    <!-- Mobile ASCII Art -->
+                    <div class="bg-charcoal text-ice-white p-4 text-center overflow-x-auto">
+                        <div class="mobile-ascii text-slate">
+┌─────────────────────────┐
+│    ████ ██   ██         │
+│      ██ ██   ██         │
+│      ██ ███████         │
+│      ██ ██   ██         │
+│      ██ ██   ██         │
+│                         │
+│   FRERE-JONES TYPE      │
+│                         │
+│  ARCHITECTURAL LETTERS  │
+│    NYC VERNACULAR       │
+│   DEMOCRATIC DESIGN     │
+└─────────────────────────┘
+                        </div>
+                    </div>
+                    
+                    <div class="bg-ice-white border border-steel p-6 touch-typography">
+                        <h4 class="font-bold mb-4 text-center">DESIGN PHILOSOPHY</h4>
+                        <div class="space-y-2 font-light text-sm text-center">
+                            <div>"Authoritative but not intimidating"</div>
+                            <div>"Confident but not arrogant"</div>
+                            <div>"Trustworthy and straightforward"</div>
+                            <div>"Accessible and democratic"</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Mobile Typography Art -->
+            <section class="mb-16">
+                <div class="text-center space-y-12">
+                    <!-- Contrast Study -->
+                    <div class="touch-typography">
+                        <div class="ultra text-6xl sm:text-7xl leading-none tracking-tighter">
+                            CONTRAST
+                        </div>
+                        <div class="font-thin text-2xl sm:text-3xl tracking-widest mt-4">
+                            IS EVERYTHING
+                        </div>
+                    </div>
+                    
+                    <!-- Mobile Size Relationships -->
+                    <div class="touch-typography">
+                        <div class="space-y-4">
+                            <div class="ultra text-6xl">BIG</div>
+                            <div class="font-medium text-3xl">medium</div>
+                            <div class="font-light text-lg">small</div>
+                            <div class="font-thin text-sm">tiny</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Mobile Weight Progression -->
+                    <div class="space-y-3 touch-typography">
+                        <div class="font-thin text-3xl">Evolution</div>
+                        <div class="font-light text-3xl">Evolution</div>
+                        <div class="font-normal text-3xl">Evolution</div>
+                        <div class="font-medium text-3xl">Evolution</div>
+                        <div class="font-bold text-3xl">Evolution</div>
+                        <div class="font-black text-3xl">Evolution</div>
+                        <div class="ultra text-3xl">Evolution</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Mobile Final Questions -->
+            <section class="mb-16">
+                <h2 class="ultra text-4xl sm:text-5xl mb-8 text-center tracking-tight">THE ETERNAL QUESTIONS</h2>
+                
+                <div class="space-y-8">
+                    <div class="bg-charcoal text-ice-white p-8 touch-typography">
+                        <h3 class="ultra text-3xl mb-6 text-center">WHY DO WE READ?</h3>
+                        <p class="font-light text-base leading-relaxed text-center">
+                            To connect. To understand. To feel less alone in the cosmos of 
+                            information. Typography is the bridge between mind and meaning. 
+                            Gotham builds that bridge with democratic precision.
+                        </p>
+                    </div>
+                    
+                    <div class="bg-frost p-8 touch-typography">
+                        <h3 class="ultra text-3xl mb-6 text-center">WHAT IS BEAUTY?</h3>
+                        <p class="font-light text-base leading-relaxed text-center">
+                            Function perfected. Form serving content. The right word in the 
+                            right weight at the right size. Beauty is clarity achieved through 
+                            systematic thinking and intuitive refinement.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="mt-16 text-center">
+                    <div class="ultra text-5xl sm:text-6xl leading-none tracking-tighter">
+                        LETTERS<br>
+                        <span class="font-thin">ARE</span><br>
+                        ALIVE
+                    </div>
+                </div>
+            </section>
+
+            <!-- Mobile Interactive Weight Test -->
+            <section class="mb-16">
+                <h2 class="ultra text-4xl sm:text-5xl mb-8 text-center tracking-tight">TOUCH & FEEL</h2>
+                <p class="font-light text-base text-center mb-8 text-slate">
+                    Tap each weight to experience the tactile nature of typography
+                </p>
+                
+                <div class="grid grid-cols-1 gap-4">
+                    <div class="mobile-weight-demo bg-ice-white border-2 border-steel p-6 text-center">
+                        <div class="font-thin text-4xl">WHISPER</div>
+                        <div class="font-light text-sm text-slate mt-2">Thin • 100</div>
+                    </div>
+                    <div class="mobile-weight-demo bg-frost border-2 border-steel p-6 text-center">
+                        <div class="font-light text-4xl">SPEAK</div>
+                        <div class="font-light text-sm text-slate mt-2">Light • 300</div>
+                    </div>
+                    <div class="mobile-weight-demo bg-ice-white border-2 border-steel p-6 text-center">
+                        <div class="font-medium text-4xl">DECLARE</div>
+                        <div class="font-light text-sm text-slate mt-2">Medium • 500</div>
+                    </div>
+                    <div class="mobile-weight-demo bg-charcoal text-ice-white p-6 text-center">
+                        <div class="font-black text-4xl">SHOUT</div>
+                        <div class="font-light text-sm text-slate mt-2">Black • 900</div>
+                    </div>
+                    <div class="mobile-weight-demo bg-carbon text-ice-white p-6 text-center">
+                        <div class="ultra text-4xl">COMMAND</div>
+                        <div class="font-light text-sm text-slate mt-2">Ultra • 950</div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Mobile Footer -->
+        <footer class="border-t border-steel p-6 bg-frost">
+            <div class="text-center">
+                <div class="ultra text-3xl mb-3">GOTHAM INK</div>
+                <p class="font-light text-sm mb-4">
+                    Typography • Design • Philosophy<br>
+                    Mobile Edition
+                </p>
+                <div class="font-light text-xs text-slate">
+                    Issue 001 • Winter 2025<br>
+                    Designed with Love for Letters<br>
+                    Optimized for Touch & Small Screens
+                </div>
+            </div>
+        </footer>
+    </body>
+</html>
