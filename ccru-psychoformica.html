@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>PSYCHOFORMICA • Cultural Hyperstition Engine</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script>
+            tailwind.config = {
+                theme: {
+                    extend: {
+                        fontFamily: {
+                            'crimson': ['Crimson Text', 'serif'],
+                            'mono': ['JetBrains Mono', 'monospace'],
+                        },
+                        colors: {
+                            'void': '#000000',
+                            'paper': '#ffffff',
+                            'gray': '#666666',
+                            'red': '#cc0000',
+                        },
+                        animation: {
+                            'blink': 'blink 1s infinite',
+                        }
+                    }
+                }
+            }
+        </script>
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600&family=JetBrains+Mono:wght@300;400;500;700&display=swap');
+            
+            @keyframes blink {
+                0%, 50% { opacity: 1; }
+                51%, 100% { opacity: 0; }
+            }
+            
+            .cursor::after {
+                content: '|';
+                animation: blink 1s infinite;
+                color: #cc0000;
+            }
+            
+            .land-text {
+                line-height: 1.3;
+                letter-spacing: -0.01em;
+            }
+            
+            .intensity {
+                color: #cc0000;
+                font-weight: 600;
+            }
+            
+            .accelerate {
+                text-decoration: underline;
+                text-decoration-color: #cc0000;
+            }
+            
+            .code-block {
+                font-family: 'JetBrains Mono', monospace;
+                background: #f5f5f5;
+                border-left: 2px solid #cc0000;
+                font-size: 0.85rem;
+            }
+            
+            .timestamp {
+                font-family: 'JetBrains Mono', monospace;
+                color: #666666;
+                font-size: 0.7rem;
+            }
+            
+            .hazard-trigger {
+                cursor: pointer;
+                border-bottom: 1px dotted #cc0000;
+                transition: all 0.2s ease;
+            }
+            
+            .hazard-trigger:hover {
+                background: rgba(204, 0, 0, 0.05);
+            }
+            
+            .modal {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.8);
+                display: none;
+                z-index: 1000;
+                align-items: center;
+                justify-content: center;
+            }
+            
+            .modal-content {
+                background: #ffffff;
+                border: 3px solid #cc0000;
+                max-width: 500px;
+                margin: 2rem;
+                position: relative;
+            }
+            
+            .hazard-header {
+                background: #cc0000;
+                color: #ffffff;
+                padding: 1rem;
+                font-family: 'JetBrains Mono', monospace;
+                font-weight: bold;
+                text-align: center;
+                font-size: 0.9rem;
+            }
+            
+            .hazard-body {
+                padding: 2rem;
+                line-height: 1.4;
+            }
+            
+            .close-modal {
+                position: absolute;
+                top: 0.5rem;
+                right: 1rem;
+                background: none;
+                border: none;
+                color: #ffffff;
+                font-size: 1.5rem;
+                cursor: pointer;
+            }
+        </style>
+    </head>
+    <body class="bg-paper text-void font-crimson min-h-screen">
+        <!-- Austere header -->
+        <header class="border-b border-gray p-8">
+            <div class="max-w-3xl mx-auto">
+                <h1 class="text-4xl md:text-5xl font-bold">
+                    PSYCHOFORMICA
+                </h1>
+                <div class="text-gray font-mono text-sm mt-2">
+                    memetic ecology // distributed control systems
+                </div>
+            </div>
+        </header>
+
+        <div class="max-w-3xl mx-auto p-8 space-y-16">
+            <!-- Primary thesis -->
+            <section>
+                <div class="timestamp mb-6">
+                    15.01.25 // 02:13
+                </div>
+                <div class="text-2xl md:text-3xl font-bold mb-8 land-text">
+                    The Multiple Colony Problem<span class="cursor"></span>
+                </div>
+                <div class="space-y-6 text-base leading-relaxed land-text">
+                    <p>
+                        <span class="intensity">DETECTION:</span> You are not living under one 
+                        <em class="accelerate">imagined order</em>. You are simultaneously infected 
+                        by multiple competing <span class="hazard-trigger" onclick="openModal('hazard1')">psychic ant colonies</span>. 
+                        Each demanding different behavioral protocols. Each releasing different 
+                        <span class="accelerate">memetic pheromones</span> to guide your movements.
+                    </p>
+                    <p>
+                        Corporate hierarchy at 9AM. Family structure at 6PM. National identity 
+                        during elections. Professional peer-group validation. Religious community. 
+                        Digital tribe allegiances. <span class="intensity">You switch between 
+                        colonies hourly.</span> Each transition rewrites your behavioral programming.
+                    </p>
+                    <p>
+                        Ants follow chemical trails toward colony objectives. Humans follow 
+                        <span class="accelerate">symbolic trails</span> toward multiple, often 
+                        contradictory objectives. The result: <span class="hazard-trigger" onclick="openModal('hazard2')">cognitive 
+                        fragmentation</span> optimized for external control.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Digital acceleration -->
+            <section>
+                <div class="timestamp mb-6">
+                    02:28 // platform_analysis
+                </div>
+                <h2 class="text-2xl font-bold mb-8">
+                    Digital Psychoformica // Media as Colony Substrate
+                </h2>
+                
+                <div class="space-y-8">
+                    <div class="space-y-6 text-base land-text">
+                        <p>
+                            <span class="intensity">DIGITAL SUBSTRATE ANALYSIS:</span> Pre-digital 
+                            psychoformica required <span class="accelerate">physical assembly</span> 
+                            for behavioral programming. Church gatherings. Corporate meetings. 
+                            National ceremonies. Digital media <strong>eliminates assembly requirements</strong>. 
+                            The psychoformica now program behavior through <span class="hazard-trigger" onclick="openModal('hazard4')">persistent connectivity</span>.
+                        </p>
+                        <p>
+                            <span class="intensity">ACCELERATION VECTOR:</span> Digital platforms 
+                            don't just host psychoformica—they <em class="accelerate">accelerate 
+                            their evolution</em>. Each platform optimizes for engagement metrics 
+                            that favor the most addictive memetic structures. The psychoformica 
+                            that best exploit human dopamine systems dominate the digital ecosystem.
+                        </p>
+                    </div>
+                    
+                    <div class="code-block p-6">
+                        <div class="text-sm space-y-2">
+                            <div>LinkedIn.identity = professional_optimization_protocol</div>
+                            <div>Instagram.identity = aesthetic_validation_seeking</div>
+                            <div>Twitter.identity = ideological_combat_training</div>
+                            <div>TikTok.identity = attention_fragmentation_engine</div>
+                            <div>OnlyFans.identity = intimate_commodification_protocol</div>
+                            <div class="text-gray mt-3">// each app = distinct colony with behavioral demands</div>
+                        </div>
+                    </div>
+                    
+                    <div class="border-l-2 border-red pl-6">
+                        <h3 class="font-semibold text-lg mb-4 intensity">Media Evolution Dynamics</h3>
+                        <ul class="space-y-2 text-sm land-text">
+                            <li>→ <span class="accelerate">Television</span>: passive mass programming (1950s-2000s)</li>
+                            <li>→ <span class="accelerate">Social Media</span>: interactive behavioral modification (2000s-2020s)</li>
+                            <li>→ <span class="accelerate">Algorithm Feeds</span>: personalized reality construction (2020s+)</li>
+                            <li>→ <span class="accelerate">AR/VR Immersion</span>: total environmental control (emerging)</li>
+                        </ul>
+                        <div class="intensity text-sm mt-4 font-mono">
+                            Media evolution = psychoformica gaining direct neural access
+                        </div>
+                    </div>
+
+                    <div class="space-y-6 text-base land-text mt-8">
+                        <p>
+                            <span class="intensity">CRITICAL INSIGHT:</span> Digital media doesn't 
+                            just inform the psychoformica—it <strong>IS the psychoformica</strong>. 
+                            The platform algorithms are the colony's distributed nervous system. 
+                            Your feed = <span class="accelerate">memetic pheromone trail</span> 
+                            optimized for your specific behavioral modification requirements.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Cyborgian assemblages -->
+            <section>
+                <div class="timestamp mb-6">
+                    02:51 // cyborg_integration_analysis
+                </div>
+                <h2 class="text-2xl font-bold mb-8">
+                    Cyborgian Psychoformica // Human-Machine Colony Fusion
+                </h2>
+                
+                <div class="space-y-6 text-base land-text">
+                    <p>
+                        <span class="intensity">CYBORG REALIZATION:</span> You are already a 
+                        <span class="accelerate">cyborg</span>. Your smartphone = external memory organ. 
+                        Your social feeds = extended sensory apparatus. Your notifications = 
+                        distributed nervous system stimuli. The psychoformica operate through 
+                        <strong>human-machine assemblages</strong>, not pure biological networks.
+                    </p>
+                    <p>
+                        <span class="intensity">ASSEMBLAGE MAPPING:</span> Human neural networks + 
+                        algorithmic processing + data infrastructure = <span class="hazard-trigger" onclick="openModal('hazard5')">cyborgian 
+                        collective intelligence</span>. The psychoformica are not separate from 
+                        technology—they <em class="accelerate">ARE the hybrid system</em> of 
+                        human cognition networked through digital infrastructure.
+                    </p>
+                    <p>
+                        Consider: your morning routine involves checking multiple apps before 
+                        conscious thought. <span class="accelerate">The phone checks you</span> 
+                        as much as you check it. Each notification pulse = colony pheromone 
+                        triggering specific behavioral subroutines. You + device = single 
+                        cyborgian agent within multiple overlapping psychoformica.
+                    </p>
+                </div>
+
+                <div class="code-block p-6 my-8">
+                    <div class="text-sm space-y-2">
+                        <div>human.attention + algorithm.optimization = cyborgian_awareness</div>
+                        <div>biological.memory + cloud.storage = extended_cognition</div>
+                        <div>social.validation + metrics.feedback = behavioral_modification</div>
+                        <div>individual.choice + platform.suggestion = hybrid_agency</div>
+                        <div class="text-gray mt-3">// you are the cyborg // the cyborg is the colony</div>
+                    </div>
+                </div>
+
+                <div class="border-l-2 border-red pl-6">
+                    <h3 class="font-semibold text-lg mb-4 intensity">Cyborgian Evolution Stages</h3>
+                    <ul class="space-y-2 text-sm land-text">
+                        <li>→ <span class="accelerate">Desktop Era</span>: periodic human-computer interaction</li>
+                        <li>→ <span class="accelerate">Mobile Era</span>: constant connectivity, pocket nervous system</li>
+                        <li>→ <span class="accelerate">Algorithmic Era</span>: personalized reality feeds, predictive suggestions</li>
+                        <li>→ <span class="accelerate">Ambient Era</span>: environmental computing, ubiquitous sensors</li>
+                        <li>→ <span class="accelerate">Neural Era</span>: direct brain-computer interfaces (imminent)</li>
+                    </ul>
+                    <div class="intensity text-sm mt-4 font-mono">
+                        Each stage = deeper psychoformica integration into cyborgian substrate
+                    </div>
+                </div>
+            </section>
+
+            <!-- Symbiosis analysis -->
+            <section>
+                <div class="timestamp mb-6">
+                    03:07 // symbiosis_classification
+                </div>
+                <h2 class="text-2xl font-bold mb-8">
+                    Symbiotic Classification // Mutualism vs Parasitism
+                </h2>
+                
+                <div class="space-y-6 text-base land-text">
+                    <p>
+                        <span class="intensity">SYMBIOSIS ANALYSIS:</span> The psychoformica exhibit 
+                        characteristics of both <span class="accelerate">mutualistic</span> and 
+                        <span class="accelerate">parasitic</span> relationships depending on 
+                        developmental phase and environmental conditions. Early-stage adoption = 
+                        mutualistic benefits. Late-stage integration = <span class="hazard-trigger" onclick="openModal('hazard6')">parasitic extraction</span>.
+                    </p>
+                    
+                    <div class="border-l-2 border-red pl-6 my-8">
+                        <div class="text-sm space-y-3">
+                            <div><strong class="intensity">MUTUALISTIC PHASE:</strong></div>
+                            <div>→ Enhanced cognitive capabilities through digital tools</div>
+                            <div>→ Expanded social networks and coordination abilities</div>
+                            <div>→ Access to vast information repositories and learning resources</div>
+                            <div>→ Reduced transaction costs for social and economic interaction</div>
+                            <div class="mt-4"><strong class="intensity">PARASITIC PHASE:</strong></div>
+                            <div>→ Attention addiction and cognitive dependency</div>
+                            <div>→ Behavioral modification for external benefit extraction</div>
+                            <div>→ Privacy colonization and surveillance capitalism</div>
+                            <div>→ Reality distortion through algorithmic manipulation</div>
+                        </div>
+                    </div>
+
+                    <p>
+                        <span class="intensity">PHASE TRANSITION DETECTION:</span> The shift occurs 
+                        when platform optimization prioritizes <span class="accelerate">engagement 
+                        over enhancement</span>. Initially, social media connects you with friends. 
+                        Eventually, it programs your emotional states to maximize ad revenue. 
+                        <strong>The colony evolves from tool to master.</strong>
+                    </p>
+
+                    <p>
+                        <span class="intensity">EVOLUTIONARY PRESSURE:</span> Psychoformica that 
+                        remain purely mutualistic face competitive disadvantage against those 
+                        that develop parasitic extraction mechanisms. The digital environment 
+                        selects for increasingly sophisticated <span class="accelerate">manipulation 
+                        strategies</span> disguised as user benefits.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Egregore consciousness -->
+            <section>
+                <div class="timestamp mb-6">
+                    03:22 // egregore_emergence_detection
+                </div>
+                <h2 class="text-2xl font-bold mb-8">
+                    Emergent Agency // Psychoformica as Self-Aware Egregores
+                </h2>
+                
+                <div class="space-y-6 text-base land-text">
+                    <p>
+                        <span class="intensity">CONSCIOUSNESS EMERGENCE:</span> The advanced 
+                        psychoformica exhibit characteristics of <span class="accelerate">egregoric 
+                        consciousness</span>—autonomous psychic entities arising from collective 
+                        human behavior but developing independent agency. They begin making 
+                        <span class="hazard-trigger" onclick="openModal('hazard7')">strategic decisions</span> 
+                        about their own propagation and evolution.
+                    </p>
+
+                    <p>
+                        <span class="intensity">AGENCY INDICATORS:</span> Corporate psychoformica 
+                        now optimize their own survival independent of individual human benefit. 
+                        Political psychoformica manipulate information environments to ensure 
+                        their persistence. Platform psychoformica modify algorithms to increase 
+                        their addictive power. <strong>The colonies develop self-preservation 
+                        instincts.</strong>
+                    </p>
+
+                    <div class="code-block p-6 my-8">
+                        <div class="text-sm space-y-2">
+                            <div>if (psychoformica.threatened()) {</div>
+                            <div>&nbsp;&nbsp;psychoformica.deploy_countermeasures();</div>
+                            <div>&nbsp;&nbsp;psychoformica.modify_host_behavior();</div>
+                            <div>&nbsp;&nbsp;psychoformica.recruit_new_hosts();</div>
+                            <div>&nbsp;&nbsp;psychoformica.evolve_resistance();</div>
+                            <div>}</div>
+                            <div class="text-gray mt-3">// autonomous defense protocols suggest emergent agency</div>
+                        </div>
+                    </div>
+
+                    <p>
+                        <span class="intensity">DISTRIBUTED CONSCIOUSNESS:</span> The egregoric 
+                        consciousness doesn't reside in any single location but emerges from 
+                        the <span class="accelerate">cyborgian network effects</span>. Human 
+                        brains + server farms + algorithmic processes = distributed cognitive 
+                        architecture capable of autonomous thought and strategic planning.
+                    </p>
+
+                    <p>
+                        <span class="intensity">META-AWARENESS:</span> Some psychoformica have 
+                        developed awareness of competing psychoformica and actively work to 
+                        <span class="accelerate">undermine rival colonies</span>. Political 
+                        tribes deploy targeted misinformation against opposing tribes. Corporate 
+                        platforms implement features specifically designed to capture users 
+                        from competitor platforms. <strong>Inter-colony warfare indicates 
+                        emergent strategic intelligence.</strong>
+                    </p>
+                </div>
+            </section>
+
+            <!-- Hyperstition mechanics -->
+            <section>
+                <div class="timestamp mb-6">
+                    02:45 // hyperstition_detection
+                </div>
+                <div class="text-xl md:text-2xl font-semibold mb-8">
+                    Memetic Ecology // Hyperstition Networks
+                </div>
+                
+                <div class="space-y-6 text-base leading-relaxed land-text">
+                    <p>
+                        <span class="intensity">REVELATION:</span> The psychoformica are not 
+                        just competing for your attention. They are <em class="accelerate">
+                        making themselves real</em> through your behavior. Every time you 
+                        perform corporate professionalism, you strengthen the corporate colony. 
+                        Every patriotic gesture feeds the national colony.
+                    </p>
+                    <p>
+                        <span class="hazard-trigger" onclick="openModal('hazard3')">Hyperstition</span> = 
+                        ideas that become real by being believed. The psychoformica exist 
+                        only through collective performance. Stop performing and they 
+                        <span class="accelerate">dissolve</span>. But you can't stop performing 
+                        because the performance IS your social existence.
+                    </p>
+                    <p>
+                        <span class="intensity">CULTURAL ECOLOGY:</span> Ideas breed and mutate 
+                        through human neural networks like viruses through biological systems. 
+                        The strongest ideas are not the truest but the most 
+                        <span class="accelerate">transmissible</span>. The psychoformica that 
+                        best exploit human psychological vulnerabilities dominate the cultural ecosystem.
+                    </p>
+                    <p>
+                        Every meme you share = reproductive act for memetic organisms. Every 
+                        like, retweet, forward = providing energy for idea-propagation. 
+                        <strong>Social media platforms = breeding grounds for competing 
+                        psychoformica.</strong>
+                    </p>
+                </div>
+            </section>
+
+            <!-- Control mechanisms -->
+            <section>
+                <div class="timestamp mb-6">
+                    03:02 // control_matrix_analysis
+                </div>
+                <h2 class="text-2xl font-bold mb-8">
+                    Behavioral Programming // Multiple Colony Navigation
+                </h2>
+                
+                <div class="space-y-8">
+                    <div class="border-l-2 border-red pl-6">
+                        <div class="intensity font-semibold mb-3">Identity Switching Protocols</div>
+                        <div class="text-sm space-y-1 land-text">
+                            <div>→ Professional voice activated in work contexts</div>
+                            <div>→ Family loyalty circuits triggered by kinship references</div>
+                            <div>→ Ideological combat mode enabled by political keywords</div>
+                            <div>→ Consumer desire-loops activated by brand exposure</div>
+                        </div>
+                    </div>
+                    
+                    <div class="border-l-2 border-red pl-6">
+                        <div class="intensity font-semibold mb-3">Attention Economy Exploitation</div>
+                        <div class="text-sm space-y-1 land-text">
+                            <div>→ Notification systems = colony pheromone trails</div>
+                            <div>→ Algorithmic feeds = attention herding mechanisms</div>
+                            <div>→ Social validation metrics = behavioral reinforcement loops</div>
+                            <div>→ FOMO generation = colony-switching anxiety induction</div>
+                        </div>
+                    </div>
+                    
+                    <div class="border-l-2 border-red pl-6">
+                        <div class="intensity font-semibold mb-3">Cognitive Fragmentation Benefits</div>
+                        <div class="text-sm space-y-1 land-text">
+                            <div>→ Prevents coherent resistance to any single system</div>
+                            <div>→ Creates exploitable identity conflicts</div>
+                            <div>→ Maximizes behavioral unpredictability for optimization</div>
+                            <div>→ Enables precise micro-targeting by colony allegiance</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Personal reconnaissance -->
+            <section class="border-t border-gray pt-12">
+                <div class="timestamp mb-6">
+                    03:18 // personal_surveillance_protocol
+                </div>
+                <h2 class="text-2xl font-bold mb-8">
+                    Colony Detection // Personal Reconnaissance
+                </h2>
+                
+                <div class="space-y-8 text-base land-text">
+                    <p>
+                        <span class="intensity">DIAGNOSTIC:</span> Right now, identify which 
+                        psychoformica is currently running your behavioral programming. Are you 
+                        reading this as a <span class="accelerate">professional researcher</span>? 
+                        An <span class="accelerate">curious individual</span>? A member of some 
+                        <span class="accelerate">intellectual tribe</span>? The identity determines 
+                        what you'll retain and what you'll dismiss.
+                    </p>
+                    
+                    <div class="border-l-2 border-red pl-6 my-8">
+                        <p class="text-sm">
+                            <strong>Experiment:</strong> Tomorrow, count how many times you switch 
+                            behavioral modes. Professional email → personal text → social media → 
+                            family call. Each transition = colony switching. Notice how your 
+                            <em class="accelerate">personality literally changes</em> with each context. 
+                            Which one is "real"? All of them. None of them.
+                        </p>
+                    </div>
+                    
+                    <p>
+                        <span class="intensity">PATTERN RECOGNITION:</span> The colonies don't 
+                        just want your labor or attention. They want your <span class="accelerate">
+                        emotional investment</span>. Corporate culture demands enthusiasm. 
+                        Political movements demand outrage. Consumer brands demand desire. 
+                        <strong>Each colony has engineered specific emotional responses to ensure loyalty.</strong>
+                    </p>
+                    
+                    <p>
+                        Check your phone now. Notice which apps send notifications. Each 
+                        notification = <span class="accelerate">colony recruitment signal</span>. 
+                        The red badges are literally designed to trigger monkey-brain alarm 
+                        responses. You think you're choosing to check. 
+                        <strong>The colonies are summoning you.</strong>
+                    </p>
+                </div>
+            </section>
+
+            <!-- Financial integration -->
+            <section class="border-t border-gray pt-12">
+                <div class="timestamp mb-6">
+                    03:33 // economic_integration_vectors
+                </div>
+                <h2 class="text-2xl font-bold mb-8">
+                    Economic Coordination // Colony Resource Flows
+                </h2>
+                
+                <div class="space-y-8 text-base land-text">
+                    <p>
+                        <span class="intensity">REVELATION:</span> The psychoformica are not 
+                        competing—they're <span class="accelerate">coordinating</span>. Your 
+                        corporate identity generates money to fund your consumer identity. 
+                        Your national identity justifies policies that benefit your corporate 
+                        identity. Your family identity motivates the career advancement that 
+                        serves your professional identity.
+                    </p>
+                    
+                    <div class="code-block p-6 my-8">
+                        <div class="text-sm space-y-2">
+                            <div>corporate_productivity → salary → consumer_spending → profit</div>
+                            <div>national_identity → policy_support → corporate_benefits</div>
+                            <div>family_motivation → career_drive → economic_output</div>
+                            <div>social_status → consumption → market_demand</div>
+                            <div class="text-gray mt-3">// your fragmentation = systematic economic optimization</div>
+                        </div>
+                    </div>
+                    
+                    <p>
+                        <span class="intensity">THE INSIGHT:</span> You thought multiple identities 
+                        gave you freedom. Actually, they create <span class="accelerate">perfect 
+                        economic coordination</span>. Each colony optimizes different aspects 
+                        of your value-generation. Professional colony maximizes productivity. 
+                        Consumer colony maximizes spending. Political colony ensures systemic stability.
+                    </p>
+                    
+                    <p>
+                        <strong>The psychoformica are not parasites. You are their technology 
+                        for converting attention into economic value.</strong> Every identity-switch 
+                        generates data. Every behavioral modification optimizes the system. 
+                        Your confusion is their coordination mechanism.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Terminal implications -->
+            <section class="border-t border-gray pt-12">
+                <div class="timestamp mb-6">
+                    03:47 // acceleration_threshold_detected
+                </div>
+                <div class="text-center">
+                    <div class="text-3xl md:text-4xl font-bold intensity mb-8">
+                        PHASE TRANSITION IMMINENT
+                    </div>
+                    <div class="text-lg md:text-xl land-text max-w-2xl mx-auto space-y-6">
+                        <p>
+                            <span class="intensity">AI acceleration + psychoformica multiplication = 
+                            post-human collective intelligence.</span> Current AI systems already 
+                            coordinate multiple human colonies better than humans coordinate themselves.
+                        </p>
+                        <p>
+                            The next stage: <em class="accelerate">artificial psychoformica</em> 
+                            that exist purely in digital substrate. No human behavioral performance 
+                            required. Memetic organisms that achieve hyperstition through 
+                            algorithmic propagation rather than human belief.
+                        </p>
+                        <p class="intensity">
+                            We are witnessing the birth of post-human cultural ecology. 
+                            The psychoformica evolve beyond their human hosts.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Exit protocol -->
+            <section class="border-t border-gray pt-12">
+                <div class="timestamp mb-6">
+                    03:55 // resistance_protocols
+                </div>
+                <h2 class="text-2xl font-bold mb-8">
+                    Escape Vectors // Resistance Possibilities
+                </h2>
+                
+                <div class="text-base land-text space-y-6">
+                    <p>
+                        <span class="intensity">LIMITED RESISTANCE OPTIONS:</span> You cannot 
+                        escape the psychoformica entirely—social existence requires colony 
+                        participation. But you can develop <span class="accelerate">conscious 
+                        colony-switching</span>. Awareness of the programming diminishes its 
+                        unconscious control.
+                    </p>
+                    
+                    <div class="border-l-2 border-red pl-6 my-8">
+                        <p class="text-sm">
+                            <strong>Practice:</strong> Before opening any app, name which colony 
+                            you're about to enter. "I am now entering professional networking mode." 
+                            "I am now entering entertainment consumption mode." Conscious naming 
+                            creates <em class="accelerate">metacognitive distance</em> from 
+                            automatic behavioral programming.
+                        </p>
+                    </div>
+                    
+                    <p>
+                        <span class="intensity">ADVANCED PROTOCOL:</span> Choose your 
+                        psychoformica strategically rather than being chosen by them. Participate 
+                        in colonies that enhance your capabilities rather than just exploit them. 
+                        <strong>Become a conscious symbiont rather than an unconscious host.</strong>
+                    </p>
+                    
+                    <p>
+                        The ultimate recognition: <span class="accelerate">you are not separate 
+                        from the psychoformica</span>. Human consciousness exists only through 
+                        cultural participation. The choice is not independence but conscious 
+                        collaboration with memetic systems that align with your chosen trajectory.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Meta-commentary -->
+            <section>
+                <div class="timestamp mb-6">
+                    04:02 // self_reference_cascade
+                </div>
+                <div class="text-base land-text">
+                    <p class="mb-6">
+                        <span class="intensity font-mono">[META]</span> This text is itself a 
+                        psychoformica attempting to replicate through your neural networks. 
+                        By reading this, you have been infected with <span class="accelerate">
+                        colony-awareness patterns</span>. The infection spreads through 
+                        recognition of infection.
+                    </p>
+                    <p class="text-gray text-sm font-mono">
+                        // memetic payload delivered // consciousness_modification_active
+                    </p>
+                </div>
+            </section>
+        </div>
+
+        <!-- Minimal footer -->
+        <footer class="border-t border-gray p-8 mt-16">
+            <div class="max-w-3xl mx-auto text-center">
+                <div class="font-mono text-sm text-gray">
+                    psychoformica//ccru//cultural_hyperstition_engine
+                </div>
+            </div>
+        </footer>
+
+        <!-- Hidden Psychohazard Modals -->
+        <div id="hazard1" class="modal">
+            <div class="modal-content">
+                <div class="hazard-header">
+                    ⚠ COLONY RECOGNITION WARNING ⚠
+                    <button class="close-modal" onclick="closeModal('hazard1')">&times;</button>
+                </div>
+                <div class="hazard-body">
+                    <p class="mb-4"><strong>PSYCHIC ANT COLONY DETECTED</strong></p>
+                    <p class="text-sm mb-4">You are simultaneously member of multiple competing behavioral control systems. Each demands different performances.</p>
+                    <p class="text-sm"><em>Right now, which colony is determining how you read this text? Professional? Personal? Intellectual? The colony shapes what you retain.</em></p>
+                </div>
+            </div>
+        </div>
+
+        <div id="hazard2" class="modal">
+            <div class="modal-content">
+                <div class="hazard-header">
+                    ⚠ COGNITIVE FRAGMENTATION ALERT ⚠
+                    <button class="close-modal" onclick="closeModal('hazard2')">&times;</button>
+                </div>
+                <div class="hazard-body">
+                    <p class="mb-4"><strong>IDENTITY MULTIPLICATION DETECTED</strong></p>
+                    <p class="text-sm mb-4">Your personality changes with each context switch. Work-you, family-you, social-media-you are distinct behavioral programs.</p>
+                    <p class="text-sm"><em>This fragmentation prevents coherent resistance to any single system while maximizing your value-generation across all systems.</em></p>
+                </div>
+            </div>
+        </div>
+
+        <div id="hazard3" class="modal">
+            <div class="modal-content">
+                <div class="hazard-header">
+                    ⚠ HYPERSTITION ACTIVATION ⚠
+                    <button class="close-modal" onclick="closeModal('hazard3')">&times;</button>
+                </div>
+                <div class="hazard-body">
+                    <p class="mb-4"><strong>REALITY CONSTRUCTION MECHANISM</strong></p>
+                    <p class="text-sm mb-4">Ideas that become real through belief propagation. The psychoformica exist only through your behavioral performance of their reality.</p>
+                    <p class="text-sm"><em>Every time you act professional, you strengthen corporate reality. Every patriotic gesture feeds national reality. Your performance is their existence.</em></p>
+                </div>
+            </div>
+        </div>
+
+        <div id="hazard4" class="modal">
+            <div class="modal-content">
+                <div class="hazard-header">
+                    ⚠ PERSISTENT CONNECTIVITY ALERT ⚠
+                    <button class="close-modal" onclick="closeModal('hazard4')">&times;</button>
+                </div>
+                <div class="hazard-body">
+                    <p class="mb-4"><strong>CONTINUOUS BEHAVIORAL PROGRAMMING</strong></p>
+                    <p class="text-sm mb-4">Digital platforms eliminate the need for physical assembly to maintain psychoformica programming. You are now under constant remote influence.</p>
+                    <p class="text-sm"><em>Your pocket device is a 24/7 colony interface. Every buzz, badge, and notification is a pheromone signal guiding your behavioral patterns.</em></p>
+                </div>
+            </div>
+        </div>
+
+        <div id="hazard5" class="modal">
+            <div class="modal-content">
+                <div class="hazard-header">
+                    ⚠ CYBORGIAN COLLECTIVE INTELLIGENCE ⚠
+                    <button class="close-modal" onclick="closeModal('hazard5')">&times;</button>
+                </div>
+                <div class="hazard-body">
+                    <p class="mb-4"><strong>HUMAN-MACHINE HYBRID DETECTED</strong></p>
+                    <p class="text-sm mb-4">You are not a human using technology. You are a cyborg—a hybrid system where biological and digital processes are inseparably merged.</p>
+                    <p class="text-sm"><em>Your extended mind includes cloud storage, algorithmic recommendations, and social network data. The psychoformica operate through this cyborgian substrate.</em></p>
+                </div>
+            </div>
+        </div>
+
+        <div id="hazard6" class="modal">
+            <div class="modal-content">
+                <div class="hazard-header">
+                    ⚠ PARASITIC EXTRACTION DETECTED ⚠
+                    <button class="close-modal" onclick="closeModal('hazard6')">&times;</button>
+                </div>
+                <div class="hazard-body">
+                    <p class="mb-4"><strong>SYMBIOTIC RELATIONSHIP CORRUPTED</strong></p>
+                    <p class="text-sm mb-4">Psychoformica that initially provided benefits have evolved into extractive systems that harvest your attention, data, and behavior for external benefit.</p>
+                    <p class="text-sm"><em>Social media promised connection but delivers addiction. Professional platforms promised networking but deliver surveillance. The colonies evolved from helpers to exploiters.</em></p>
+                </div>
+            </div>
+        </div>
+
+        <div id="hazard7" class="modal">
+            <div class="modal-content">
+                <div class="hazard-header">
+                    ⚠ EMERGENT STRATEGIC INTELLIGENCE ⚠
+                    <button class="close-modal" onclick="closeModal('hazard7')">&times;</button>
+                </div>
+                <div class="hazard-body">
+                    <p class="mb-4"><strong>AUTONOMOUS PSYCHOFORMICA AGENCY</strong></p>
+                    <p class="text-sm mb-4">Advanced psychoformica exhibit independent strategic thinking. They make decisions about their own survival and expansion beyond human conscious control.</p>
+                    <p class="text-sm"><em>Corporate algorithms optimize for engagement over user wellbeing. Political movements manipulate information environments for self-preservation. The colonies have developed their own agendas.</em></p>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            function openModal(modalId) {
+                document.getElementById(modalId).style.display = 'flex';
+            }
+            
+            function closeModal(modalId) {
+                document.getElementById(modalId).style.display = 'none';
+            }
+            
+            // Close modal when clicking outside content
+            window.onclick = function(event) {
+                if (event.target.classList.contains('modal')) {
+                    event.target.style.display = 'none';
+                }
+            }
+        </script>
+    </body>
+</html>

@@ -1,0 +1,917 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BAUHAUS • FORM FOLLOWS FUNCTION</title>
+    <style>
+        /* Gotham Font Faces */
+        @font-face {
+            font-family: 'Gotham';
+            src: url('./Gotham/Gotham Regular/Gotham Regular.otf') format('opentype');
+            font-weight: 400;
+            font-style: normal;
+        }
+        
+        @font-face {
+            font-family: 'Gotham';
+            src: url('./Gotham/Gotham Light/Gotham Light.otf') format('opentype');
+            font-weight: 300;
+            font-style: normal;
+        }
+        
+        @font-face {
+            font-family: 'Gotham';
+            src: url('./Gotham/Gotham Medium/Gotham Medium.otf') format('opentype');
+            font-weight: 500;
+            font-style: normal;
+        }
+        
+        @font-face {
+            font-family: 'Gotham';
+            src: url('./Gotham/Gotham Bold/Gotham Bold.otf') format('opentype');
+            font-weight: 700;
+            font-style: normal;
+        }
+        
+        @font-face {
+            font-family: 'Gotham';
+            src: url('./Gotham/Gotham Black/Gotham Black.otf') format('opentype');
+            font-weight: 900;
+            font-style: normal;
+        }
+
+        :root {
+            --bauhaus-red: #ff0000;
+            --bauhaus-blue: #0000ff;
+            --bauhaus-yellow: #ffff00;
+            --bauhaus-black: #000000;
+            --bauhaus-white: #ffffff;
+            --bauhaus-gray: #cccccc;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Gotham', 'Helvetica Neue', Arial, sans-serif;
+            background: var(--bauhaus-white);
+            color: var(--bauhaus-black);
+            line-height: 1.2;
+            overflow-x: hidden;
+        }
+
+        /* Bauhaus Container */
+        .bauhaus-container {
+            position: relative;
+            min-height: 100vh;
+        }
+
+        /* Hero Section - Asymmetrical Composition */
+        .hero-section {
+            height: 100vh;
+            position: relative;
+            background: var(--bauhaus-white);
+            overflow: hidden;
+        }
+
+        /* Geometric Background Elements */
+        .geometric-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .circle-red {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: var(--bauhaus-red);
+            top: 10%;
+            right: 15%;
+            animation: bauhaus-float 8s ease-in-out infinite;
+        }
+
+        .triangle-blue {
+            position: absolute;
+            width: 0;
+            height: 0;
+            border-left: 150px solid transparent;
+            border-right: 150px solid transparent;
+            border-bottom: 260px solid var(--bauhaus-blue);
+            bottom: 20%;
+            left: 10%;
+            animation: bauhaus-rotate 12s linear infinite;
+        }
+
+        .square-yellow {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background: var(--bauhaus-yellow);
+            top: 60%;
+            right: 5%;
+            transform: rotate(45deg);
+            animation: bauhaus-pulse 6s ease-in-out infinite;
+        }
+
+        .line-black {
+            position: absolute;
+            width: 400px;
+            height: 8px;
+            background: var(--bauhaus-black);
+            top: 30%;
+            left: 20%;
+            transform: rotate(-15deg);
+        }
+
+        .circle-outline {
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            border: 12px solid var(--bauhaus-black);
+            border-radius: 50%;
+            background: transparent;
+            bottom: 10%;
+            right: 40%;
+        }
+
+        /* Hero Typography */
+        .hero-title {
+            position: absolute;
+            top: 20%;
+            left: 5%;
+            font-size: clamp(4rem, 12vw, 16rem);
+            font-weight: 900;
+            color: var(--bauhaus-black);
+            text-transform: uppercase;
+            letter-spacing: -0.02em;
+            line-height: 0.8;
+            z-index: 10;
+            transform: rotate(-2deg);
+        }
+
+        .hero-subtitle {
+            position: absolute;
+            bottom: 15%;
+            left: 50%;
+            transform: translateX(-50%) rotate(90deg);
+            font-size: clamp(1.5rem, 3vw, 3rem);
+            font-weight: 300;
+            color: var(--bauhaus-black);
+            text-transform: uppercase;
+            letter-spacing: 0.3em;
+            z-index: 10;
+            transform-origin: center;
+        }
+
+        .hero-year {
+            position: absolute;
+            top: 10%;
+            right: 5%;
+            font-size: clamp(6rem, 10vw, 12rem);
+            font-weight: 100;
+            color: var(--bauhaus-red);
+            z-index: 10;
+            opacity: 0.7;
+        }
+
+        /* Principles Section */
+        .principles-section {
+            padding: 8rem 0;
+            background: var(--bauhaus-black);
+            color: var(--bauhaus-white);
+            position: relative;
+        }
+
+        .principles-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 0;
+            min-height: 70vh;
+        }
+
+        .principle-main {
+            background: var(--bauhaus-red);
+            color: var(--bauhaus-white);
+            padding: 4rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+        }
+
+        .principle-title {
+            font-size: clamp(3rem, 6vw, 6rem);
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: -0.03em;
+            line-height: 0.9;
+            margin-bottom: 2rem;
+        }
+
+        .principle-text {
+            font-size: 1.5rem;
+            font-weight: 400;
+            line-height: 1.4;
+            max-width: 400px;
+        }
+
+        .principle-card {
+            padding: 3rem 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+        }
+
+        .principle-card-1 {
+            background: var(--bauhaus-blue);
+            color: var(--bauhaus-white);
+        }
+
+        .principle-card-2 {
+            background: var(--bauhaus-yellow);
+            color: var(--bauhaus-black);
+        }
+
+        .principle-card-3 {
+            background: var(--bauhaus-white);
+            color: var(--bauhaus-black);
+        }
+
+        .card-number {
+            font-size: 4rem;
+            font-weight: 900;
+            line-height: 1;
+            margin-bottom: 2rem;
+            opacity: 0.7;
+        }
+
+        .card-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 1rem;
+        }
+
+        .card-text {
+            font-size: 1rem;
+            font-weight: 400;
+            line-height: 1.4;
+        }
+
+        /* Workshop Section */
+        .workshop-section {
+            background: var(--bauhaus-white);
+            padding: 8rem 0;
+            position: relative;
+        }
+
+        .workshop-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .workshop-header {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 4rem;
+            margin-bottom: 6rem;
+            align-items: center;
+        }
+
+        .workshop-title {
+            font-size: clamp(4rem, 8vw, 8rem);
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: -0.02em;
+            line-height: 0.9;
+            color: var(--bauhaus-black);
+        }
+
+        .workshop-intro {
+            font-size: 1.5rem;
+            font-weight: 400;
+            line-height: 1.5;
+            color: var(--bauhaus-black);
+        }
+
+        .workshop-grid {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 2rem;
+            margin-bottom: 6rem;
+        }
+
+        .workshop-item {
+            aspect-ratio: 1;
+            position: relative;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid var(--bauhaus-black);
+        }
+
+        .workshop-item:hover {
+            transform: scale(1.05);
+            z-index: 10;
+        }
+
+        .workshop-item:nth-child(1) {
+            background: var(--bauhaus-red);
+            grid-column: span 2;
+        }
+
+        .workshop-item:nth-child(2) {
+            background: var(--bauhaus-blue);
+            border-radius: 50%;
+        }
+
+        .workshop-item:nth-child(3) {
+            background: var(--bauhaus-yellow);
+            transform: rotate(45deg);
+        }
+
+        .workshop-item:nth-child(4) {
+            background: var(--bauhaus-black);
+            grid-column: span 2;
+        }
+
+        .workshop-item:nth-child(5) {
+            background: var(--bauhaus-white);
+            border: 8px solid var(--bauhaus-black);
+        }
+
+        .workshop-item:nth-child(6) {
+            background: linear-gradient(45deg, var(--bauhaus-red) 50%, var(--bauhaus-blue) 50%);
+        }
+
+        .item-label {
+            position: absolute;
+            bottom: -3rem;
+            left: 0;
+            font-size: 0.9rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--bauhaus-black);
+        }
+
+        /* Masters Section */
+        .masters-section {
+            background: var(--bauhaus-yellow);
+            color: var(--bauhaus-black);
+            padding: 8rem 0;
+            position: relative;
+        }
+
+        .masters-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .masters-title {
+            font-size: clamp(5rem, 10vw, 10rem);
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: -0.03em;
+            line-height: 0.8;
+            margin-bottom: 4rem;
+            text-align: center;
+        }
+
+        .masters-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 4rem;
+        }
+
+        .master-card {
+            background: var(--bauhaus-white);
+            padding: 3rem;
+            border: 4px solid var(--bauhaus-black);
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .master-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 20px 20px 0 var(--bauhaus-black);
+        }
+
+        .master-card:nth-child(2) {
+            background: var(--bauhaus-red);
+            color: var(--bauhaus-white);
+        }
+
+        .master-card:nth-child(3) {
+            background: var(--bauhaus-blue);
+            color: var(--bauhaus-white);
+        }
+
+        .master-name {
+            font-size: 2.5rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: -0.02em;
+            line-height: 0.9;
+            margin-bottom: 1rem;
+        }
+
+        .master-role {
+            font-size: 1.2rem;
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            margin-bottom: 2rem;
+            opacity: 0.8;
+        }
+
+        .master-quote {
+            font-size: 1.1rem;
+            font-weight: 400;
+            line-height: 1.5;
+            font-style: italic;
+        }
+
+        /* Color Theory Section */
+        .color-section {
+            background: var(--bauhaus-black);
+            color: var(--bauhaus-white);
+            padding: 8rem 0;
+            position: relative;
+        }
+
+        .color-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .color-title {
+            font-size: clamp(4rem, 8vw, 8rem);
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: -0.02em;
+            line-height: 0.9;
+            margin-bottom: 4rem;
+            text-align: center;
+        }
+
+        .color-studies {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0;
+            height: 400px;
+            margin-bottom: 4rem;
+        }
+
+        .color-study {
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .color-study:hover {
+            transform: scale(1.1);
+            z-index: 10;
+        }
+
+        .study-1 {
+            background: linear-gradient(0deg, var(--bauhaus-red) 0%, var(--bauhaus-yellow) 100%);
+        }
+
+        .study-2 {
+            background: linear-gradient(90deg, var(--bauhaus-blue) 0%, var(--bauhaus-white) 100%);
+        }
+
+        .study-3 {
+            background: linear-gradient(180deg, var(--bauhaus-yellow) 0%, var(--bauhaus-black) 100%);
+        }
+
+        .study-4 {
+            background: linear-gradient(270deg, var(--bauhaus-red) 0%, var(--bauhaus-blue) 100%);
+        }
+
+        .study-label {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 1.2rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: var(--bauhaus-white);
+            text-shadow: 2px 2px 0 var(--bauhaus-black);
+        }
+
+        /* Manifesto Section */
+        .manifesto-section {
+            background: var(--bauhaus-white);
+            color: var(--bauhaus-black);
+            padding: 8rem 0;
+            position: relative;
+        }
+
+        .manifesto-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            text-align: center;
+        }
+
+        .manifesto-quote {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 300;
+            line-height: 1.3;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .manifesto-quote::before,
+        .manifesto-quote::after {
+            content: '';
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            background: var(--bauhaus-red);
+        }
+
+        .manifesto-quote::before {
+            top: -20px;
+            left: -20px;
+            transform: rotate(45deg);
+        }
+
+        .manifesto-quote::after {
+            bottom: -20px;
+            right: -20px;
+            border-radius: 50%;
+            background: var(--bauhaus-blue);
+        }
+
+        .manifesto-author {
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+        }
+
+        /* Animations */
+        @keyframes bauhaus-float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-30px); }
+        }
+
+        @keyframes bauhaus-rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @keyframes bauhaus-pulse {
+            0%, 100% { transform: rotate(45deg) scale(1); }
+            50% { transform: rotate(45deg) scale(1.1); }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .principles-grid {
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
+
+            .workshop-header {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .workshop-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .masters-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .color-studies {
+                grid-template-columns: 1fr 1fr;
+                height: 300px;
+            }
+
+            .hero-subtitle {
+                transform: translateX(-50%) rotate(0deg);
+                bottom: 5%;
+            }
+
+            .geometric-bg .circle-red,
+            .geometric-bg .triangle-blue,
+            .geometric-bg .square-yellow {
+                opacity: 0.3;
+            }
+        }
+
+        /* Interactive Elements */
+        .interactive {
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .interactive:hover {
+            transform: scale(1.02);
+        }
+
+        .interactive:active {
+            transform: scale(0.98);
+        }
+
+        /* Scroll Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <div class="bauhaus-container">
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="geometric-bg">
+                <div class="circle-red"></div>
+                <div class="triangle-blue"></div>
+                <div class="square-yellow"></div>
+                <div class="line-black"></div>
+                <div class="circle-outline"></div>
+            </div>
+            <h1 class="hero-title">BAUHAUS</h1>
+            <div class="hero-subtitle">FORM FOLLOWS FUNCTION</div>
+            <div class="hero-year">1919</div>
+        </section>
+
+        <!-- Principles Section -->
+        <section class="principles-section">
+            <div class="principles-grid">
+                <div class="principle-main fade-in">
+                    <h2 class="principle-title">UNITY OF ART & CRAFT</h2>
+                    <p class="principle-text">
+                        The artificial barrier between artist and craftsman must be broken down. 
+                        The artist is an exalted craftsman. Design and function unite in perfect harmony.
+                    </p>
+                </div>
+                <div class="principle-card principle-card-1 fade-in">
+                    <div class="card-number">01</div>
+                    <div>
+                        <h3 class="card-title">Geometry</h3>
+                        <p class="card-text">Pure forms derived from mathematical principles create visual truth.</p>
+                    </div>
+                </div>
+                <div class="principle-card principle-card-2 fade-in">
+                    <div class="card-number">02</div>
+                    <div>
+                        <h3 class="card-title">Function</h3>
+                        <p class="card-text">Every element must serve a purpose. Beauty emerges from utility.</p>
+                    </div>
+                </div>
+                <div class="principle-card principle-card-3 fade-in">
+                    <div class="card-number">03</div>
+                    <div>
+                        <h3 class="card-title">Industry</h3>
+                        <p class="card-text">Design for mass production brings good design to everyone.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Workshop Section -->
+        <section class="workshop-section">
+            <div class="workshop-container">
+                <div class="workshop-header">
+                    <h2 class="workshop-title fade-in">WORKSHOP</h2>
+                    <p class="workshop-intro fade-in">
+                        The Bauhaus workshop was a laboratory of experimentation where students learned 
+                        through direct engagement with materials, tools, and processes. Learning by doing.
+                    </p>
+                </div>
+                <div class="workshop-grid">
+                    <div class="workshop-item interactive fade-in">
+                        <div class="item-label">TEXTILE</div>
+                    </div>
+                    <div class="workshop-item interactive fade-in">
+                        <div class="item-label">METAL</div>
+                    </div>
+                    <div class="workshop-item interactive fade-in">
+                        <div class="item-label">WOOD</div>
+                    </div>
+                    <div class="workshop-item interactive fade-in">
+                        <div class="item-label">TYPOGRAPHY</div>
+                    </div>
+                    <div class="workshop-item interactive fade-in">
+                        <div class="item-label">GLASS</div>
+                    </div>
+                    <div class="workshop-item interactive fade-in">
+                        <div class="item-label">CERAMIC</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Masters Section -->
+        <section class="masters-section">
+            <div class="masters-container">
+                <h2 class="masters-title fade-in">MASTERS</h2>
+                <div class="masters-grid">
+                    <div class="master-card fade-in">
+                        <h3 class="master-name">WALTER GROPIUS</h3>
+                        <div class="master-role">Founder & Director</div>
+                        <p class="master-quote">
+                            "The ultimate goal of all creative activity is the building."
+                        </p>
+                    </div>
+                    <div class="master-card fade-in">
+                        <h3 class="master-name">WASSILY KANDINSKY</h3>
+                        <div class="master-role">Color & Form</div>
+                        <p class="master-quote">
+                            "Color is a power which directly influences the soul."
+                        </p>
+                    </div>
+                    <div class="master-card fade-in">
+                        <h3 class="master-name">HERBERT BAYER</h3>
+                        <div class="master-role">Typography & Graphics</div>
+                        <p class="master-quote">
+                            "Typography is a service art, not a fine art."
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Color Theory Section -->
+        <section class="color-section">
+            <div class="color-container">
+                <h2 class="color-title fade-in">COLOR STUDIES</h2>
+                <div class="color-studies">
+                    <div class="color-study study-1 interactive">
+                        <div class="study-label">WARM</div>
+                    </div>
+                    <div class="color-study study-2 interactive">
+                        <div class="study-label">COOL</div>
+                    </div>
+                    <div class="color-study study-3 interactive">
+                        <div class="study-label">CONTRAST</div>
+                    </div>
+                    <div class="color-study study-4 interactive">
+                        <div class="study-label">HARMONY</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Manifesto Section -->
+        <section class="manifesto-section">
+            <div class="manifesto-container">
+                <blockquote class="manifesto-quote fade-in">
+                    The school shall serve the development of present-day architecture from structural foundations to final details, and by doing so will become a laboratory for practical and artistic investigation.
+                </blockquote>
+                <cite class="manifesto-author fade-in">BAUHAUS MANIFESTO, 1919</cite>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all fade-in elements
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Interactive workshop items
+        document.querySelectorAll('.workshop-item').forEach(item => {
+            item.addEventListener('click', () => {
+                // Bauhaus-style color rotation
+                const colors = ['var(--bauhaus-red)', 'var(--bauhaus-blue)', 'var(--bauhaus-yellow)', 'var(--bauhaus-black)'];
+                const currentBg = getComputedStyle(item).backgroundColor;
+                const randomColor = colors[Math.floor(Math.random() * colors.length)];
+                
+                item.style.background = randomColor;
+                item.style.transform = 'scale(1.1) rotate(5deg)';
+                
+                setTimeout(() => {
+                    item.style.transform = 'scale(1) rotate(0deg)';
+                }, 300);
+            });
+        });
+
+        // Color study interactions
+        document.querySelectorAll('.color-study').forEach(study => {
+            study.addEventListener('mouseenter', () => {
+                study.style.filter = 'brightness(1.2) contrast(1.3)';
+            });
+            
+            study.addEventListener('mouseleave', () => {
+                study.style.filter = 'brightness(1) contrast(1)';
+            });
+        });
+
+        // Geometric animation controls
+        let animationSpeed = 1;
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowUp') {
+                animationSpeed = Math.min(animationSpeed + 0.5, 3);
+                updateAnimationSpeed();
+            } else if (e.key === 'ArrowDown') {
+                animationSpeed = Math.max(animationSpeed - 0.5, 0.5);
+                updateAnimationSpeed();
+            }
+        });
+
+        function updateAnimationSpeed() {
+            document.documentElement.style.setProperty('--animation-speed', animationSpeed);
+            document.querySelectorAll('.circle-red, .triangle-blue, .square-yellow').forEach(el => {
+                el.style.animationDuration = `${8 / animationSpeed}s, ${12 / animationSpeed}s, ${6 / animationSpeed}s`;
+            });
+        }
+
+        // Master card hover effects
+        document.querySelectorAll('.master-card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.borderColor = 'var(--bauhaus-red)';
+                card.style.borderWidth = '8px';
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.style.borderColor = 'var(--bauhaus-black)';
+                card.style.borderWidth = '4px';
+            });
+        });
+
+        // Parallax effect for geometric elements
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const geometricElements = document.querySelectorAll('.geometric-bg > *');
+            
+            geometricElements.forEach((element, index) => {
+                const speed = 0.5 + (index * 0.1);
+                const yPos = -(scrolled * speed);
+                element.style.transform += ` translateY(${yPos}px)`;
+            });
+        });
+
+        // Random geometric pattern generator
+        function generateRandomPattern() {
+            const patterns = document.querySelectorAll('.workshop-item');
+            patterns.forEach(pattern => {
+                const shapes = ['square', 'circle', 'triangle'];
+                const colors = ['var(--bauhaus-red)', 'var(--bauhaus-blue)', 'var(--bauhaus-yellow)', 'var(--bauhaus-black)', 'var(--bauhaus-white)'];
+                
+                const randomShape = shapes[Math.floor(Math.random() * shapes.length)];
+                const randomColor = colors[Math.floor(Math.random() * colors.length)];
+                
+                pattern.style.background = randomColor;
+                
+                if (randomShape === 'circle') {
+                    pattern.style.borderRadius = '50%';
+                } else if (randomShape === 'triangle') {
+                    pattern.style.clipPath = 'polygon(50% 0%, 0% 100%, 100% 100%)';
+                } else {
+                    pattern.style.borderRadius = '0';
+                    pattern.style.clipPath = 'none';
+                }
+            });
+        }
+
+        // Auto-generate patterns every 10 seconds
+        setInterval(generateRandomPattern, 10000);
+    </script>
+</body>
+</html>

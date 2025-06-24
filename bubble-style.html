@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bubble Letter Style Demo</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Fredoka+One:wght@400&family=Nunito:wght@300;400;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Nunito', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        /* Main Bubble Title */
+        .bubble-title {
+            font-family: 'Fredoka One', cursive;
+            font-size: clamp(3rem, 8vw, 8rem);
+            text-align: center;
+            margin: 2rem 0;
+            color: #fff;
+            text-shadow: 
+                0 0 20px rgba(255, 255, 255, 0.8),
+                0 0 40px rgba(255, 255, 255, 0.5),
+                0 0 80px rgba(255, 255, 255, 0.3);
+            animation: float 3s ease-in-out infinite;
+            position: relative;
+        }
+        
+        .bubble-title::before {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4, #ffeaa7);
+            background-size: 400% 400%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradientShift 4s ease infinite;
+            z-index: -1;
+        }
+        
+        /* Bubble Text Styles */
+        .bubble-text {
+            font-family: 'Fredoka One', cursive;
+            font-size: clamp(1.5rem, 4vw, 3rem);
+            color: #fff;
+            text-align: center;
+            margin: 1rem 0;
+            text-shadow: 
+                3px 3px 0 #ff6b6b,
+                6px 6px 0 #4ecdc4,
+                9px 9px 0 rgba(0,0,0,0.3);
+            transform: perspective(500px) rotateX(15deg);
+            transition: all 0.3s ease;
+        }
+        
+        .bubble-text:hover {
+            transform: perspective(500px) rotateX(0deg) scale(1.05);
+            text-shadow: 
+                5px 5px 0 #ff6b6b,
+                10px 10px 0 #4ecdc4,
+                15px 15px 0 rgba(0,0,0,0.3);
+        }
+        
+        /* Bubble Cards */
+        .bubble-card {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border-radius: 30px;
+            padding: 2rem;
+            margin: 2rem 0;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 
+                0 20px 40px rgba(0,0,0,0.1),
+                inset 0 1px 0 rgba(255,255,255,0.2);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .bubble-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            transform: scale(0);
+            transition: transform 0.6s ease;
+        }
+        
+        .bubble-card:hover::before {
+            transform: scale(1);
+        }
+        
+        .bubble-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 
+                0 30px 60px rgba(0,0,0,0.2),
+                inset 0 1px 0 rgba(255,255,255,0.3);
+        }
+        
+        /* Bubble Buttons */
+        .bubble-btn {
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            border: none;
+            border-radius: 50px;
+            padding: 1rem 2rem;
+            font-family: 'Fredoka One', cursive;
+            font-size: 1.2rem;
+            color: white;
+            cursor: pointer;
+            text-shadow: 2px 2px 0 rgba(0,0,0,0.3);
+            box-shadow: 
+                0 10px 20px rgba(0,0,0,0.2),
+                inset 0 1px 0 rgba(255,255,255,0.3);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .bubble-btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255,255,255,0.3);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: all 0.6s ease;
+        }
+        
+        .bubble-btn:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+        
+        .bubble-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 
+                0 15px 30px rgba(0,0,0,0.3),
+                inset 0 1px 0 rgba(255,255,255,0.4);
+        }
+        
+        .bubble-btn:active {
+            transform: translateY(-2px);
+        }
+        
+        /* Navigation */
+        .bubble-nav {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+        
+        .nav-item {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 25px;
+            padding: 0.8rem 1.5rem;
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+        
+        .nav-item:hover {
+            background: rgba(255, 255, 255, 0.3);
+            border-color: rgba(255, 255, 255, 0.5);
+            transform: translateY(-3px);
+        }
+        
+        /* Content Grid */
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        
+        /* Floating Bubbles Background */
+        .floating-bubbles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        .bubble {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            animation: bubbleFloat 8s infinite ease-in-out;
+        }
+        
+        .bubble:nth-child(1) {
+            width: 60px;
+            height: 60px;
+            left: 10%;
+            animation-delay: 0s;
+        }
+        
+        .bubble:nth-child(2) {
+            width: 80px;
+            height: 80px;
+            left: 20%;
+            animation-delay: 2s;
+        }
+        
+        .bubble:nth-child(3) {
+            width: 40px;
+            height: 40px;
+            left: 35%;
+            animation-delay: 4s;
+        }
+        
+        .bubble:nth-child(4) {
+            width: 100px;
+            height: 100px;
+            left: 50%;
+            animation-delay: 1s;
+        }
+        
+        .bubble:nth-child(5) {
+            width: 70px;
+            height: 70px;
+            left: 70%;
+            animation-delay: 3s;
+        }
+        
+        .bubble:nth-child(6) {
+            width: 50px;
+            height: 50px;
+            left: 85%;
+            animation-delay: 5s;
+        }
+        
+        /* Animations */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        @keyframes bubbleFloat {
+            0% {
+                bottom: -100px;
+                opacity: 0;
+                transform: translateX(0px) rotate(0deg);
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                bottom: 100vh;
+                opacity: 0;
+                transform: translateX(-100px) rotate(360deg);
+            }
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+            
+            .bubble-nav {
+                gap: 1rem;
+            }
+            
+            .content-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+        }
+        
+        /* Special Effects */
+        .rainbow-text {
+            background: linear-gradient(45deg, #ff0000, #ff7f00, #ffff00, #00ff00, #0000ff, #8f00ff);
+            background-size: 400% 400%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradientShift 3s ease infinite;
+        }
+        
+        .glow-text {
+            color: #fff;
+            text-shadow: 
+                0 0 5px #fff,
+                0 0 10px #fff,
+                0 0 15px #fff,
+                0 0 20px #ff6b6b,
+                0 0 35px #ff6b6b,
+                0 0 40px #ff6b6b;
+        }
+    </style>
+</head>
+<body>
+    <div class="floating-bubbles">
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+    </div>
+
+    <div class="container">
+        <h1 class="bubble-title" data-text="BUBBLE STYLE">BUBBLE STYLE</h1>
+        
+        <nav class="bubble-nav">
+            <a href="#" class="nav-item">Home</a>
+            <a href="#" class="nav-item">About</a>
+            <a href="#" class="nav-item">Gallery</a>
+            <a href="#" class="nav-item">Contact</a>
+        </nav>
+
+        <div class="content-grid">
+            <div class="bubble-card">
+                <h2 class="bubble-text rainbow-text">Rainbow Bubbles</h2>
+                <p style="color: rgba(255,255,255,0.9); line-height: 1.6;">
+                    Experience the magic of bubble lettering with vibrant rainbow colors that dance across the screen. Each letter pops with personality and charm.
+                </p>
+                <br>
+                <button class="bubble-btn">Explore More</button>
+            </div>
+
+            <div class="bubble-card">
+                <h2 class="bubble-text glow-text">Glowing Effects</h2>
+                <p style="color: rgba(255,255,255,0.9); line-height: 1.6;">
+                    Watch as the text glows with ethereal light, creating a mesmerizing effect that captures attention and creates unforgettable visual impact.
+                </p>
+                <br>
+                <button class="bubble-btn">Learn More</button>
+            </div>
+
+            <div class="bubble-card">
+                <h2 class="bubble-text" style="color: #4ecdc4;">3D Depth</h2>
+                <p style="color: rgba(255,255,255,0.9); line-height: 1.6;">
+                    Our bubble letters feature stunning 3D depth effects with layered shadows and highlights that make text appear to float off the page.
+                </p>
+                <br>
+                <button class="bubble-btn">Get Started</button>
+            </div>
+        </div>
+
+        <div class="bubble-card" style="text-align: center;">
+            <h2 class="bubble-text" style="color: #ffeaa7; margin-bottom: 1rem;">Interactive Demo</h2>
+            <p style="color: rgba(255,255,255,0.9); line-height: 1.6; margin-bottom: 2rem;">
+                Click the buttons below to see different bubble text effects in action. Each style showcases unique characteristics of modern bubble lettering design.
+            </p>
+            <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                <button class="bubble-btn" onclick="changeStyle('rainbow')">Rainbow</button>
+                <button class="bubble-btn" onclick="changeStyle('glow')">Glow</button>
+                <button class="bubble-btn" onclick="changeStyle('shadow')">Shadow</button>
+                <button class="bubble-btn" onclick="changeStyle('gradient')">Gradient</button>
+            </div>
+            <div id="demo-text" class="bubble-text" style="margin-top: 2rem; transition: all 0.5s ease;">
+                BUBBLE POWER
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function changeStyle(style) {
+            const demoText = document.getElementById('demo-text');
+            
+            // Reset classes
+            demoText.className = 'bubble-text';
+            demoText.style.color = '';
+            demoText.style.textShadow = '';
+            
+            switch(style) {
+                case 'rainbow':
+                    demoText.classList.add('rainbow-text');
+                    break;
+                case 'glow':
+                    demoText.classList.add('glow-text');
+                    break;
+                case 'shadow':
+                    demoText.style.color = '#fff';
+                    demoText.style.textShadow = `
+                        5px 5px 0 #ff6b6b,
+                        10px 10px 0 #4ecdc4,
+                        15px 15px 0 #45b7d1,
+                        20px 20px 0 rgba(0,0,0,0.3)`;
+                    break;
+                case 'gradient':
+                    demoText.style.background = 'linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4)';
+                    demoText.style.webkitBackgroundClip = 'text';
+                    demoText.style.backgroundClip = 'text';
+                    demoText.style.webkitTextFillColor = 'transparent';
+                    demoText.style.textShadow = 'none';
+                    break;
+            }
+        }
+
+        // Add some interactive bubble effects
+        document.addEventListener('mousemove', (e) => {
+            const bubbles = document.querySelectorAll('.bubble');
+            const x = e.clientX / window.innerWidth;
+            const y = e.clientY / window.innerHeight;
+            
+            bubbles.forEach((bubble, index) => {
+                const speed = (index + 1) * 0.5;
+                const xOffset = (x - 0.5) * speed * 50;
+                const yOffset = (y - 0.5) * speed * 50;
+                
+                bubble.style.transform = `translate(${xOffset}px, ${yOffset}px)`;
+            });
+        });
+    </script>
+</body>
+</html>

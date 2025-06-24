@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GOTHAM UNLEASHED</title>
+    <style>
+        /* Gotham Font Faces */
+        @font-face {
+            font-family: 'Gotham';
+            src: url('./Gotham/Gotham Regular/Gotham Regular.otf') format('opentype');
+            font-weight: 400;
+            font-style: normal;
+        }
+        
+        @font-face {
+            font-family: 'Gotham';
+            src: url('./Gotham/Gotham Light/Gotham Light.otf') format('opentype');
+            font-weight: 300;
+            font-style: normal;
+        }
+        
+        @font-face {
+            font-family: 'Gotham';
+            src: url('./Gotham/Gotham Medium/Gotham Medium.otf') format('opentype');
+            font-weight: 500;
+            font-style: normal;
+        }
+        
+        @font-face {
+            font-family: 'Gotham';
+            src: url('./Gotham/Gotham Bold/Gotham Bold.otf') format('opentype');
+            font-weight: 700;
+            font-style: normal;
+        }
+        
+        @font-face {
+            font-family: 'Gotham';
+            src: url('./Gotham/Gotham Black/Gotham Black.otf') format('opentype');
+            font-weight: 900;
+            font-style: normal;
+        }
+        
+        @font-face {
+            font-family: 'Gotham';
+            src: url('./Gotham/Gotham Ultra/Gotham Ultra.otf') format('opentype');
+            font-weight: 950;
+            font-style: normal;
+        }
+        
+        @font-face {
+            font-family: 'Gotham';
+            src: url('./Gotham/Gotham Thin/Gotham Thin.otf') format('opentype');
+            font-weight: 100;
+            font-style: normal;
+        }
+
+        :root {
+            --gotham-primary: #000;
+            --gotham-secondary: #fff;
+            --gotham-accent: #ff6b35;
+            --gotham-blue: #0066cc;
+            --gotham-gray: #666;
+            --gotham-light-gray: #f5f5f5;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Gotham', 'Helvetica Neue', Arial, sans-serif;
+            background: var(--gotham-secondary);
+            color: var(--gotham-primary);
+            overflow-x: hidden;
+            line-height: 1.4;
+        }
+
+        /* Hero Section - Monumental Typography */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(135deg, #000 0%, #333 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            text-align: center;
+            z-index: 2;
+            position: relative;
+        }
+
+        .hero-title {
+            font-size: clamp(4rem, 15vw, 20rem);
+            font-weight: 900;
+            color: var(--gotham-secondary);
+            letter-spacing: -0.05em;
+            line-height: 0.8;
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+            position: relative;
+        }
+
+        .hero-title::before {
+            content: 'GOTHAM';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, #ff6b35, #0066cc, #ff6b35);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradientFlow 4s ease-in-out infinite;
+            z-index: -1;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1rem, 3vw, 2rem);
+            font-weight: 300;
+            color: rgba(255, 255, 255, 0.8);
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            margin-bottom: 3rem;
+        }
+
+        /* Geometric Background Elements */
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: repeating-linear-gradient(
+                0deg,
+                transparent,
+                transparent 100px,
+                rgba(255, 255, 255, 0.03) 100px,
+                rgba(255, 255, 255, 0.03) 101px
+            );
+            animation: drift 20s linear infinite;
+        }
+
+        /* Navigation - Gotham Precision */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            padding: 1rem 0;
+            transition: all 0.3s ease;
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .nav-logo {
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: var(--gotham-secondary);
+            text-decoration: none;
+            letter-spacing: 0.1em;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 3rem;
+        }
+
+        .nav-item a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-item a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gotham-accent);
+            transition: width 0.3s ease;
+        }
+
+        .nav-item a:hover::after {
+            width: 100%;
+        }
+
+        .nav-item a:hover {
+            color: var(--gotham-secondary);
+        }
+
+        /* Typography Showcase */
+        .typography-section {
+            padding: 8rem 0;
+            background: var(--gotham-secondary);
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section-title {
+            font-size: clamp(3rem, 8vw, 8rem);
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: -0.02em;
+            margin-bottom: 4rem;
+            position: relative;
+        }
+
+        .weight-showcase {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 4rem;
+            margin-bottom: 8rem;
+        }
+
+        .weight-card {
+            background: var(--gotham-light-gray);
+            padding: 3rem;
+            border-radius: 0;
+            position: relative;
+            transition: all 0.3s ease;
+            border-left: 5px solid transparent;
+        }
+
+        .weight-card:hover {
+            transform: translateY(-10px);
+            border-left-color: var(--gotham-accent);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .weight-title {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: -0.02em;
+        }
+
+        .weight-subtitle {
+            font-size: 1rem;
+            color: var(--gotham-gray);
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+        }
+
+        .weight-sample {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            color: var(--gotham-primary);
+        }
+
+        /* Individual Weight Styles */
+        .thin { font-weight: 100; }
+        .light { font-weight: 300; }
+        .regular { font-weight: 400; }
+        .medium { font-weight: 500; }
+        .bold { font-weight: 700; }
+        .black { font-weight: 900; }
+        .ultra { font-weight: 950; }
+
+        /* Geometric Layout Section */
+        .geometric-section {
+            background: var(--gotham-primary);
+            color: var(--gotham-secondary);
+            padding: 8rem 0;
+            position: relative;
+        }
+
+        .geometric-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 2rem;
+            margin-bottom: 6rem;
+        }
+
+        .geometric-card {
+            grid-column: span 4;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 3rem;
+            text-align: center;
+            position: relative;
+            transition: all 0.4s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .geometric-card:nth-child(2) {
+            grid-column: span 8;
+            background: var(--gotham-accent);
+            color: var(--gotham-secondary);
+        }
+
+        .geometric-card:nth-child(3) {
+            grid-column: span 6;
+            background: var(--gotham-blue);
+        }
+
+        .geometric-card:nth-child(4) {
+            grid-column: span 6;
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .geometric-card:hover {
+            transform: scale(1.05);
+        }
+
+        .card-number {
+            font-size: 6rem;
+            font-weight: 900;
+            line-height: 1;
+            margin-bottom: 1rem;
+            opacity: 0.3;
+        }
+
+        .card-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .card-text {
+            font-size: 1rem;
+            font-weight: 400;
+            opacity: 0.9;
+            line-height: 1.5;
+        }
+
+        /* Quote Section */
+        .quote-section {
+            background: var(--gotham-light-gray);
+            padding: 8rem 0;
+            text-align: center;
+        }
+
+        .quote {
+            font-size: clamp(2rem, 5vw, 4rem);
+            font-weight: 300;
+            line-height: 1.2;
+            margin-bottom: 3rem;
+            max-width: 1000px;
+            margin-left: auto;
+            margin-right: auto;
+            position: relative;
+        }
+
+        .quote::before,
+        .quote::after {
+            content: '"';
+            font-size: 8rem;
+            font-weight: 900;
+            color: var(--gotham-accent);
+            position: absolute;
+            line-height: 1;
+        }
+
+        .quote::before {
+            top: -2rem;
+            left: -3rem;
+        }
+
+        .quote::after {
+            bottom: -2rem;
+            right: -3rem;
+        }
+
+        .quote-author {
+            font-size: 1.2rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: var(--gotham-gray);
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: var(--gotham-primary);
+            color: var(--gotham-secondary);
+            padding: 8rem 0;
+            text-align: center;
+        }
+
+        .cta-title {
+            font-size: clamp(3rem, 6vw, 6rem);
+            font-weight: 900;
+            margin-bottom: 3rem;
+            text-transform: uppercase;
+            letter-spacing: -0.02em;
+        }
+
+        .cta-button {
+            background: var(--gotham-accent);
+            color: var(--gotham-secondary);
+            border: none;
+            padding: 2rem 4rem;
+            font-family: 'Gotham', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(255, 107, 53, 0.3);
+        }
+
+        /* Animations */
+        @keyframes gradientFlow {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        @keyframes drift {
+            0% { transform: translateX(0) translateY(0); }
+            100% { transform: translateX(-100px) translateY(-100px); }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+            
+            .geometric-card {
+                grid-column: span 12;
+            }
+            
+            .quote::before,
+            .quote::after {
+                display: none;
+            }
+            
+            .weight-showcase {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+        }
+
+        /* Scroll Animations */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease;
+        }
+
+        .animate-on-scroll.in-view {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Letter Spacing Showcase */
+        .spacing-demo {
+            margin: 4rem 0;
+        }
+
+        .spacing-tight {
+            letter-spacing: -0.05em;
+        }
+
+        .spacing-normal {
+            letter-spacing: 0;
+        }
+
+        .spacing-wide {
+            letter-spacing: 0.2em;
+        }
+
+        .spacing-ultra-wide {
+            letter-spacing: 0.5em;
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-container">
+            <a href="#" class="nav-logo">GOTHAM</a>
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="#home">Home</a></li>
+                <li class="nav-item"><a href="#typography">Typography</a></li>
+                <li class="nav-item"><a href="#design">Design</a></li>
+                <li class="nav-item"><a href="#about">About</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1 class="hero-title">GOTHAM</h1>
+            <p class="hero-subtitle">Geometric Precision. Unwavering Authority.</p>
+        </div>
+    </section>
+
+    <section class="typography-section" id="typography">
+        <div class="container">
+            <h2 class="section-title animate-on-scroll">WEIGHTS</h2>
+            
+            <div class="weight-showcase">
+                <div class="weight-card animate-on-scroll">
+                    <h3 class="weight-title thin">THIN</h3>
+                    <p class="weight-subtitle thin">100 Weight</p>
+                    <p class="weight-sample thin">The delicate precision of Gotham Thin creates elegant hierarchy while maintaining the typeface's geometric foundation and unmistakable character.</p>
+                </div>
+                
+                <div class="weight-card animate-on-scroll">
+                    <h3 class="weight-title light">LIGHT</h3>
+                    <p class="weight-subtitle light">300 Weight</p>
+                    <p class="weight-sample light">Gotham Light strikes the perfect balance between readability and refinement, offering subtle sophistication for extended reading.</p>
+                </div>
+                
+                <div class="weight-card animate-on-scroll">
+                    <h3 class="weight-title regular">REGULAR</h3>
+                    <p class="weight-subtitle regular">400 Weight</p>
+                    <p class="weight-sample regular">The workhorse of the Gotham family, Regular provides exceptional legibility and timeless appeal across all applications.</p>
+                </div>
+                
+                <div class="weight-card animate-on-scroll">
+                    <h3 class="weight-title medium">MEDIUM</h3>
+                    <p class="weight-subtitle medium">500 Weight</p>
+                    <p class="weight-sample medium">Gotham Medium adds emphasis without overwhelming, perfect for subheadings and important callouts that demand attention.</p>
+                </div>
+                
+                <div class="weight-card animate-on-scroll">
+                    <h3 class="weight-title bold">BOLD</h3>
+                    <p class="weight-subtitle bold">700 Weight</p>
+                    <p class="weight-sample bold">Bold and authoritative, this weight commands respect and ensures your message is heard with unwavering confidence.</p>
+                </div>
+                
+                <div class="weight-card animate-on-scroll">
+                    <h3 class="weight-title black">BLACK</h3>
+                    <p class="weight-subtitle black">900 Weight</p>
+                    <p class="weight-sample black">Gotham Black delivers maximum impact with geometric perfection, ideal for headlines that demand immediate attention.</p>
+                </div>
+            </div>
+
+            <div class="spacing-demo">
+                <h3 class="weight-title regular animate-on-scroll">LETTER SPACING MASTERY</h3>
+                <div style="margin: 3rem 0;">
+                    <p class="weight-sample medium spacing-tight animate-on-scroll">TIGHT SPACING CREATES INTENSITY</p>
+                    <p class="weight-sample medium spacing-normal animate-on-scroll">NORMAL SPACING FOR READABILITY</p>
+                    <p class="weight-sample medium spacing-wide animate-on-scroll">WIDE SPACING FOR ELEGANCE</p>
+                    <p class="weight-sample medium spacing-ultra-wide animate-on-scroll">ULTRA WIDE FOR LUXURY</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="geometric-section" id="design">
+        <div class="container">
+            <h2 class="section-title animate-on-scroll">GEOMETRIC PRECISION</h2>
+            
+            <div class="geometric-grid">
+                <div class="geometric-card animate-on-scroll">
+                    <div class="card-number">01</div>
+                    <h3 class="card-title">STRUCTURE</h3>
+                    <p class="card-text">Built on geometric principles that ensure perfect optical balance.</p>
+                </div>
+                
+                <div class="geometric-card animate-on-scroll">
+                    <div class="card-number">02</div>
+                    <h3 class="card-title">AUTHORITY</h3>
+                    <p class="card-text">The typeface that powered a presidential campaign and continues to define modern American design. Gotham speaks with unquestionable authority.</p>
+                </div>
+                
+                <div class="geometric-card animate-on-scroll">
+                    <div class="card-number">03</div>
+                    <h3 class="card-title">VERSATILITY</h3>
+                    <p class="card-text">From billboards to business cards, Gotham performs flawlessly at any size.</p>
+                </div>
+                
+                <div class="geometric-card animate-on-scroll">
+                    <div class="card-number">04</div>
+                    <h3 class="card-title">INNOVATION</h3>
+                    <p class="card-text">Pushing the boundaries of what geometric type can achieve in the digital age.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="quote-section">
+        <div class="container">
+            <blockquote class="quote animate-on-scroll">
+                Typography is the craft of endowing human language with a durable visual form.
+            </blockquote>
+            <cite class="quote-author animate-on-scroll">Robert Bringhurst</cite>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="container">
+            <h2 class="cta-title animate-on-scroll">EXPERIENCE GOTHAM</h2>
+            <button class="cta-button animate-on-scroll">START YOUR PROJECT</button>
+        </div>
+    </section>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('in-view');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.animate-on-scroll').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Parallax effect for hero background
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const hero = document.querySelector('.hero');
+            const rate = scrolled * -0.5;
+            
+            hero.style.transform = `translateY(${rate}px)`;
+        });
+
+        // Dynamic navigation background
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('.nav');
+            if (window.scrollY > 100) {
+                nav.style.background = 'rgba(0, 0, 0, 0.98)';
+            } else {
+                nav.style.background = 'rgba(0, 0, 0, 0.95)';
+            }
+        });
+
+        // Interactive weight cards
+        document.querySelectorAll('.weight-card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.background = 'var(--gotham-primary)';
+                card.style.color = 'var(--gotham-secondary)';
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.style.background = 'var(--gotham-light-gray)';
+                card.style.color = 'var(--gotham-primary)';
+            });
+        });
+    </script>
+</body>
+</html>

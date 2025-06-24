@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emergency Preparedness Guide</title>
+    <style>
+        /* Gotham Font Faces */
+        @font-face {
+            font-family: 'Gotham';
+            src: url('./Gotham/Gotham Regular/Gotham Regular.otf') format('opentype');
+            font-weight: 400;
+            font-style: normal;
+        }
+        
+        @font-face {
+            font-family: 'Gotham';
+            src: url('./Gotham/Gotham Light/Gotham Light.otf') format('opentype');
+            font-weight: 300;
+            font-style: normal;
+        }
+        
+        @font-face {
+            font-family: 'Gotham';
+            src: url('./Gotham/Gotham Medium/Gotham Medium.otf') format('opentype');
+            font-weight: 500;
+            font-style: normal;
+        }
+        
+        @font-face {
+            font-family: 'Gotham';
+            src: url('./Gotham/Gotham Bold/Gotham Bold.otf') format('opentype');
+            font-weight: 700;
+            font-style: normal;
+        }
+        
+        @font-face {
+            font-family: 'Gotham';
+            src: url('./Gotham/Gotham Black/Gotham Black.otf') format('opentype');
+            font-weight: 900;
+            font-style: normal;
+        }
+
+        :root {
+            --crisis-red: #dc143c;
+            --crisis-dark-red: #b91c1c;
+            --crisis-black: #1a1a1a;
+            --crisis-gray: #666666;
+            --crisis-light-gray: #f5f5f5;
+            --crisis-white: #ffffff;
+            --crisis-border: #e5e5e5;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Gotham', 'Helvetica Neue', Arial, sans-serif;
+            background: var(--crisis-white);
+            color: var(--crisis-black);
+            line-height: 1.6;
+            font-size: 16px;
+        }
+
+        /* Layout Container */
+        .brochure-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--crisis-white);
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+
+        /* Header Section */
+        .header-section {
+            background: var(--crisis-red);
+            color: var(--crisis-white);
+            padding: 3rem 2rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .header-title {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 1rem;
+            line-height: 1.1;
+        }
+
+        .header-subtitle {
+            font-size: clamp(1.2rem, 3vw, 1.8rem);
+            font-weight: 300;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            opacity: 0.9;
+        }
+
+        .header-stripe {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 8px;
+            background: var(--crisis-dark-red);
+        }
+
+        /* Introduction Section */
+        .intro-section {
+            padding: 3rem 2rem;
+            background: var(--crisis-light-gray);
+            border-bottom: 3px solid var(--crisis-red);
+        }
+
+        .intro-text {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: var(--crisis-black);
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .intro-highlight {
+            background: var(--crisis-red);
+            color: var(--crisis-white);
+            padding: 1.5rem;
+            margin: 2rem 0;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            text-align: center;
+            font-size: 1.2rem;
+        }
+
+        /* Content Sections */
+        .content-section {
+            padding: 3rem 2rem;
+            border-bottom: 1px solid var(--crisis-border);
+        }
+
+        .section-title {
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            font-weight: 900;
+            color: var(--crisis-black);
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+            letter-spacing: 0.02em;
+            position: relative;
+        }
+
+        .section-title::before {
+            content: '';
+            position: absolute;
+            left: -2rem;
+            top: 0;
+            width: 6px;
+            height: 100%;
+            background: var(--crisis-red);
+        }
+
+        .section-subtitle {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--crisis-red);
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .section-text {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: var(--crisis-black);
+            margin-bottom: 1.5rem;
+        }
+
+        /* Warning Boxes */
+        .warning-box {
+            background: var(--crisis-red);
+            color: var(--crisis-white);
+            padding: 2rem;
+            margin: 2rem 0;
+            position: relative;
+        }
+
+        .warning-box::before {
+            content: '⚠';
+            font-size: 2rem;
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+        }
+
+        .warning-title {
+            font-size: 1.4rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            margin-left: 3rem;
+            text-transform: uppercase;
+        }
+
+        .warning-text {
+            margin-left: 3rem;
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+
+        /* Checklists */
+        .checklist {
+            background: var(--crisis-light-gray);
+            padding: 2rem;
+            margin: 2rem 0;
+            border-left: 6px solid var(--crisis-red);
+        }
+
+        .checklist-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--crisis-red);
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+        }
+
+        .checklist-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .checklist-category {
+            background: var(--crisis-white);
+            padding: 1.5rem;
+            border: 1px solid var(--crisis-border);
+        }
+
+        .category-title {
+            font-size: 1.1rem;
+            font-weight: 900;
+            color: var(--crisis-black);
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            border-bottom: 2px solid var(--crisis-red);
+            padding-bottom: 0.5rem;
+        }
+
+        .checklist-items {
+            list-style: none;
+        }
+
+        .checklist-items li {
+            padding: 0.3rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            font-size: 0.95rem;
+            line-height: 1.4;
+        }
+
+        .checklist-items li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--crisis-red);
+            font-weight: 900;
+        }
+
+        /* Information Boxes */
+        .info-box {
+            background: var(--crisis-white);
+            border: 2px solid var(--crisis-red);
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        .info-title {
+            font-size: 1.2rem;
+            font-weight: 900;
+            color: var(--crisis-red);
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .info-text {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: var(--crisis-black);
+        }
+
+        /* Emergency Numbers */
+        .emergency-numbers {
+            background: var(--crisis-black);
+            color: var(--crisis-white);
+            padding: 3rem 2rem;
+            margin-top: 2rem;
+        }
+
+        .emergency-title {
+            font-size: 2rem;
+            font-weight: 900;
+            text-align: center;
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+            color: var(--crisis-red);
+        }
+
+        .numbers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .number-item {
+            text-align: center;
+            padding: 1.5rem;
+            background: rgba(255,255,255,0.1);
+            border: 1px solid var(--crisis-red);
+        }
+
+        .number {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: var(--crisis-red);
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .number-description {
+            font-size: 0.9rem;
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        /* Steps/Instructions */
+        .steps-container {
+            margin: 2rem 0;
+        }
+
+        .step {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: var(--crisis-light-gray);
+            border-left: 6px solid var(--crisis-red);
+        }
+
+        .step-number {
+            background: var(--crisis-red);
+            color: var(--crisis-white);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            font-size: 1.2rem;
+            margin-right: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .step-content {
+            flex: 1;
+        }
+
+        .step-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+        }
+
+        .step-text {
+            font-size: 1rem;
+            line-height: 1.5;
+            color: var(--crisis-gray);
+        }
+
+        /* Footer */
+        .footer-section {
+            background: var(--crisis-red);
+            color: var(--crisis-white);
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .footer-text {
+            font-size: 1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .brochure-container {
+                margin: 0;
+                box-shadow: none;
+            }
+
+            .content-section {
+                padding: 2rem 1rem;
+            }
+
+            .header-section {
+                padding: 2rem 1rem;
+            }
+
+            .section-title::before {
+                left: -1rem;
+            }
+
+            .checklist-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .numbers-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Print Styles */
+        @media print {
+            .brochure-container {
+                box-shadow: none;
+                max-width: none;
+            }
+
+            .header-section,
+            .emergency-numbers,
+            .footer-section {
+                background: var(--crisis-black) !important;
+                -webkit-print-color-adjust: exact;
+                color-adjust: exact;
+            }
+
+            .warning-box,
+            .section-title::before,
+            .checklist {
+                background: var(--crisis-red) !important;
+                -webkit-print-color-adjust: exact;
+                color-adjust: exact;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="brochure-container">
+        <!-- Header -->
+        <section class="header-section">
+            <h1 class="header-title">Emergency Preparedness</h1>
+            <p class="header-subtitle">A Guide for Crisis Situations</p>
+            <div class="header-stripe"></div>
+        </section>
+
+        <!-- Introduction -->
+        <section class="intro-section">
+            <p class="intro-text">
+                This guide provides essential information to help you and your family prepare for emergency situations. 
+                From natural disasters to infrastructure failures, being prepared can make the difference between safety and danger.
+            </p>
+            <div class="intro-highlight">
+                Keep this guide accessible at all times
+            </div>
+        </section>
+
+        <!-- Basic Preparedness -->
+        <section class="content-section">
+            <h2 class="section-title">Basic Preparedness</h2>
+            
+            <p class="section-text">
+                Every household should maintain supplies for at least 72 hours without external assistance. 
+                This includes situations where utilities, transportation, and emergency services may be disrupted.
+            </p>
+
+            <div class="warning-box">
+                <h3 class="warning-title">Critical Timeframe</h3>
+                <p class="warning-text">
+                    In major emergencies, professional help may not be available immediately. 
+                    Self-sufficiency for the first 72 hours is essential for survival.
+                </p>
+            </div>
+
+            <div class="steps-container">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h4 class="step-title">Assess Your Risks</h4>
+                        <p class="step-text">Identify potential hazards in your area: floods, earthquakes, power outages, or extreme weather.</p>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h4 class="step-title">Create Emergency Plan</h4>
+                        <p class="step-text">Establish meeting points, communication methods, and evacuation routes with family members.</p>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h4 class="step-title">Build Emergency Kit</h4>
+                        <p class="step-text">Assemble supplies for water, food, shelter, and communication for minimum 72 hours.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Emergency Supplies -->
+        <section class="content-section">
+            <h2 class="section-title">Emergency Supplies</h2>
+            
+            <div class="checklist">
+                <h3 class="checklist-title">Essential Supplies Checklist</h3>
+                <div class="checklist-grid">
+                    <div class="checklist-category">
+                        <h4 class="category-title">Water & Food</h4>
+                        <ul class="checklist-items">
+                            <li>1 gallon water per person per day (3 days minimum)</li>
+                            <li>Non-perishable food (3-day supply)</li>
+                            <li>Manual can opener</li>
+                            <li>Disposable plates, cups, utensils</li>
+                            <li>Portable camp stove with fuel</li>
+                            <li>Waterproof storage containers</li>
+                        </ul>
+                    </div>
+
+                    <div class="checklist-category">
+                        <h4 class="category-title">Power & Light</h4>
+                        <ul class="checklist-items">
+                            <li>Battery-powered or hand-crank radio</li>
+                            <li>Flashlights (multiple)</li>
+                            <li>Extra batteries (various sizes)</li>
+                            <li>Solar phone chargers</li>
+                            <li>Portable power banks</li>
+                            <li>Candles and waterproof matches</li>
+                        </ul>
+                    </div>
+
+                    <div class="checklist-category">
+                        <h4 class="category-title">Shelter & Warmth</h4>
+                        <ul class="checklist-items">
+                            <li>Emergency blankets (thermal)</li>
+                            <li>Sleeping bags or warm bedding</li>
+                            <li>Extra clothing layers</li>
+                            <li>Rain gear and warm boots</li>
+                            <li>Plastic sheeting and duct tape</li>
+                            <li>Small tent or tarp</li>
+                        </ul>
+                    </div>
+
+                    <div class="checklist-category">
+                        <h4 class="category-title">Safety & Health</h4>
+                        <ul class="checklist-items">
+                            <li>First aid kit (comprehensive)</li>
+                            <li>Prescription medications</li>
+                            <li>Personal hygiene items</li>
+                            <li>Hand sanitizer and soap</li>
+                            <li>N95 masks or respirators</li>
+                            <li>Emergency whistle</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Communication -->
+        <section class="content-section">
+            <h2 class="section-title">Communication Plan</h2>
+            
+            <div class="info-box">
+                <h3 class="info-title">Primary Communication Methods</h3>
+                <p class="info-text">
+                    During emergencies, phone networks may be overloaded or damaged. 
+                    Text messages often work when voice calls don't. Social media and emergency apps can provide real-time updates.
+                </p>
+            </div>
+
+            <h3 class="section-subtitle">Emergency Contacts</h3>
+            <p class="section-text">
+                Keep physical copies of important phone numbers. Include local emergency services, 
+                family members, insurance companies, and utility providers. Store copies in multiple locations.
+            </p>
+
+            <div class="warning-box">
+                <h3 class="warning-title">Information Sources</h3>
+                <p class="warning-text">
+                    Monitor official channels: local emergency management, weather services, and government alerts. 
+                    Avoid spreading unconfirmed information that may cause panic or confusion.
+                </p>
+            </div>
+        </section>
+
+        <!-- During an Emergency -->
+        <section class="content-section">
+            <h2 class="section-title">During an Emergency</h2>
+            
+            <div class="steps-container">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h4 class="step-title">Stay Calm & Assess</h4>
+                        <p class="step-text">Take a moment to understand the situation. Check for immediate dangers and gather information from reliable sources.</p>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h4 class="step-title">Follow Official Instructions</h4>
+                        <p class="step-text">Listen to emergency broadcasts and follow evacuation orders or shelter-in-place instructions from authorities.</p>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h4 class="step-title">Check on Others</h4>
+                        <p class="step-text">Once you're safe, check on family, neighbors, and community members who may need assistance.</p>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h4 class="step-title">Document & Report</h4>
+                        <p class="step-text">Take photos of damage for insurance purposes and report emergencies to appropriate authorities.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Emergency Numbers -->
+        <section class="emergency-numbers">
+            <h2 class="emergency-title">Emergency Contact Numbers</h2>
+            <div class="numbers-grid">
+                <div class="number-item">
+                    <span class="number">911</span>
+                    <div class="number-description">Police, Fire, Medical Emergency</div>
+                </div>
+                <div class="number-item">
+                    <span class="number">311</span>
+                    <div class="number-description">Non-Emergency City Services</div>
+                </div>
+                <div class="number-item">
+                    <span class="number">211</span>
+                    <div class="number-description">Community Resources & Information</div>
+                </div>
+                <div class="number-item">
+                    <span class="number">511</span>
+                    <div class="number-description">Traffic & Transportation Info</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <section class="footer-section">
+            <p class="footer-text">Prepared by Local Emergency Management • Keep this guide accessible</p>
+        </section>
+    </div>
+
+    <script>
+        // Simple interactivity for demonstration
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add click feedback to checklist items
+            const checklistItems = document.querySelectorAll('.checklist-items li');
+            checklistItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    this.style.backgroundColor = this.style.backgroundColor ? '' : 'rgba(220, 20, 60, 0.1)';
+                    this.style.textDecoration = this.style.textDecoration ? '' : 'line-through';
+                    this.style.opacity = this.style.opacity ? '' : '0.7';
+                });
+            });
+
+            // Add hover effects to warning boxes
+            const warningBoxes = document.querySelectorAll('.warning-box');
+            warningBoxes.forEach(box => {
+                box.addEventListener('mouseenter', function() {
+                    this.style.transform = 'scale(1.02)';
+                    this.style.transition = 'transform 0.2s ease';
+                });
+                
+                box.addEventListener('mouseleave', function() {
+                    this.style.transform = 'scale(1)';
+                });
+            });
+
+            // Print button functionality
+            document.addEventListener('keydown', function(e) {
+                if (e.ctrlKey && e.key === 'p') {
+                    e.preventDefault();
+                    window.print();
+                }
+            });
+        });
+
+        // Scroll progress indicator
+        window.addEventListener('scroll', function() {
+            const scrolled = (window.pageYOffset / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+            
+            // Create progress bar if it doesn't exist
+            let progressBar = document.querySelector('.scroll-progress');
+            if (!progressBar) {
+                progressBar = document.createElement('div');
+                progressBar.className = 'scroll-progress';
+                progressBar.style.cssText = `
+                    position: fixed;
+                    top: 0;
+                    left: 0;
+                    width: ${scrolled}%;
+                    height: 4px;
+                    background: var(--crisis-red);
+                    z-index: 1000;
+                    transition: width 0.1s ease;
+                `;
+                document.body.appendChild(progressBar);
+            } else {
+                progressBar.style.width = scrolled + '%';
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SYSTEMATIC DESIGN • MICHAEL BEIRUT INSPIRED</title>
+    <style>
+        /* Gotham Font Faces */
+        @font-face {
+            font-family: 'Gotham';
+            src: url('./Gotham/Gotham Regular/Gotham Regular.otf') format('opentype');
+            font-weight: 400;
+            font-style: normal;
+        }
+        
+        @font-face {
+            font-family: 'Gotham';
+            src: url('./Gotham/Gotham Light/Gotham Light.otf') format('opentype');
+            font-weight: 300;
+            font-style: normal;
+        }
+        
+        @font-face {
+            font-family: 'Gotham';
+            src: url('./Gotham/Gotham Medium/Gotham Medium.otf') format('opentype');
+            font-weight: 500;
+            font-style: normal;
+        }
+        
+        @font-face {
+            font-family: 'Gotham';
+            src: url('./Gotham/Gotham Bold/Gotham Bold.otf') format('opentype');
+            font-weight: 700;
+            font-style: normal;
+        }
+        
+        @font-face {
+            font-family: 'Gotham';
+            src: url('./Gotham/Gotham Black/Gotham Black.otf') format('opentype');
+            font-weight: 900;
+            font-style: normal;
+        }
+
+        :root {
+            --beirut-black: #000000;
+            --beirut-white: #ffffff;
+            --beirut-red: #ff0000;
+            --beirut-blue: #0000ff;
+            --beirut-yellow: #ffff00;
+            --beirut-gray: #808080;
+            --module-size: 80px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Gotham', 'Helvetica Neue', Arial, sans-serif;
+            background: var(--beirut-white);
+            color: var(--beirut-black);
+            line-height: 1.2;
+            overflow-x: hidden;
+        }
+
+        /* Modular Grid System */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            grid-template-rows: repeat(auto-fit, var(--module-size));
+            gap: 0;
+            min-height: 100vh;
+        }
+
+        .module {
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Hero Section - Monumental Typography */
+        .hero-module {
+            grid-column: 1 / -1;
+            grid-row: 1 / 8;
+            background: var(--beirut-white);
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            grid-template-rows: repeat(7, 1fr);
+            position: relative;
+        }
+
+        .hero-bg-red {
+            grid-column: 1 / 5;
+            grid-row: 1 / -1;
+            background: var(--beirut-red);
+        }
+
+        .hero-bg-black {
+            grid-column: 9 / -1;
+            grid-row: 3 / -1;
+            background: var(--beirut-black);
+        }
+
+        .hero-title {
+            grid-column: 1 / -1;
+            grid-row: 2 / 6;
+            font-size: clamp(4rem, 12vw, 20rem);
+            font-weight: 900;
+            color: var(--beirut-white);
+            text-transform: uppercase;
+            letter-spacing: -0.05em;
+            line-height: 0.8;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 0 2rem;
+            z-index: 10;
+            position: relative;
+            mix-blend-mode: difference;
+        }
+
+        .hero-subtitle {
+            grid-column: 5 / 9;
+            grid-row: 6 / 7;
+            background: var(--beirut-blue);
+            color: var(--beirut-white);
+            font-size: clamp(1rem, 2vw, 2rem);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
+        }
+
+        /* Information Grid */
+        .info-grid {
+            grid-column: 1 / -1;
+            grid-row: 8 / 14;
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 0;
+            background: var(--beirut-white);
+        }
+
+        .info-block {
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+        }
+
+        .info-block-1 {
+            grid-column: 1 / 4;
+            background: var(--beirut-black);
+            color: var(--beirut-white);
+        }
+
+        .info-block-2 {
+            grid-column: 4 / 7;
+            background: var(--beirut-white);
+            color: var(--beirut-black);
+            border: 2px solid var(--beirut-black);
+        }
+
+        .info-block-3 {
+            grid-column: 7 / 10;
+            background: var(--beirut-yellow);
+            color: var(--beirut-black);
+        }
+
+        .info-block-4 {
+            grid-column: 10 / -1;
+            background: var(--beirut-red);
+            color: var(--beirut-white);
+        }
+
+        .info-number {
+            font-size: 4rem;
+            font-weight: 900;
+            line-height: 1;
+            margin-bottom: 1rem;
+        }
+
+        .info-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 1rem;
+        }
+
+        .info-text {
+            font-size: 1rem;
+            font-weight: 400;
+            line-height: 1.4;
+        }
+
+        /* Typography Showcase */
+        .type-showcase {
+            grid-column: 1 / -1;
+            grid-row: 14 / 20;
+            background: var(--beirut-black);
+            color: var(--beirut-white);
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0;
+        }
+
+        .type-column {
+            padding: 3rem 2rem;
+            border-right: 2px solid var(--beirut-white);
+        }
+
+        .type-column:last-child {
+            border-right: none;
+        }
+
+        .type-display {
+            font-size: clamp(3rem, 6vw, 8rem);
+            font-weight: 900;
+            line-height: 0.9;
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+        }
+
+        .type-body {
+            font-size: 1.2rem;
+            font-weight: 400;
+            line-height: 1.5;
+            margin-bottom: 2rem;
+        }
+
+        .type-caption {
+            font-size: 0.9rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            opacity: 0.7;
+        }
+
+        /* Color System */
+        .color-system {
+            grid-column: 1 / -1;
+            grid-row: 20 / 24;
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 0;
+        }
+
+        .color-block {
+            height: 320px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 2rem;
+            position: relative;
+        }
+
+        .color-black { background: var(--beirut-black); color: var(--beirut-white); }
+        .color-white { background: var(--beirut-white); color: var(--beirut-black); border: 2px solid var(--beirut-black); }
+        .color-red { background: var(--beirut-red); color: var(--beirut-white); }
+        .color-blue { background: var(--beirut-blue); color: var(--beirut-white); }
+        .color-yellow { background: var(--beirut-yellow); color: var(--beirut-black); }
+        .color-gray { background: var(--beirut-gray); color: var(--beirut-white); }
+
+        .color-name {
+            font-size: 2rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: -0.02em;
+        }
+
+        .color-hex {
+            font-size: 1rem;
+            font-weight: 400;
+            font-family: 'Courier New', monospace;
+        }
+
+        /* Project Grid */
+        .project-grid {
+            grid-column: 1 / -1;
+            grid-row: 24 / 32;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0;
+            background: var(--beirut-white);
+        }
+
+        .project-card {
+            aspect-ratio: 1;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            border: 1px solid var(--beirut-black);
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: scale(1.05);
+            z-index: 10;
+            box-shadow: 20px 20px 0 var(--beirut-black);
+        }
+
+        .project-card-1 {
+            background: var(--beirut-red);
+            color: var(--beirut-white);
+        }
+
+        .project-card-2 {
+            background: var(--beirut-white);
+            color: var(--beirut-black);
+        }
+
+        .project-card-3 {
+            background: var(--beirut-blue);
+            color: var(--beirut-white);
+        }
+
+        .project-card-4 {
+            background: var(--beirut-yellow);
+            color: var(--beirut-black);
+        }
+
+        .project-number {
+            font-size: 6rem;
+            font-weight: 900;
+            line-height: 1;
+            opacity: 0.3;
+        }
+
+        .project-title {
+            font-size: 2rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: -0.02em;
+            line-height: 0.9;
+        }
+
+        .project-description {
+            font-size: 1rem;
+            font-weight: 400;
+            line-height: 1.3;
+            margin-top: 1rem;
+        }
+
+        /* Statement Section */
+        .statement-section {
+            grid-column: 1 / -1;
+            grid-row: 32 / 38;
+            background: var(--beirut-black);
+            color: var(--beirut-white);
+            display: grid;
+            grid-template-columns: 1fr 3fr 1fr;
+            gap: 4rem;
+            padding: 4rem;
+            align-items: center;
+        }
+
+        .statement-quote {
+            grid-column: 2;
+            font-size: clamp(2rem, 4vw, 4rem);
+            font-weight: 300;
+            line-height: 1.2;
+            text-align: center;
+            position: relative;
+        }
+
+        .statement-quote::before,
+        .statement-quote::after {
+            content: '"';
+            font-size: 8rem;
+            font-weight: 900;
+            color: var(--beirut-red);
+            position: absolute;
+        }
+
+        .statement-quote::before {
+            top: -2rem;
+            left: -3rem;
+        }
+
+        .statement-quote::after {
+            bottom: -4rem;
+            right: -3rem;
+        }
+
+        .statement-author {
+            grid-column: 2;
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        /* Footer */
+        .footer-section {
+            grid-column: 1 / -1;
+            grid-row: 38 / 42;
+            background: var(--beirut-white);
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            border-top: 4px solid var(--beirut-black);
+        }
+
+        .footer-block {
+            padding: 2rem;
+            border-right: 1px solid var(--beirut-black);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .footer-block:last-child {
+            border-right: none;
+        }
+
+        .footer-title {
+            font-size: 1.2rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 1rem;
+        }
+
+        .footer-text {
+            font-size: 0.9rem;
+            font-weight: 400;
+            line-height: 1.4;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero-module {
+                grid-template-columns: 1fr;
+                grid-template-rows: repeat(4, 1fr);
+            }
+
+            .hero-bg-red {
+                grid-column: 1;
+                grid-row: 1 / 3;
+            }
+
+            .hero-bg-black {
+                grid-column: 1;
+                grid-row: 3 / -1;
+            }
+
+            .hero-title {
+                grid-column: 1;
+                grid-row: 1 / 4;
+                font-size: clamp(3rem, 10vw, 6rem);
+            }
+
+            .info-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .info-block-1,
+            .info-block-2,
+            .info-block-3,
+            .info-block-4 {
+                grid-column: span 1;
+            }
+
+            .type-showcase {
+                grid-template-columns: 1fr;
+            }
+
+            .type-column {
+                border-right: none;
+                border-bottom: 2px solid var(--beirut-white);
+            }
+
+            .color-system {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .project-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .statement-section {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                padding: 2rem;
+            }
+
+            .statement-quote {
+                grid-column: 1;
+            }
+
+            .statement-author {
+                grid-column: 1;
+            }
+
+            .footer-section {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Animation System */
+        .animate-in {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease;
+        }
+
+        .animate-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Systematic Interactions */
+        .interactive-module {
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .interactive-module:hover {
+            transform: scale(1.02);
+        }
+
+        .interactive-module:active {
+            transform: scale(0.98);
+        }
+    </style>
+</head>
+<body>
+    <div class="grid-container">
+        <!-- Hero Section -->
+        <section class="hero-module">
+            <div class="hero-bg-red"></div>
+            <div class="hero-bg-black"></div>
+            <h1 class="hero-title animate-in">SYSTEMATIC<br>DESIGN</h1>
+            <div class="hero-subtitle animate-in">GEOMETRIC PRECISION</div>
+        </section>
+
+        <!-- Information Grid -->
+        <section class="info-grid">
+            <div class="info-block info-block-1 animate-in">
+                <div class="info-number">01</div>
+                <h3 class="info-title">Modular Systems</h3>
+                <p class="info-text">Every element exists within a calculated grid. Structure creates freedom through constraint.</p>
+            </div>
+            <div class="info-block info-block-2 animate-in">
+                <div class="info-number">02</div>
+                <h3 class="info-title">Color as Language</h3>
+                <p class="info-text">Red commands attention. Black provides authority. White offers clarity. Blue suggests stability.</p>
+            </div>
+            <div class="info-block info-block-3 animate-in">
+                <div class="info-number">03</div>
+                <h3 class="info-title">Typography Rules</h3>
+                <p class="info-text">Gotham speaks with geometric certainty. Every letterform calculated for maximum impact.</p>
+            </div>
+            <div class="info-block info-block-4 animate-in">
+                <div class="info-number">04</div>
+                <h3 class="info-title">Visual Hierarchy</h3>
+                <p class="info-text">Information flows from most to least important. The grid guides the eye naturally.</p>
+            </div>
+        </section>
+
+        <!-- Typography Showcase -->
+        <section class="type-showcase">
+            <div class="type-column animate-in">
+                <div class="type-display">BOLD</div>
+                <p class="type-body">Typography must work at massive scale and intimate detail. Gotham provides both authority and approachability.</p>
+                <div class="type-caption">900 Weight • Display</div>
+            </div>
+            <div class="type-column animate-in">
+                <div class="type-display">CLEAR</div>
+                <p class="type-body">Information design requires absolute clarity. Every character must earn its place in the hierarchy.</p>
+                <div class="type-caption">400 Weight • Body</div>
+            </div>
+            <div class="type-column animate-in">
+                <div class="type-display">SMART</div>
+                <p class="type-body">Intelligent systems scale across all applications. One typeface, infinite possibilities.</p>
+                <div class="type-caption">300 Weight • Light</div>
+            </div>
+        </section>
+
+        <!-- Color System -->
+        <section class="color-system">
+            <div class="color-block color-black animate-in">
+                <div class="color-name">Black</div>
+                <div class="color-hex">#000000</div>
+            </div>
+            <div class="color-block color-white animate-in">
+                <div class="color-name">White</div>
+                <div class="color-hex">#FFFFFF</div>
+            </div>
+            <div class="color-block color-red animate-in">
+                <div class="color-name">Red</div>
+                <div class="color-hex">#FF0000</div>
+            </div>
+            <div class="color-block color-blue animate-in">
+                <div class="color-name">Blue</div>
+                <div class="color-hex">#0000FF</div>
+            </div>
+            <div class="color-block color-yellow animate-in">
+                <div class="color-name">Yellow</div>
+                <div class="color-hex">#FFFF00</div>
+            </div>
+            <div class="color-block color-gray animate-in">
+                <div class="color-name">Gray</div>
+                <div class="color-hex">#808080</div>
+            </div>
+        </section>
+
+        <!-- Project Grid -->
+        <section class="project-grid">
+            <div class="project-card project-card-1 interactive-module animate-in">
+                <div class="project-number">01</div>
+                <div>
+                    <h3 class="project-title">Identity Systems</h3>
+                    <p class="project-description">Comprehensive brand architectures built on modular principles and systematic thinking.</p>
+                </div>
+            </div>
+            <div class="project-card project-card-2 interactive-module animate-in">
+                <div class="project-number">02</div>
+                <div>
+                    <h3 class="project-title">Editorial Design</h3>
+                    <p class="project-description">Information hierarchy through geometric precision and calculated typographic relationships.</p>
+                </div>
+            </div>
+            <div class="project-card project-card-3 interactive-module animate-in">
+                <div class="project-number">03</div>
+                <div>
+                    <h3 class="project-title">Digital Systems</h3>
+                    <p class="project-description">Responsive frameworks that maintain visual integrity across all screen sizes and contexts.</p>
+                </div>
+            </div>
+            <div class="project-card project-card-4 interactive-module animate-in">
+                <div class="project-number">04</div>
+                <div>
+                    <h3 class="project-title">Environmental Graphics</h3>
+                    <p class="project-description">Wayfinding and architectural integration through bold typography and systematic color application.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Statement Section -->
+        <section class="statement-section">
+            <blockquote class="statement-quote animate-in">
+                Good design is a matter of discipline. It starts by looking at the problem and collecting all the available information about it.
+            </blockquote>
+            <cite class="statement-author animate-in">Michael Beirut</cite>
+        </section>
+
+        <!-- Footer -->
+        <section class="footer-section">
+            <div class="footer-block animate-in">
+                <h4 class="footer-title">Method</h4>
+                <p class="footer-text">Systematic approach to visual communication through geometric principles.</p>
+            </div>
+            <div class="footer-block animate-in">
+                <h4 class="footer-title">Grid</h4>
+                <p class="footer-text">12-column modular system ensures consistent proportions across all elements.</p>
+            </div>
+            <div class="footer-block animate-in">
+                <h4 class="footer-title">Type</h4>
+                <p class="footer-text">Gotham provides the geometric foundation for clear information hierarchy.</p>
+            </div>
+            <div class="footer-block animate-in">
+                <h4 class="footer-title">Color</h4>
+                <p class="footer-text">Primary palette enables maximum contrast and systematic application.</p>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all animated elements
+        document.querySelectorAll('.animate-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Interactive modules
+        document.querySelectorAll('.interactive-module').forEach(module => {
+            module.addEventListener('click', (e) => {
+                // Beirut-style interaction feedback
+                module.style.background = getComputedStyle(module).background === 'rgb(255, 0, 0)' ? 
+                    'var(--beirut-black)' : 'var(--beirut-red)';
+                
+                setTimeout(() => {
+                    module.style.background = '';
+                }, 200);
+            });
+        });
+
+        // Systematic hover effects
+        document.querySelectorAll('.color-block').forEach(block => {
+            block.addEventListener('mouseenter', () => {
+                block.style.transform = 'scale(1.05)';
+                block.style.zIndex = '10';
+            });
+            
+            block.addEventListener('mouseleave', () => {
+                block.style.transform = 'scale(1)';
+                block.style.zIndex = '1';
+            });
+        });
+
+        // Grid debugging (for development)
+        let gridDebug = false;
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'g' && e.ctrlKey) {
+                gridDebug = !gridDebug;
+                document.body.style.backgroundImage = gridDebug ? 
+                    'linear-gradient(rgba(255,0,0,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,0,0,0.1) 1px, transparent 1px)' : 'none';
+                document.body.style.backgroundSize = gridDebug ? 
+                    `${80}px ${80}px` : 'auto';
+            }
+        });
+
+        // Responsive grid adjustments
+        function adjustGrid() {
+            const container = document.querySelector('.grid-container');
+            const moduleSize = window.innerWidth < 768 ? 60 : 80;
+            document.documentElement.style.setProperty('--module-size', `${moduleSize}px`);
+        }
+
+        window.addEventListener('resize', adjustGrid);
+        adjustGrid();
+    </script>
+</body>
+</html>

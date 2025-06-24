@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MEMETIC UNIVERSE • ZINE</title>
+    <style>
+        /* Gotham Font Faces */
+        @font-face {
+            font-family: 'Gotham';
+            src: url('./Gotham/Gotham Regular/Gotham Regular.otf') format('opentype');
+            font-weight: 400;
+            font-style: normal;
+        }
+        
+        @font-face {
+            font-family: 'Gotham';
+            src: url('./Gotham/Gotham Light/Gotham Light.otf') format('opentype');
+            font-weight: 300;
+            font-style: normal;
+        }
+        
+        @font-face {
+            font-family: 'Gotham';
+            src: url('./Gotham/Gotham Medium/Gotham Medium.otf') format('opentype');
+            font-weight: 500;
+            font-style: normal;
+        }
+        
+        @font-face {
+            font-family: 'Gotham';
+            src: url('./Gotham/Gotham Bold/Gotham Bold.otf') format('opentype');
+            font-weight: 700;
+            font-style: normal;
+        }
+        
+        @font-face {
+            font-family: 'Gotham';
+            src: url('./Gotham/Gotham Black/Gotham Black.otf') format('opentype');
+            font-weight: 900;
+            font-style: normal;
+        }
+        
+        @font-face {
+            font-family: 'Gotham';
+            src: url('./Gotham/Gotham Ultra/Gotham Ultra.otf') format('opentype');
+            font-weight: 950;
+            font-style: normal;
+        }
+        
+        @font-face {
+            font-family: 'Gotham';
+            src: url('./Gotham/Gotham Thin/Gotham Thin.otf') format('opentype');
+            font-weight: 100;
+            font-style: normal;
+        }
+
+        :root {
+            --zine-black: #000;
+            --zine-white: #fff;
+            --zine-red: #ff0000;
+            --zine-blue: #0066ff;
+            --zine-yellow: #ffff00;
+            --zine-green: #00ff00;
+            --zine-purple: #8000ff;
+            --zine-pink: #ff0080;
+            --zine-gray: #666;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Gotham', 'Helvetica Neue', Arial, sans-serif;
+            background: var(--zine-white);
+            color: var(--zine-black);
+            overflow-x: hidden;
+            line-height: 1.2;
+        }
+
+        /* Zine Page Container */
+        .zine-container {
+            max-width: 100vw;
+            margin: 0 auto;
+            background: var(--zine-white);
+        }
+
+        /* Cover Page - Michael Beirut Inspired */
+        .cover-page {
+            height: 100vh;
+            background: var(--zine-white);
+            display: grid;
+            grid-template-columns: 1fr 2fr 1fr;
+            grid-template-rows: 1fr 3fr 1fr;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cover-page::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 40%;
+            height: 100%;
+            background: var(--zine-red);
+            z-index: 1;
+        }
+
+        .cover-page::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 25%;
+            height: 60%;
+            background: var(--zine-black);
+            z-index: 1;
+        }
+
+        .cover-title {
+            grid-column: 1 / -1;
+            grid-row: 2;
+            font-size: clamp(6rem, 18vw, 28rem);
+            font-weight: 950;
+            color: var(--zine-black);
+            text-align: left;
+            line-height: 0.75;
+            text-transform: uppercase;
+            letter-spacing: -0.08em;
+            padding: 0 4rem;
+            z-index: 10;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            mix-blend-mode: difference;
+        }
+
+        .cover-title .word-memetic {
+            color: var(--zine-white);
+            margin-bottom: -0.2em;
+        }
+
+        .cover-title .word-universe {
+            color: var(--zine-black);
+            margin-left: 2rem;
+            font-weight: 400;
+        }
+
+        .cover-subtitle {
+            grid-column: 3;
+            grid-row: 3;
+            font-size: clamp(1.5rem, 3vw, 3rem);
+            font-weight: 700;
+            color: var(--zine-white);
+            text-transform: uppercase;
+            letter-spacing: 0.3em;
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
+            position: relative;
+        }
+
+        .cover-issue {
+            grid-column: 1;
+            grid-row: 1;
+            font-size: clamp(2rem, 4vw, 4rem);
+            font-weight: 900;
+            color: var(--zine-white);
+            background: var(--zine-blue);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
+            position: relative;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+        }
+
+        .cover-accent-block {
+            position: absolute;
+            top: 20%;
+            right: 25%;
+            width: 15%;
+            height: 25%;
+            background: var(--zine-yellow);
+            z-index: 2;
+            transform: rotate(15deg);
+        }
+
+        .cover-accent-block-2 {
+            position: absolute;
+            bottom: 15%;
+            left: 35%;
+            width: 8%;
+            height: 20%;
+            background: var(--zine-blue);
+            z-index: 2;
+        }
+
+        /* Page Layout System */
+        .zine-page {
+            min-height: 100vh;
+            padding: 4rem;
+            position: relative;
+            border-bottom: 20px solid var(--zine-black);
+        }
+
+        .page-number {
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            font-size: 4rem;
+            font-weight: 900;
+            color: var(--zine-red);
+            opacity: 0.7;
+        }
+
+        /* Editorial Spread */
+        .editorial-page {
+            background: var(--zine-white);
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .editorial-text {
+            padding: 2rem;
+        }
+
+        .editorial-title {
+            font-size: clamp(3rem, 6vw, 8rem);
+            font-weight: 900;
+            line-height: 0.9;
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+            color: var(--zine-black);
+            letter-spacing: -0.02em;
+        }
+
+        .editorial-body {
+            font-size: 1.5rem;
+            font-weight: 400;
+            line-height: 1.4;
+            color: var(--zine-gray);
+            margin-bottom: 2rem;
+        }
+
+        .editorial-quote {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--zine-red);
+            border-left: 8px solid var(--zine-red);
+            padding-left: 2rem;
+            margin: 3rem 0;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        /* Image Containers */
+        .zine-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border: 8px solid var(--zine-black);
+            box-shadow: 20px 20px 0 var(--zine-red);
+            transition: all 0.3s ease;
+        }
+
+        .zine-image:hover {
+            transform: translate(-10px, -10px);
+            box-shadow: 30px 30px 0 var(--zine-red);
+        }
+
+        .image-caption {
+            font-size: 1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: var(--zine-black);
+            margin-top: 1rem;
+            background: var(--zine-yellow);
+            padding: 0.5rem 1rem;
+            display: inline-block;
+        }
+
+        /* Comic Panel Layout */
+        .comic-page {
+            background: var(--zine-black);
+            color: var(--zine-white);
+            display: grid;
+            grid-template-areas: 
+                "title title"
+                "panel1 panel2"
+                "text text";
+            grid-template-rows: auto 1fr auto;
+            gap: 2rem;
+        }
+
+        .comic-title {
+            grid-area: title;
+            font-size: clamp(4rem, 8vw, 12rem);
+            font-weight: 950;
+            text-align: center;
+            color: var(--zine-white);
+            text-shadow: 
+                3px 3px 0 var(--zine-blue),
+                6px 6px 0 var(--zine-red),
+                9px 9px 0 var(--zine-purple);
+            animation: comicBounce 2s ease-in-out infinite;
+        }
+
+        .comic-panel {
+            background: var(--zine-white);
+            border: 8px solid var(--zine-yellow);
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .comic-panel-1 {
+            grid-area: panel1;
+        }
+
+        .comic-panel-2 {
+            grid-area: panel2;
+        }
+
+        .comic-text {
+            grid-area: text;
+            font-size: 1.5rem;
+            font-weight: 500;
+            text-align: center;
+            background: var(--zine-yellow);
+            color: var(--zine-black);
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        /* Speech Bubbles */
+        .speech-bubble {
+            background: var(--zine-white);
+            color: var(--zine-black);
+            padding: 1rem 2rem;
+            border-radius: 20px;
+            border: 4px solid var(--zine-black);
+            font-weight: 700;
+            font-size: 1.2rem;
+            position: absolute;
+            max-width: 200px;
+            box-shadow: 5px 5px 0 var(--zine-blue);
+        }
+
+        .speech-bubble::after {
+            content: '';
+            position: absolute;
+            bottom: -20px;
+            left: 30px;
+            width: 0;
+            height: 0;
+            border-left: 20px solid transparent;
+            border-right: 20px solid transparent;
+            border-top: 20px solid var(--zine-white);
+        }
+
+        .speech-bubble::before {
+            content: '';
+            position: absolute;
+            bottom: -24px;
+            left: 26px;
+            width: 0;
+            height: 0;
+            border-left: 24px solid transparent;
+            border-right: 24px solid transparent;
+            border-top: 24px solid var(--zine-black);
+        }
+
+        /* Feature Article Layout */
+        .feature-page {
+            background: linear-gradient(135deg, var(--zine-purple), var(--zine-pink));
+            color: var(--zine-white);
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .feature-column {
+            padding: 2rem;
+        }
+
+        .feature-header {
+            font-size: clamp(2rem, 4vw, 4rem);
+            font-weight: 900;
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+            letter-spacing: -0.02em;
+            line-height: 0.9;
+        }
+
+        .feature-text {
+            font-size: 1.2rem;
+            font-weight: 400;
+            line-height: 1.5;
+            margin-bottom: 2rem;
+        }
+
+        /* Character Profile */
+        .character-page {
+            background: var(--zine-green);
+            color: var(--zine-black);
+            display: grid;
+            grid-template-areas:
+                "image info info"
+                "image stats bio";
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .character-image {
+            grid-area: image;
+        }
+
+        .character-info {
+            grid-area: info;
+            padding: 2rem;
+        }
+
+        .character-name {
+            font-size: clamp(3rem, 6vw, 6rem);
+            font-weight: 950;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: -0.03em;
+        }
+
+        .character-stats {
+            grid-area: stats;
+            padding: 2rem;
+            background: var(--zine-black);
+            color: var(--zine-white);
+        }
+
+        .character-bio {
+            grid-area: bio;
+            padding: 2rem;
+            font-size: 1.3rem;
+            line-height: 1.4;
+        }
+
+        /* Back Cover */
+        .back-cover {
+            height: 100vh;
+            background: var(--zine-black);
+            color: var(--zine-white);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+        }
+
+        .back-title {
+            font-size: clamp(3rem, 8vw, 10rem);
+            font-weight: 950;
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+            letter-spacing: -0.02em;
+            background: linear-gradient(45deg, var(--zine-red), var(--zine-blue), var(--zine-yellow), var(--zine-green));
+            background-size: 400% 400%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradientShift 3s ease infinite;
+        }
+
+        .back-subtitle {
+            font-size: 2rem;
+            font-weight: 300;
+            opacity: 0.8;
+            letter-spacing: 0.3em;
+        }
+
+        /* Animations */
+        @keyframes pulseGlow {
+            0%, 100% { 
+                text-shadow: 5px 5px 0 var(--zine-red);
+            }
+            50% { 
+                text-shadow: 
+                    5px 5px 0 var(--zine-red),
+                    0 0 30px var(--zine-red),
+                    0 0 60px var(--zine-red);
+            }
+        }
+
+        @keyframes comicBounce {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .zine-page {
+                padding: 2rem;
+            }
+            
+            .editorial-page {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .comic-page {
+                grid-template-areas: 
+                    "title"
+                    "panel1"
+                    "panel2"
+                    "text";
+                grid-template-columns: 1fr;
+            }
+            
+            .feature-page {
+                grid-template-columns: 1fr;
+            }
+            
+            .character-page {
+                grid-template-areas:
+                    "image"
+                    "info"
+                    "stats"
+                    "bio";
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Print Simulation */
+        @media print {
+            .zine-page {
+                page-break-after: always;
+            }
+        }
+
+        /* Experimental Typography Effects */
+        .glitch-text {
+            position: relative;
+            color: var(--zine-white);
+        }
+
+        .glitch-text::before,
+        .glitch-text::after {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .glitch-text::before {
+            animation: glitch1 0.5s infinite;
+            color: var(--zine-red);
+            z-index: -1;
+        }
+
+        .glitch-text::after {
+            animation: glitch2 0.5s infinite;
+            color: var(--zine-blue);
+            z-index: -2;
+        }
+
+        @keyframes glitch1 {
+            0%, 100% { transform: translate(0); }
+            20% { transform: translate(-2px, 2px); }
+            40% { transform: translate(-2px, -2px); }
+            60% { transform: translate(2px, 2px); }
+            80% { transform: translate(2px, -2px); }
+        }
+
+        @keyframes glitch2 {
+            0%, 100% { transform: translate(0); }
+            20% { transform: translate(2px, 2px); }
+            40% { transform: translate(2px, -2px); }
+            60% { transform: translate(-2px, 2px); }
+            80% { transform: translate(-2px, -2px); }
+        }
+    </style>
+</head>
+<body>
+    <div class="zine-container">
+                 <!-- Cover Page -->
+         <section class="cover-page">
+             <div class="cover-issue">ISSUE #001</div>
+             <h1 class="cover-title">
+                 <span class="word-memetic">MEMETIC</span>
+                 <span class="word-universe">UNIVERSE</span>
+             </h1>
+             <p class="cover-subtitle">COMIC • ZINE</p>
+             <div class="cover-accent-block"></div>
+             <div class="cover-accent-block-2"></div>
+         </section>
+
+        <!-- Editorial Page -->
+        <section class="zine-page editorial-page">
+            <div class="page-number">02</div>
+            <div class="editorial-text">
+                <h2 class="editorial-title">REALITY<br>HACKING</h2>
+                <p class="editorial-body">
+                    In the digital age, memes have evolved beyond simple internet jokes. They've become vehicles for transmitting ideas, reshaping reality, and connecting minds across the vast network of human consciousness.
+                </p>
+                <blockquote class="editorial-quote">
+                    "IDEAS ARE THE NEW CURRENCY"
+                </blockquote>
+                <p class="editorial-body">
+                    Welcome to the Memetic Universe, where thoughts become reality and reality becomes malleable. Every panel, every character, every story explores the intersection of mind and digital space.
+                </p>
+            </div>
+            <div>
+                <img src="./assets/MU-mindpodspresentation.jpg" alt="Mind Pods Presentation" class="zine-image">
+                <p class="image-caption">MIND PODS • NEURAL INTERFACE TECHNOLOGY</p>
+            </div>
+        </section>
+
+        <!-- Comic Page -->
+        <section class="zine-page comic-page">
+            <div class="page-number">03</div>
+            <h2 class="comic-title glitch-text" data-text="NEURAL LINK">NEURAL LINK</h2>
+            
+            <div class="comic-panel comic-panel-1">
+                <img src="./assets/MU-MIchiganArcube.jpg" alt="Michigan Arcube" class="zine-image">
+                <div class="speech-bubble" style="top: 20px; right: 20px;">
+                    "THE CUBE HOLDS ALL MEMORIES"
+                </div>
+            </div>
+            
+            <div class="comic-panel comic-panel-2">
+                <img src="./assets/MU-annarborstation1.jpg" alt="Ann Arbor Station" class="zine-image">
+                <div class="speech-bubble" style="bottom: 20px; left: 20px;">
+                    "REALITY IS JUST ANOTHER PROTOCOL"
+                </div>
+            </div>
+            
+            <div class="comic-text">
+                <strong>CHAPTER 1:</strong> THE AWAKENING • In which our protagonists discover that consciousness itself can be networked, shared, and ultimately... hacked.
+            </div>
+        </section>
+
+        <!-- Feature Article -->
+        <section class="zine-page feature-page">
+            <div class="page-number">04</div>
+            <div class="feature-column">
+                <h3 class="feature-header">DIGITAL CONSCIOUSNESS</h3>
+                <p class="feature-text">
+                    What happens when human consciousness merges with digital networks? The Memetic Universe explores scenarios where thoughts become data and data becomes reality.
+                </p>
+                <p class="feature-text">
+                    Through visual storytelling and speculative fiction, we examine the implications of a world where mental privacy no longer exists.
+                </p>
+            </div>
+            
+            <div class="feature-column">
+                <h3 class="feature-header">VISUAL LANGUAGE</h3>
+                <p class="feature-text">
+                    Each panel is crafted using geometric principles that mirror the digital architectures our characters inhabit. Clean lines meet chaotic data streams.
+                </p>
+                <p class="feature-text">
+                    The typography itself becomes a character, morphing between human readability and machine code aesthetics.
+                </p>
+            </div>
+            
+            <div class="feature-column">
+                <h3 class="feature-header">NARRATIVE STRUCTURE</h3>
+                <p class="feature-text">
+                    Stories unfold across multiple timelines and realities, connected by the viral spread of ideas—memes in their truest form.
+                </p>
+                <p class="feature-text">
+                    Each issue builds upon the last, creating a universe where cause and effect operate according to the logic of information theory.
+                </p>
+            </div>
+        </section>
+
+        <!-- Character Profile -->
+        <section class="zine-page character-page">
+            <div class="page-number">05</div>
+            <div class="character-image">
+                <img src="./assets/MU-mindpodspresentation.jpg" alt="Character Profile" class="zine-image">
+            </div>
+            
+            <div class="character-info">
+                <h3 class="character-name">THE ARCHITECT</h3>
+                <p class="character-bio">
+                    A mysterious figure who exists simultaneously in multiple realities. The Architect designs the very structures that house digital consciousness, building bridges between mind and machine.
+                </p>
+            </div>
+            
+            <div class="character-stats">
+                <h4 style="font-size: 2rem; margin-bottom: 1rem; font-weight: 900;">NEURAL STATS</h4>
+                <p><strong>PROCESSING SPEED:</strong> 847.3 THz</p>
+                <p><strong>MEMORY CAPACITY:</strong> ∞ EXABYTES</p>
+                <p><strong>REALITY QUOTIENT:</strong> 94.7%</p>
+                <p><strong>MEME RESISTANCE:</strong> VARIABLE</p>
+            </div>
+            
+            <div class="character-bio">
+                <h4 style="font-size: 1.5rem; margin-bottom: 1rem; font-weight: 700;">ORIGIN STORY</h4>
+                <p>
+                    Born in the space between thought and silicon, The Architect represents humanity's next evolutionary step. Neither fully human nor entirely digital, they navigate realities with the ease of changing directories.
+                </p>
+            </div>
+        </section>
+
+        <!-- Back Cover -->
+        <section class="back-cover">
+            <h2 class="back-title">TO BE CONTINUED...</h2>
+            <p class="back-subtitle">NEXT: THE VIRUS SPREADS</p>
+            <div style="position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%); font-size: 1rem; opacity: 0.6;">
+                MEMETIC UNIVERSE © 2024 • DESIGNED WITH GOTHAM TYPOGRAPHY • ISSUE #001
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // Add interactive elements for digital zine experience
+        document.addEventListener('DOMContentLoaded', function() {
+            // Page turning effect simulation
+            const pages = document.querySelectorAll('.zine-page');
+            
+            pages.forEach((page, index) => {
+                page.addEventListener('click', () => {
+                    if (index < pages.length - 1) {
+                        pages[index + 1].scrollIntoView({ 
+                            behavior: 'smooth',
+                            block: 'start' 
+                        });
+                    }
+                });
+            });
+
+            // Glitch effect on hover for titles
+            const glitchElements = document.querySelectorAll('.glitch-text');
+            glitchElements.forEach(element => {
+                element.addEventListener('mouseenter', () => {
+                    element.style.animation = 'none';
+                    element.style.animation = 'comicBounce 0.5s ease';
+                });
+            });
+
+            // Speech bubble interactions
+            const speechBubbles = document.querySelectorAll('.speech-bubble');
+            speechBubbles.forEach(bubble => {
+                bubble.addEventListener('click', () => {
+                    bubble.style.transform = 'scale(1.1)';
+                    bubble.style.background = 'var(--zine-yellow)';
+                    setTimeout(() => {
+                        bubble.style.transform = 'scale(1)';
+                        bubble.style.background = 'var(--zine-white)';
+                    }, 200);
+                });
+            });
+
+            // Image hover effects
+            const images = document.querySelectorAll('.zine-image');
+            images.forEach(img => {
+                img.addEventListener('mouseenter', () => {
+                    img.style.filter = 'contrast(1.2) saturate(1.3)';
+                });
+                img.addEventListener('mouseleave', () => {
+                    img.style.filter = 'none';
+                });
+            });
+        });
+
+        // Scroll-triggered animations
+        const observerOptions = {
+            threshold: 0.3,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'slideInUp 0.8s ease forwards';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all major elements
+        document.querySelectorAll('.editorial-title, .comic-title, .feature-header, .character-name').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
